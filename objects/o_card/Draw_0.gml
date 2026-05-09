@@ -22,7 +22,7 @@ if (!isSurfaceInitiatied)
     }
     
     var effectScale = 1;
-    while (string_width(card.textEffect) * effectScale > 328)
+    while (string_width(card.textEffect) * effectScale > 318)
     {
         effectScale -= 0.01;
     }
