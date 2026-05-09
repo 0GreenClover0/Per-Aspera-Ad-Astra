@@ -143,3 +143,55 @@ function runFight()
         }
     }
 }
+
+function hover_character_under_mouse()
+{
+    var hovered = false;
+    var allCharacters = array_concat(playerCharacters, enemiesCharacters);
+    for (var i = 0; i < array_length(allCharacters); ++i)
+    {
+        if (hovered)
+        {
+            allCharacters[i].unhover();
+            continue;
+        }
+
+        var left = allCharacters[i].x - sprite_get_width(allCharacters[i].sprite_index) / 1.9;
+        var right = allCharacters[i].x + sprite_get_width(allCharacters[i].sprite_index) / 1.9;
+        var up = allCharacters[i].y - sprite_get_height(allCharacters[i].sprite_index) / 1.9;
+        var down = allCharacters[i].y + sprite_get_height(allCharacters[i].sprite_index) / 1.9;
+
+        var mouseX = device_mouse_x_to_gui(0);
+        var mouseY = device_mouse_y_to_gui(0);
+        
+        if (mouseX > left and mouseX < right and mouseY > up and mouseY < down)
+        {
+            hovered = true;
+            
+            if (!allCharacters[i].isHovered)
+            {
+                //audio_play_sound(sn_cardFromHand, 0, false, random_range(0.5, 1), 0, lerp(0.5, 1, i / array_length(inventory)));
+            }
+            
+            if (mouseY < (down + up) * 0.5)
+            {
+                allCharacters[i].hover();
+            }
+            else 
+            {
+            	allCharacters[i].hover();
+            }
+            
+            hoveredCharacter = allCharacters[i];
+        }
+        else
+        {
+        	allCharacters[i].unhover();
+        }
+    }
+    
+    if (not hovered)
+    {
+        hoveredCharacter = undefined;
+    }
+}

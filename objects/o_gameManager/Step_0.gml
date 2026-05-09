@@ -8,6 +8,8 @@ if (!init)
     startRound();
 }
 
+hover_character_under_mouse();
+
 if (mouse_check_button_pressed(mb_left))
 {
     for (var i = 0; i < array_length(o_inventory.inventory); ++i)

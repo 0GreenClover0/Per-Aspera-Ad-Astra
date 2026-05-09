@@ -25,6 +25,18 @@ randomizeParameters(10);
 
 show_debug_message("HP {0}, ATK {1}, DEF {2}, INT {3}, DEX {4}", hp, atk, def, int, dex);
 
+isHovered = false;
+
+function hover()
+{
+    isHovered = true;
+}
+
+function unhover()
+{
+    isHovered = false;
+}
+
 function randomizeParameters(baseParametersCap)
 {
     // First initialize random cap at equal contribution.
