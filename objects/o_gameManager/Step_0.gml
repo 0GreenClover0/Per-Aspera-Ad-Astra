@@ -194,3 +194,13 @@ if (roundState != RoundState.Visualization and selectType != undefined and cardE
         startRound();
     }
 }
+
+array_sort(playerCharacters, function(current, next)
+{
+    return next.dex - current.dex;
+});
+
+array_sort(enemiesCharacters, function(current, next)
+{
+    return next.dex - current.dex;
+});
