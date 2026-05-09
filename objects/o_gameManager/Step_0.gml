@@ -161,7 +161,7 @@ if (roundState != RoundState.Visualization and selectType != undefined and cardE
         }
     }
     
-    if (usedCards != usedCardsOld and usedCards < 3 and array_length(enemiesCharacters) <= 0)
+    if (usedCards != usedCardsOld and roundState == RoundState.PickingCards and array_length(enemiesCharacters) <= 0)
     {
         startRound();
     }
