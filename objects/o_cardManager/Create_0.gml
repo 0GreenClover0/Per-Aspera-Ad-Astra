@@ -1,5 +1,6 @@
 randomise();
 
+astraDrawn = false;
 chancesForAstra = 0;
 perRoundIncrease = 1.5;
 
