@@ -6,7 +6,30 @@ if (random_range(0, 100) < chancePerAstra)
 }
 else
 {
-    card = o_cardManager.cardTypes[irandom(array_length(o_cardManager.cardTypes) - 1)];
+    var index = irandom(array_length(o_cardManager.cardTypes) - 1);
+    while (true)
+    {
+        card = o_cardManager.cardTypes[index];
+        
+        var noDuplicate = true;
+        for (var i = 0; i < array_length(o_inventory.inventory); ++i)
+        {
+            var test = o_inventory.inventory[i];
+            show_debug_message(o_inventory.inventory[i]);
+            if (card == o_inventory.inventory[i].card)
+            {
+                noDuplicate = false;
+                break;
+            }
+        }
+        
+        if (noDuplicate)
+        {
+            break;
+        }
+        
+        index = (index + 1) % array_length(o_cardManager.cardTypes);
+    }
 }
 
 newX = x;
