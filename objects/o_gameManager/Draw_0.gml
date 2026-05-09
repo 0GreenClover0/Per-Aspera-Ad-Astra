@@ -26,7 +26,24 @@ if (usedCards == 2)
 
 if (usedCards == 3)
 {
-    sentenceCounter = string("WALKA!!!");
+    if (array_length(fightEvents) > 0)
+    {
+        var dmgStat = roundType == FightType.Combat ? fightEvents[0].who.atk : fightEvents[0].who.int;
+        var defStat = fightEvents[0].whom.def;
+    
+        sentenceCounter = string("[A]{0} - [D]{1} = [H]{2}", dmgStat, defStat, max(0, fightEvents[0].dmg));
+        
+        var attackIcon = string_width(string_copy(sentenceCounter, 0, string_pos("[A]", sentenceCounter)));
+        var defenseIcon = string_width(string_copy(sentenceCounter, 0, string_pos("[D]", sentenceCounter)));
+        var damageIcon = string_width(string_copy(sentenceCounter, 0, string_pos("[H]", sentenceCounter)));
+        
+        draw_sprite_ext(s_statIcons, 0, room_width / 2 - string_width(sentenceCounter) / 2 + attackIcon + 15, 80, 0.75, 0.75, 0, c_white, 1);
+        draw_sprite_ext(s_statIcons, 2, room_width / 2 - string_width(sentenceCounter) / 2 + defenseIcon + 15, 80, 0.75, 0.75, 0, c_white, 1);
+        draw_sprite_ext(s_heart, 1, room_width / 2 - string_width(sentenceCounter) / 2 + damageIcon + 7, 80, 2, 2, 0, c_white, 1);
+        sentenceCounter = string_replace(sentenceCounter, "[A]", "      ");
+        sentenceCounter = string_replace(sentenceCounter, "[D]", "      ");
+        sentenceCounter = string_replace(sentenceCounter, "[H]", "      ");
+    }
 }
 
 draw_text(room_width / 2, 60, sentenceCounter);

@@ -395,7 +395,7 @@ zdrowieChoregoNajwyzszymPrawem = new Card (
     SelectType.Character,
     function(character) 
     {
-        character.hp++;
+        character.hp += 2;
     }
 )
 
@@ -443,7 +443,7 @@ jedenZaWszystkich = new Card (
 zycieBezNaukiSmierciaJest = new Card (
     "Vita sine litteris mors est",
     "Życie bez nauki śmiercią jest",
-    "Zabij wszystkich wojowników z INT = 0",
+    "Zabij wszystkich wojowników z INT <= 0",
     SelectType.All,
     function() 
     {
@@ -452,7 +452,7 @@ zycieBezNaukiSmierciaJest = new Card (
         
         for (var i = numberOfPlayers - 1; i >= 0; i--)
         {
-            if (o_gameManager.playerCharacters[i].int == 0)
+            if (o_gameManager.playerCharacters[i].int <= 0)
             {
                 o_gameManager.kill(o_gameManager.playerCharacters[i]);
             }
@@ -460,7 +460,7 @@ zycieBezNaukiSmierciaJest = new Card (
         
         for (var i = numberOfEnemies - 1; i >= 0; i--)
         {
-            if (o_gameManager.enemiesCharacters[i].int == 0)
+            if (o_gameManager.enemiesCharacters[i].int <= 0)
             {
                 o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
             }
