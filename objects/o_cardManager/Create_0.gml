@@ -43,7 +43,6 @@ poraPic = new Card (
     }
 )
 
-//TODO: Jakaś iteracja powszystkich
 kazdyUlegaSwoimNamietnosciom = new Card (
     "Trahit sua quemque voluptas",
     "Każdy ulega swoim namiętnościom",
@@ -51,7 +50,18 @@ kazdyUlegaSwoimNamietnosciom = new Card (
     SelectType.Team,
     function() 
     {
-        addEffect(StatusEffect.InLove);
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            o_gameManager.playerCharacters[i].addEffect(StatusEffect.InLove);
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            o_gameManager.enemiesCharacters[i].addEffect(StatusEffect.InLove);
+        }
     }
 )
 
@@ -125,7 +135,6 @@ odwazSieBycMadrym = new Card (
     }
 )
 
-//TODO: Iteracja po wszystkich i zabicie pijanych
 pijanstwoGubiGorzejOdMiecza = new Card (
     "Plures crapula quam gladius perdidit",
     "Pijaństwo gubi gorzej od miecza",
@@ -133,6 +142,24 @@ pijanstwoGubiGorzejOdMiecza = new Card (
     SelectType.All,
     function() 
     {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].hasEffect(StatusEffect.Drunk))
+            {
+                o_gameManager.playerCharacters[i].die();
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.Drunk))
+            {
+                o_gameManager.enemiesCharacters[i].die();
+            }
+        }
     }
 )
 
@@ -171,7 +198,6 @@ poSmierciNieCzasNaPrzyjemnosci = new Card (
     }
 )
 
-//TODO: Iterowanie po wszystkich i sprawdzanie statusu
 //Potencjalny rework że +1HP gdy jest gniew i wtedy go usuwa
 najlepszymLekarstwemJestSpokoj = new Card (
     "Optimum medicamentum quies est",
@@ -180,6 +206,24 @@ najlepszymLekarstwemJestSpokoj = new Card (
     SelectType.All,
     function() 
     {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (!o_gameManager.playerCharacters[i].hasEffect(StatusEffect.Angry))
+            {
+                o_gameManager.playerCharacters[i].hp++;
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (!o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.Angry))
+            {
+                o_gameManager.enemiesCharacters[i].hp++;
+            }
+        }
     }
 )
 
@@ -187,7 +231,7 @@ toCoSzkodziUczy = new Card (
     "Quae nocent, docent",
     "To, co szkodzi, uczy",
     "+1 INT, -1 HP",
-    SelectType.All,
+    SelectType.Character,
     function(character) 
     {
         character.int++;
@@ -214,18 +258,34 @@ alboZwyciezacAlboUmierac = new Card (
     }
 )
 
-//TODO: Iterowanie po wszystkich i sprawdzanie statusu
 miloscNajlepszymNauczycielem = new Card (
     "Amor magister optimus",
     "Miłość najlepszym nauczycielem",
-    "+1 INT jeśli nie ma statusu miłość",
+    "+1 INT jeśli ma status miłość",
     SelectType.All,
     function() 
     {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.playerCharacters[i].int++;
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.enemiesCharacters[i].int++;
+            }
+        }
     }
 )
 
-//TODO: Iterowanie po wszystkich i sprawdzanie statusu
 winoRozpalaGniew = new Card (
     "Vinum incendit iras",
     "Wino rozpala gniew",
@@ -233,10 +293,27 @@ winoRozpalaGniew = new Card (
     SelectType.All,
     function() 
     {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].hasEffect(StatusEffect.Drunk))
+            {
+                o_gameManager.playerCharacters[i].addEffect(StatusEffect.Angry);
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.Drunk))
+            {
+                o_gameManager.enemiesCharacters[i].addEffect(StatusEffect.Angry);
+            }
+        }
     }
 )
 
-//TODO: Iterowanie po wszystkich i sprawdzanie statusu
 zakochaniSaJakSzalency = new Card (
     "Amantes amentes",
     "Zakochani są jak szaleńcy",
@@ -244,6 +321,24 @@ zakochaniSaJakSzalency = new Card (
     SelectType.All,
     function() 
     {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.playerCharacters[i].atk++;
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.enemiesCharacters[i].atk++;
+            }
+        }
     }
 )
 
@@ -327,16 +422,31 @@ jedenZaWszystkich = new Card (
     }
 )
 
-//TODO: iteracja po wojownikach aby sprawdzić parametry
 zycieBezNaukiSmierciaJest = new Card (
     "Vita sine litteris mors est",
     "Życie bez nauki śmiercią jest",
     "Zabij wszystkich wojowników z INT = 0",
     SelectType.All,
-    function(character) 
+    function() 
     {
-        character.die();
-        //insta win
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].int == 0)
+            {
+                o_gameManager.playerCharacters[i].die();
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].int == 0)
+            {
+                o_gameManager.enemiesCharacters[i].die();
+            }
+        }
     }
 )
 
@@ -369,7 +479,6 @@ niechPijeAlboNiechSobieIdzie = new Card (
     }
 )
 
-//TODO: Iterowanie po wszystkich aby usunąć statusy
 //ewentualnie refactor do tylko drużyny / jednego bohatera
 //ewentualnie refactor z dodaniem capu na statystyki
 czystaTablica = new Card (
@@ -378,7 +487,28 @@ czystaTablica = new Card (
     "Usuń wszystkie statusy",
     SelectType.All,
     function() 
-    {
+    { 
+        function() 
+        {
+           var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+           var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+           
+           for (var i = 0; i < numberOfPlayers; i++)
+           {
+               if (o_gameManager.playerCharacters[i].int == 0)
+               {
+                   o_gameManager.playerCharacters[i].removeAllEffect();
+               }
+           }
+           
+           for (var i = 0; i < numberOfEnemies; i++)
+           {
+               if (o_gameManager.enemiesCharacters[i].int == 0)
+               {
+                   o_gameManager.enemiesCharacters[i].removeAllEffect();
+               }
+           }
+        }
     }
 )
 
@@ -393,7 +523,6 @@ wiemZeNicNieWiem = new Card (
     }
 )
 
-//TODO: iteracja po wojownikach aby sprawdzić parametry
 kazdyKtoSieWywyzszaBedziePonizony = new Card (
     "Omnis qui se exaltat, humiliabitur",
     "Każdy, kto się wywyższa, będzie poniżony",
@@ -401,6 +530,42 @@ kazdyKtoSieWywyzszaBedziePonizony = new Card (
     SelectType.All,
     function() 
     {
+        function() 
+        { 
+            var highestValue = 0;
+            var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+            var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+           
+            for (var i = 0; i < numberOfPlayers; i++)
+            {
+                var player = o_gameManager.playerCharacters[i];
+                highestValue = max(highestValue, player.atk, player.int, player.def, player.dex);
+            }
+           
+            for (var i = 0; i < numberOfEnemies; i++)
+            {
+                var enemy = o_gameManager.enemiesCharacters[i];
+                highestValue = max(highestValue, enemy.atk, enemy.int, enemy.def, enemy.dex);
+            }
+            
+            for (var i = 0; i < numberOfPlayers; i++)
+            {
+                var player = o_gameManager.playerCharacters[i];
+                if (player.atk == highestValue) {player.atk = 0;}
+                if (player.int == highestValue) {player.int = 0;}
+                if (player.def == highestValue) {player.def = 0;}
+                if (player.dex == highestValue) {player.dex = 0;}
+            }
+           
+            for (var i = 0; i < numberOfEnemies; i++)
+            {
+                var enemy = o_gameManager.enemiesCharacters[i];
+                if (enemy.atk == highestValue) {enemy.atk = 0;}
+                if (enemy.int == highestValue) {enemy.int = 0;}
+                if (enemy.def == highestValue) {enemy.def = 0;}
+                if (enemy.dex == highestValue) {enemy.dex = 0;}
+            }
+        }
     }
 )
 
@@ -417,8 +582,35 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
 )
 
 array_push(cardTypes,
-zycieJestWalka,
-nienawidzeIKocham,
-zycieSlowoKsztalci,
-jedyniePismo
+    trzezwoscJestStanemPrzejsciowym,
+    poraPic,
+    kazdyUlegaSwoimNamietnosciom,
+    zycieJestWalka,
+    nienawidzeIKocham,
+    zycieSlowoKsztalci,
+    jedyniePismo,
+    //
+    odwazSieBycMadrym,
+    pijanstwoGubiGorzejOdMiecza,
+    brodaRosnieRozumuNiePrzybywa,
+    slowaISlowaNicPonadto,
+    // 
+    najlepszymLekarstwemJestSpokoj,
+    toCoSzkodziUczy,
+    //
+    miloscNajlepszymNauczycielem,
+    winoRozpalaGniew,
+    zakochaniSaJakSzalency,
+    //
+    //
+    //
+    //
+    //
+    zycieBezNaukiSmierciaJest,
+    ostrzezonyUzbrojony,
+    niechPijeAlboNiechSobieIdzie,
+    czystaTablica,
+    wiemZeNicNieWiem,
+    kazdyKtoSieWywyzszaBedziePonizony,
+    douczajacSieNieustannieDochodzeDoStarosci,
 )

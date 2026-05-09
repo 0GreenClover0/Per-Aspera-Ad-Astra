@@ -77,6 +77,12 @@ function removeEffect(effect)
     return false;
 }
 
+function removeAllEffect()
+{
+    array_delete(statusEffects, 0, array_length(statusEffects) - 1);
+    return true;
+}
+
 function hover()
 {
     isHovered = true;
