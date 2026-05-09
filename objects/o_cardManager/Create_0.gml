@@ -145,19 +145,19 @@ pijanstwoGubiGorzejOdMiecza = new Card (
         var numberOfPlayers = array_length(o_gameManager.playerCharacters);
         var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
         
-        for (var i = 0; i < numberOfPlayers; i++)
+        for (var i = numberOfPlayers - 1; i >= 0; i--)
         {
             if (o_gameManager.playerCharacters[i].hasEffect(StatusEffect.Drunk))
             {
-                o_gameManager.playerCharacters[i].die();
+                o_gameManager.kill(o_gameManager.playerCharacters[i]);
             }
         }
         
-        for (var i = 0; i < numberOfEnemies; i++)
+        for (var i = numberOfEnemies - 1; i >= 0; i--)
         {
             if (o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.Drunk))
             {
-                o_gameManager.enemiesCharacters[i].die();
+                o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
             }
         }
     }
@@ -253,7 +253,7 @@ alboZwyciezacAlboUmierac = new Card (
         }
         else 
         {
-        	character.die();
+            o_gameManager.kill(character);
         }
     }
 )
@@ -417,7 +417,7 @@ jedenZaWszystkich = new Card (
     SelectType.Player,
     function(character) 
     {
-        character.die();
+        o_gameManager.kill(character);
         //insta win
     }
 )
@@ -432,19 +432,19 @@ zycieBezNaukiSmierciaJest = new Card (
         var numberOfPlayers = array_length(o_gameManager.playerCharacters);
         var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
         
-        for (var i = 0; i < numberOfPlayers; i++)
+        for (var i = numberOfPlayers - 1; i >= 0; i--)
         {
             if (o_gameManager.playerCharacters[i].int == 0)
             {
-                o_gameManager.playerCharacters[i].die();
+                o_gameManager.kill(o_gameManager.playerCharacters[i]);
             }
         }
         
-        for (var i = 0; i < numberOfEnemies; i++)
+        for (var i = numberOfEnemies - 1; i >= 0; i--)
         {
             if (o_gameManager.enemiesCharacters[i].int == 0)
             {
-                o_gameManager.enemiesCharacters[i].die();
+                o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
             }
         }
     }
@@ -474,7 +474,7 @@ niechPijeAlboNiechSobieIdzie = new Card (
         }
         else 
         {
-        	character.die();
+            o_gameManager.kill(character);
         }
     }
 )

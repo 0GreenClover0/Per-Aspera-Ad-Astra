@@ -118,6 +118,36 @@ function startCombatDebate()
     startRound();
 }
 
+function kill(character)
+{
+    var arr;
+    if (character.team == Team.Player)
+    {
+        arr = playerCharacters;
+    }
+    else
+    {
+        arr = enemiesCharacters;
+    }
+    
+    for (var i = 0; i < array_length(arr); ++i)
+    {
+        if (arr[i] == character)
+        {
+            array_delete(arr, i, 1);
+        }
+    }
+    
+    if (hoveredCharacter == character)
+    {
+        hoveredCharacter = undefined;
+    }
+    
+    character.unhover();
+    
+    character.die();
+}
+
 function runFight()
 {
     var sortedCharacters = array_concat(playerCharacters, enemiesCharacters);
@@ -161,8 +191,7 @@ function runFight()
                 
                 if (opponents[k].hp == 0)
                 {
-                    opponents[k].die();
-                    array_delete(opponents, k, 1);
+                    o_gameManager.kill(opponents[k]);
                 }
             }
             
