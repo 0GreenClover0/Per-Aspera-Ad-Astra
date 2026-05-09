@@ -66,6 +66,16 @@ if (roundState != RoundState.Visualization and mouse_check_button_pressed(mb_lef
 
 if (usedCards >= 3 and roundState == RoundState.PickingCards)
 {
+    for (var i = 0; i < array_length(playerCharacters); ++i)
+    {
+        playerCharacters[i].unhover();
+    }
+    
+    for (var i = 0; i < array_length(enemiesCharacters); ++i)
+    {
+        enemiesCharacters[i].unhover();
+    }
+    
     runFight();
 }
 

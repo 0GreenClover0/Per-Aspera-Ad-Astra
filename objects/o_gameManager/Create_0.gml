@@ -403,7 +403,14 @@ function hover_character_under_mouse(onlyUnhover)
     {
         if (hovered)
         {
-            allCharacters[i].unhover();
+            if (selectType == SelectType.Duo and array_length(selectedDuo) == 1 and selectedDuo[0] == allCharacters[i])
+            {
+                // Don't unhover the other duo character.
+            }
+            else
+            {
+            	allCharacters[i].unhover();
+            }
             continue;
         }
 
@@ -453,7 +460,14 @@ function hover_character_under_mouse(onlyUnhover)
         }
         else
         {
-        	allCharacters[i].unhover();
+            if (selectType == SelectType.Duo and array_length(selectedDuo) == 1 and selectedDuo[0] == allCharacters[i])
+            {
+                // Don't unhover the other duo character.
+            }
+            else
+            {
+            	allCharacters[i].unhover();
+            }
         }
     }
     

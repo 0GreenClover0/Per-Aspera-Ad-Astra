@@ -132,14 +132,9 @@ function hover()
 {
     isHovered = true;
     
-    if (sprite_index != fightSprite)
+    if (o_gameManager.roundState != RoundState.Visualization and sprite_index != fightSprite)
     {
         sprite_index = fightSprite;
-        
-        if (dex == 3)
-        {
-            show_debug_message("Hover");
-        }
     }
 }
 
@@ -147,14 +142,9 @@ function unhover()
 {
     isHovered = false;
     
-    if (sprite_index != normalSprite)
+    if (o_gameManager.roundState != RoundState.Visualization and sprite_index != normalSprite)
     {
         sprite_index = normalSprite;
-        
-        if (dex == 3)
-        {
-            show_debug_message("UNHOVER");
-        }
     }
 }
 
