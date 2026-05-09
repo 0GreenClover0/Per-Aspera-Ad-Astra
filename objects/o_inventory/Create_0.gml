@@ -48,12 +48,12 @@ function arrange()
     var screenWidth = surface_get_width(application_surface);
     var inventorySize = array_length(inventory);
 
-    offsetBetweenCards = -global.cardSizeX * 0.5;
+    offsetBetweenCards = -global.cardSizeX * 0.465;
 
     var totalWidth = inventorySize * global.cardSizeX + (inventorySize - 1) * offsetBetweenCards;
 
-    var marginLeft = global.cardSizeX * 3.5;
-    var marginRight = global.cardSizeX * 3.5;
+    var marginLeft = global.cardSizeX * 0.05;
+    var marginRight = global.cardSizeX * 0.05;
     var maxCenter = totalWidth * 0.5 + marginLeft;
     var minCenter = screenWidth - totalWidth * 0.5 - marginRight;
 
@@ -73,7 +73,7 @@ function arrange()
     for (var i = 0; i < inventorySize; ++i)
     {
         inventory[i].newX = firstPosition + i * global.cardSizeX + i * offsetBetweenCards;
-        inventory[i].newY = surface_get_height(application_surface) - global.cardSizeY * 0.5;
+        inventory[i].newY = surface_get_height(application_surface) - global.cardSizeY * 0.65;
     }
 }
 
