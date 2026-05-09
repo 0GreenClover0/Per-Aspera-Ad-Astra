@@ -8,6 +8,7 @@ newY = y;
 scaleLerp = 0.5;
 yOffsetLerp = 0;
 sway_phase = random(2 * pi);
+initialDepth = depth;
 
 isHovered = false;
 

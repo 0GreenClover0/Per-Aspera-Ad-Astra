@@ -1,7 +1,10 @@
+x = room_width / 2;
+y = room_height * 1.1;
+
 inventory = [];
 
-global.cardSizeX = 192;
-global.cardSizeY = 320;
+global.cardSizeX = sprite_get_width(s_card);
+global.cardSizeY = sprite_get_height(s_card);
 
 offsetBetweenCards = 40;
 
@@ -45,13 +48,12 @@ function arrange()
     var screenWidth = surface_get_width(application_surface);
     var inventorySize = array_length(inventory);
 
-    offsetBetweenCards = 40 - (inventorySize - 1) * 1.5;
-    offsetBetweenCards = clamp(offsetBetweenCards, 10, 40);
+    offsetBetweenCards = -global.cardSizeX * 0.5;
 
     var totalWidth = inventorySize * global.cardSizeX + (inventorySize - 1) * offsetBetweenCards;
 
     var marginLeft = global.cardSizeX * 3.5;
-    var marginRight = global.cardSizeX * 0.45;
+    var marginRight = global.cardSizeX * 3.5;
     var maxCenter = totalWidth * 0.5 + marginLeft;
     var minCenter = screenWidth - totalWidth * 0.5 - marginRight;
 

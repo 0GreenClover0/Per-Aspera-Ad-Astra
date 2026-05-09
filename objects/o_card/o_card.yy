@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"CardTemp",
-    "path":"sprites/CardTemp/CardTemp.yy",
+    "name":"s_card",
+    "path":"sprites/s_card/s_card.yy",
   },
   "spriteMaskId":null,
   "visible":true,

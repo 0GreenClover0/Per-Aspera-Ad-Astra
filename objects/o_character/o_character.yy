@@ -30,7 +30,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"s_warrior",
+    "path":"sprites/s_warrior/s_warrior.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
