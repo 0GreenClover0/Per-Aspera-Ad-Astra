@@ -9,8 +9,6 @@ hoveredCard = undefined;
 
 centerPosition = surface_get_width(application_surface) / 2;
 
-add_card();
-
 function add_card()
 {
     var inventoryCard = instance_create_depth(x, y, 0, o_card);
@@ -95,8 +93,6 @@ function hover_card_under_mouse()
 
         var mouseX = device_mouse_x_to_gui(0);
         var mouseY = device_mouse_y_to_gui(0);
-
-        show_debug_message(mouseX);
         
         if (mouseX > left and mouseX < right and mouseY > up and mouseY < down)
         {

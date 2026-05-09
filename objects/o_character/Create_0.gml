@@ -1,5 +1,5 @@
 // Base parameters
-#macro BASE_PARAMETERS_COUNT 4
+#macro BASE_PARAMETERS_COUNT 5
 
 enum BaseParameters
 {
@@ -7,20 +7,23 @@ enum BaseParameters
     Attack = 1,
     Defense = 2,
     Intelligence = 3,
+    Dexterity = 4,
 }
 
 hp = 0;
 atk = 0;
 def = 0;
 int = 0;
+dex = 0;
 
 // Additional parameters
 age = 0;
-dex = 0;
+
+team = undefined;
 
 randomizeParameters(10);
 
-show_debug_message("HP {0}, ATK {1}, DEF {2}, INT {3}", hp, atk, def, int);
+show_debug_message("HP {0}, ATK {1}, DEF {2}, INT {3}, DEX {4}", hp, atk, def, int, dex);
 
 function randomizeParameters(baseParametersCap)
 {
@@ -70,6 +73,12 @@ function randomizeParameters(baseParametersCap)
             {
                 int = irandom_range(0, maxCap);
                 parametersSum += int;
+                break;
+            }
+        	case BaseParameters.Dexterity:
+            {
+                dex = irandom_range(0, maxCap);
+                parametersSum += dex;
                 break;
             }
         }

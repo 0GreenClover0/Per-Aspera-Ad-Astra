@@ -11,6 +11,11 @@ sway_phase = random(2 * pi);
 
 isHovered = false;
 
+function use()
+{
+    show_debug_message("USE");
+}
+
 function hover()
 {
     isHovered = true;

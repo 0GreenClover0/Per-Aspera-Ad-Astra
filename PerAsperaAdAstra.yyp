@@ -30,7 +30,6 @@
     {"id":{"name":"o_gameManager","path":"objects/o_gameManager/o_gameManager.yy",},},
     {"id":{"name":"o_inventory","path":"objects/o_inventory/o_inventory.yy",},},
     {"id":{"name":"InitRoom","path":"rooms/InitRoom/InitRoom.yy",},},
-    {"id":{"name":"scr_cards","path":"scripts/scr_cards/scr_cards.yy",},},
     {"id":{"name":"CardTemp","path":"sprites/CardTemp/CardTemp.yy",},},
   ],
   "resourceType":"GMProject",
