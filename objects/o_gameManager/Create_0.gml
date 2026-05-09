@@ -39,6 +39,8 @@ pickedCard = undefined;
 cardEffect = undefined;
 selectType = undefined;
 
+selectedDuo = [];
+
 playerColumn = room_width / 2 - room_width * 0.27;
 enemyColumn = room_width / 2 + room_width * 0.27;
 startRow = room_height / 6;

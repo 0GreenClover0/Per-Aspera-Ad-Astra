@@ -40,12 +40,19 @@ if (usedCards >= 3 and roundState == RoundState.PickingCards)
 
 if (roundState == RoundState.Visualization)
 {
-    runEvent(fightEvents[0]);
-    array_delete(fightEvents, 0, 1);
-    
     if (array_length(fightEvents) <= 0)
     {
-        startRound();
+        show_debug_message("Weird. 0 events.")
+    }
+    else
+    {
+        runEvent(fightEvents[0]);
+        array_delete(fightEvents, 0, 1);
+        
+        if (array_length(fightEvents) <= 0)
+        {
+            startRound();
+        }
     }
 }
 
@@ -53,7 +60,22 @@ if (array_length(enemiesCharacters) <= 0)
 {
     startNewWave();
 }
+
+if (selectType != SelectType.Duo)
+{
+    if (array_length(selectedDuo) == 1)
+    {
+        selectedDuo[0].image_blend = c_white;
+    }
     
+    array_delete(selectedDuo, 0, array_length(selectedDuo));
+}
+
+if (array_length(selectedDuo) == 1)
+{
+    selectedDuo[0].image_blend = c_lime;
+}
+
 if (roundState != RoundState.Visualization and selectType != undefined and cardEffect != undefined)
 {
     var usedCardsOld = usedCards;
@@ -67,6 +89,36 @@ if (roundState != RoundState.Visualization and selectType != undefined and cardE
         pickedCard.use();
         o_inventory.remove_card(pickedCard);
         pickedCard = undefined;
+    }
+    else if (selectType == SelectType.Duo)
+    {
+        var target = selectCharacterUnderMouse();
+        
+        if (target != undefined)
+        {
+            if (array_length(selectedDuo) == 1 and selectedDuo[0] == target)
+            {
+                array_delete(selectedDuo, 0, 1);
+            }
+            else
+            {
+            	array_push(selectedDuo, target);
+            }
+        }
+        
+        if (array_length(selectedDuo) == 2)
+        {
+            cardEffect(selectedDuo[0], selectedDuo[1]);
+            selectType = undefined;
+            cardEffect = undefined;
+            array_delete(selectedDuo, 0, array_length(selectedDuo));
+             
+            usedCards += 1;
+            pickedCard.use();
+            o_inventory.remove_card(pickedCard);
+            pickedCard = undefined;
+        }
+
     }
     else if (selectType == SelectType.Team)
     {

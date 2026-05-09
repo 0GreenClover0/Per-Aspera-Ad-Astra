@@ -6,6 +6,7 @@ enum SelectType
     Opponent,
     Character,
     Team,
+    Duo,
     All
 }
 
@@ -120,7 +121,7 @@ powtarzamCoUslyszakem = new Card (
     "Relata refero",
     "Powtarzam, co usłyszałem",
     "Skopiuj INT",
-    SelectType.All,
+    SelectType.Duo,
     function(character1, character2) 
     {
         character1.int = character2.int;
@@ -358,12 +359,11 @@ podobneLeczySiePodobnym = new Card (
     }
 )
 
-//TODO: Dodać wybór dwóch dowolnych postaci
 okoZaOkoZabZaZab = new Card (
     "Oculum pro oculo, dentem pro dente",
     "Oko za oko, ząb za ząb",
     "-1 HP dla bohatera i wroga",
-    SelectType.All,
+    SelectType.Duo,
     function(character1, character2) 
     {
         character1.hp--;
@@ -384,13 +384,12 @@ zdrowieChoregoNajwyzszymPrawem = new Card (
     }
 )
 
-//TODO: Dodać wybór dwóch dowolnych postaci
 //Potencjalnie dodać pozostałe parametry
 uPrzyjaciolWszystkoJestWspolne = new Card (
     "Amicorum omnia communia",
     "U przyjaciół wszystko jest wspólne",
     "Uśrednij statystyki dwóch bohaterów",
-    SelectType.All,
+    SelectType.Duo,
     function(character1, character2) 
     {
         var avgHP = ceil((character1.hp + character2.hp) / 2);
