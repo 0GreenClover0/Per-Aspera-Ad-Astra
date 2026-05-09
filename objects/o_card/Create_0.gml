@@ -1,6 +1,6 @@
 var chancePerAstra = o_cardManager.getAstraChancePerCard();
 
-if (!astraDrawn and random_range(0, 100) < chancePerAstra)
+if (!o_cardManager.astraDrawn and random_range(0, 100) < chancePerAstra)
 {
     card = o_cardManager.przezTrudyDoGwiazd;
     astraDrawn = true;
