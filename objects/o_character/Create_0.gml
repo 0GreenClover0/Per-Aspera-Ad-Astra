@@ -38,6 +38,7 @@ isHovered = false;
 
 normalSprite = s_warrior;
 fightSprite = s_warriorFight;
+deadSprite = s_warriorDead;
 isFighting = false;
 isBeingBeaten = false;
 fightingCounter = 0;
@@ -204,10 +205,10 @@ function randomizeParameters(baseParametersCap)
     }
     
     var highest = max(atk, int, def, dex);
-    if (highest == atk) {normalSprite = s_warrior; fightSprite = s_warriorFight};
-    if (highest == int) {normalSprite = s_jesus; fightSprite = s_jesusFight};
-    if (highest == dex) {normalSprite = s_sprinter; fightSprite = s_sprinterFight};
-    if (highest == def) {normalSprite = s_defender; fightSprite = s_defenderFight};
+    if (highest == atk) {normalSprite = s_warrior; fightSprite = s_warriorFight; deadSprite = s_warriorDead};
+    if (highest == int) {normalSprite = s_jesus; fightSprite = s_jesusFight; deadSprite = s_jesusDead};
+    if (highest == dex) {normalSprite = s_sprinter; fightSprite = s_sprinterFight; deadSprite = s_sprinterDead};
+    if (highest == def) {normalSprite = s_defender; fightSprite = s_defenderFight; deadSprite = s_defenderDead};
     
     sprite_index = normalSprite;
 }
@@ -215,6 +216,10 @@ function randomizeParameters(baseParametersCap)
 function die()
 {
     // Some animation or something...
+    
+    var inst = instance_create_depth(x, y, depth, o_deadBody);
+    inst.sprite_index = deadSprite;
+    inst.image_xscale = orientation;
     
     instance_destroy(self);
 }
