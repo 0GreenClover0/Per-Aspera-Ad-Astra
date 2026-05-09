@@ -76,8 +76,8 @@ else
         var burnColorUniform = shader_get_uniform(shd_dissolve, "burnColor");
 
         shader_set_uniform_f(dissolveValueUniform, dissolveValue);
-        shader_set_uniform_f(burnSizeUniform, 0.04);
-        shader_set_uniform_f(burnColorUniform, 217 / 255, 160 / 255, 102 / 255, 1.0);
+        shader_set_uniform_f(burnSizeUniform, 0.02);
+        shader_set_uniform_f(burnColorUniform, 0 / 255, 0 / 255, 0 / 255, 1.0);
     }
     else if (card == o_cardManager.przezTrudyDoGwiazd)
     {
