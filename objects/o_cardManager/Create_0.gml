@@ -265,7 +265,6 @@ toCoSzkodziUczy = new Card (
     }
 )
 
-//TODO: insta win
 alboZwyciezacAlboUmierac = new Card (
     "Aut vincere, aut mori",
     "Albo zwyciężać, albo umierać",
@@ -275,7 +274,10 @@ alboZwyciezacAlboUmierac = new Card (
     {
         if (choose(false, true))
         {
-            //insta win
+            for (var i = array_length(o_gameManager.enemiesCharacters) - 1; i >= 0; i--)
+            {
+                o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
+            }
         }
         else 
         {
@@ -633,7 +635,7 @@ array_push(cardTypes,
     poSmierciNieCzasNaPrzyjemnosci,
     najlepszymLekarstwemJestSpokoj,
     toCoSzkodziUczy,
-    
+    alboZwyciezacAlboUmierac,
     miloscNajlepszymNauczycielem,
     winoRozpalaGniew,
     zakochaniSaJakSzalency,
