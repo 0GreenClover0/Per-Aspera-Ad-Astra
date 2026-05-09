@@ -392,14 +392,30 @@ function hover_character_under_mouse(onlyUnhover)
             
             if (mouseY < (down + up) * 0.5 and !onlyUnhover)
             {
-                allCharacters[i].hover();
+                if (selectType == SelectType.Player and allCharacters[i].team == Team.Player)
+                {
+                    allCharacters[i].hover();
+                    hoveredCharacter = allCharacters[i];
+                }
+                else if (selectType != SelectType.Player)
+                {
+                    allCharacters[i].hover();
+                    hoveredCharacter = allCharacters[i];
+                }
             }
             else if (!onlyUnhover)
             {
-            	allCharacters[i].hover();
+                if (selectType == SelectType.Player and allCharacters[i].team == Team.Player)
+                {
+                	allCharacters[i].hover();
+                    hoveredCharacter = allCharacters[i];
+                }
+                else if (selectType != SelectType.Player)
+                {
+                	allCharacters[i].hover();
+                    hoveredCharacter = allCharacters[i];
+                }
             }
-            
-            hoveredCharacter = allCharacters[i];
         }
         else
         {
