@@ -56,6 +56,7 @@ if (array_length(enemiesCharacters) <= 0)
     
 if (roundState != RoundState.Visualization and selectType != undefined and cardEffect != undefined)
 {
+    var usedCardsOld = usedCards;
     if (selectType == SelectType.All)
     {
         cardEffect();
@@ -106,5 +107,10 @@ if (roundState != RoundState.Visualization and selectType != undefined and cardE
             o_inventory.remove_card(pickedCard);
             pickedCard = undefined;
         }
+    }
+    
+    if (usedCards != usedCardsOld and usedCards < 3 and array_length(enemiesCharacters) <= 0)
+    {
+        startRound();
     }
 }

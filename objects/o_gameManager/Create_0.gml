@@ -103,9 +103,10 @@ function startNewWave()
 
 function startRound()
 {
-    o_inventory.add_card();
-    o_inventory.add_card();
-    o_inventory.add_card();
+    while (array_length(o_inventory.inventory) < 5)
+    {
+        o_inventory.add_card();
+    }
 
     usedCards = 0;
     roundState = RoundState.PickingCards;
