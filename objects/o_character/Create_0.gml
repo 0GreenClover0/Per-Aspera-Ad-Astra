@@ -10,6 +10,15 @@ enum BaseParameters
     Dexterity = 4,
 }
 
+enum StatusEffect
+{
+    Drunk,
+    InLove,
+    Angry,
+    Ill,
+    Scared,
+}
+
 hp = 0;
 atk = 0;
 def = 0;
@@ -19,11 +28,54 @@ dex = 0;
 // Additional parameters
 age = 0;
 
+statusEffects = [];
+
 team = undefined;
 
 show_debug_message("HP {0}, ATK {1}, DEF {2}, INT {3}, DEX {4}", hp, atk, def, int, dex);
 
 isHovered = false;
+
+function hasEffect(effect)
+{
+    for (var i = 0; i < array_length(statusEffects); ++i)
+    {
+        if (statusEffects[i] == effect)
+        {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+function addEffect(effect)
+{
+    for (var i = 0; i < array_length(statusEffects); ++i)
+    {
+        if (statusEffects[i] == effect)
+        {
+            return false;
+        }
+    }
+    
+    array_push(statusEffects, effect);
+    return true;
+}
+
+function removeEffect(effect)
+{
+    for (var i = 0; i < array_length(statusEffects); ++i)
+    {
+        if (statusEffects[i] == effect)
+        {
+            array_delete(statusEffects, i, 1);
+            return true;
+        }
+    }
+    
+    return false;
+}
 
 function hover()
 {
