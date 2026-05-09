@@ -40,6 +40,7 @@
     {"id":{"name":"ps_noDMG","path":"particles/ps_noDMG/ps_noDMG.yy",},},
     {"id":{"name":"InitRoom","path":"rooms/InitRoom/InitRoom.yy",},},
     {"id":{"name":"shd_dissolve","path":"shaders/shd_dissolve/shd_dissolve.yy",},},
+    {"id":{"name":"shd_foil","path":"shaders/shd_foil/shd_foil.yy",},},
     {"id":{"name":"shd_FXAA","path":"shaders/shd_FXAA/shd_FXAA.yy",},},
     {"id":{"name":"s_bg","path":"sprites/s_bg/s_bg.yy",},},
     {"id":{"name":"s_card","path":"sprites/s_card/s_card.yy",},},
