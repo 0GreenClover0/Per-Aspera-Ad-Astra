@@ -24,11 +24,18 @@ for (var i = array_length(particleSystems) - 1; i >= 0; i--)
     }
 }
 
-var onlyUnhover = !(selectType == SelectType.Character || selectType == SelectType.Duo || selectType == SelectType.Team);
+var onlyUnhover = !(selectType == SelectType.Player || selectType == SelectType.Character || selectType == SelectType.Duo);
 
 hover_character_under_mouse(onlyUnhover);
 
-hover_team_under_mouse();
+if (selectType == SelectType.Team)
+{
+    hover_team_under_mouse();
+}
+else
+{
+	hoveredTeam = undefined;
+}
 
 if (roundState != RoundState.Visualization and mouse_check_button_pressed(mb_left))
 {
@@ -81,7 +88,10 @@ if (selectType != SelectType.Duo)
         selectedDuo[0].image_blend = c_white;
     }
     
-    array_delete(selectedDuo, 0, array_length(selectedDuo));
+    if (array_length(selectedDuo) > 0)
+    {
+        array_delete(selectedDuo, 0, array_length(selectedDuo));
+    }
 }
 
 if (array_length(selectedDuo) == 1)

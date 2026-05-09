@@ -14,8 +14,6 @@ else
         var noDuplicate = true;
         for (var i = 0; i < array_length(o_inventory.inventory); ++i)
         {
-            var test = o_inventory.inventory[i];
-            show_debug_message(o_inventory.inventory[i]);
             if (card == o_inventory.inventory[i].card)
             {
                 noDuplicate = false;

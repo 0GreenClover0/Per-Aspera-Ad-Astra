@@ -332,9 +332,11 @@ function hover_team_under_mouse()
         
         if (mouseX > left and mouseX < right and mouseY > up and mouseY < down)
         {
+            hoveredTeam = Team.Player;
+            
             for (var i = 0; i < array_length(playerCharacters); ++i)
             {
-                hoveredTeam = Team.Player;
+                playerCharacters[i].hover();
             }
         }
     }
@@ -349,9 +351,11 @@ function hover_team_under_mouse()
         
         if (mouseX > left and mouseX < right and mouseY > up and mouseY < down)
         {
+            hoveredTeam = Team.Enemy;
+            
             for (var i = 0; i < array_length(enemiesCharacters); ++i)
             {
-                hoveredTeam = Team.Enemy;
+                enemiesCharacters[i].hover();
             }
         }
     }
