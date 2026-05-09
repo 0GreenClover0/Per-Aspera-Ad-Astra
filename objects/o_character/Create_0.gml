@@ -131,13 +131,31 @@ function effectToString(effect)
 function hover()
 {
     isHovered = true;
-    sprite_index = fightSprite;
+    
+    if (sprite_index != fightSprite)
+    {
+        sprite_index = fightSprite;
+        
+        if (dex == 3)
+        {
+            show_debug_message("Hover");
+        }
+    }
 }
 
 function unhover()
 {
     isHovered = false;
-    sprite_index = normalSprite;
+    
+    if (sprite_index != normalSprite)
+    {
+        sprite_index = normalSprite;
+        
+        if (dex == 3)
+        {
+            show_debug_message("UNHOVER");
+        }
+    }
 }
 
 function aging()

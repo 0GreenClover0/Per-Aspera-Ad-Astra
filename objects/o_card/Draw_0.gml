@@ -3,6 +3,7 @@ if (!isSurfaceInitiatied)
     surface_set_target(cardSurface);
     
     draw_sprite(sprite_index, 0, global.cardSizeX / 2, global.cardSizeY / 2);
+    draw_sprite_ext(sprite_index, card.index, global.cardSizeX / 2, global.cardSizeY / 2, 1, 1, 0, card.color, 1);
    
     draw_set_colour(c_black);
     draw_set_halign(fa_center);

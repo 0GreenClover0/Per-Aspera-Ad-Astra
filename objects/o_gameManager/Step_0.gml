@@ -90,7 +90,10 @@ if (selectType != SelectType.Duo)
 {
     if (array_length(selectedDuo) == 1)
     {
-        selectedDuo[0].sprite_index = selectedDuo[0].normalSprite;
+        if (selectedDuo[0].sprite_index != selectedDuo[0].normalSprite)
+        {
+            selectedDuo[0].sprite_index = selectedDuo[0].normalSprite;
+        }
     }
     
     if (array_length(selectedDuo) > 0)
@@ -101,7 +104,10 @@ if (selectType != SelectType.Duo)
 
 if (array_length(selectedDuo) == 1)
 {
-    selectedDuo[0].sprite_index = selectedDuo[0].fightSprite;
+    if (selectedDuo[0].sprite_index != selectedDuo[0].fightSprite)
+    {
+        selectedDuo[0].sprite_index = selectedDuo[0].fightSprite;
+    }
 }
 
 if (roundState != RoundState.Visualization and selectType != undefined and cardEffect != undefined)

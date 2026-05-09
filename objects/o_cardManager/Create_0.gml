@@ -4,6 +4,11 @@ astraDrawn = false;
 chancesForAstra = 0;
 perRoundIncrease = 1.5;
 
+c_babyPink = make_colour_rgb(255, 188, 199);
+c_gold = make_colour_rgb(224, 205, 94);
+c_sea = make_colour_rgb(96, 219, 137);
+c_tie = make_colour_rgb(215, 123, 186);
+
 function getAstraChancePerCard()
 {
     return chancesForAstra * perRoundIncrease;
@@ -19,13 +24,15 @@ enum SelectType
     All
 }
 
-function Card(_textLatin, _textPolish, _textEffect, _selectType, _effect) constructor
+function Card(_textLatin, _textPolish, _textEffect, _selectType, _effect, _color = o_cardManager.c_babyPink, _index = 0) constructor
 {
     textLatin = _textLatin;
     textPolish = _textPolish;
     textEffect = _textEffect;
     selectType = _selectType;
     effect = _effect;
+    color = _color;
+    index = _index;
 }
 
 cardTypes = [];
@@ -54,7 +61,9 @@ poraPic = new Card (
         {
             team[i].addEffect(StatusEffect.Drunk);
         }   
-    }
+    },
+    c_tie,
+    3
 )
 
 kazdyUlegaSwoimNamietnosciom = new Card (
@@ -76,7 +85,9 @@ kazdyUlegaSwoimNamietnosciom = new Card (
         {
             o_gameManager.enemiesCharacters[i].addEffect(StatusEffect.InLove);
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 zycieJestWalka = new Card (
@@ -133,7 +144,9 @@ powtarzamCoUslyszakem = new Card (
     function(character1, character2) 
     {
         character1.int = character2.int;
-    }
+    },
+    c_sea,
+    2
 )
 
 // Potencjalny rework, że +1INT tylko jak przestraszony i czyści przestraszenie
@@ -173,13 +186,15 @@ pijanstwoGubiGorzejOdMiecza = new Card (
                 o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
             }
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 brodaRosnieRozumuNiePrzybywa = new Card (
     "Barba crescit, caput nescit",
     "Broda rośnie, rozumu nie przybywa",
-    "-1 INT, +1 AGE",
+    "-1 INT, +1 WIEK",
     SelectType.Character,
     function(character) 
     {
@@ -216,7 +231,8 @@ poSmierciNieCzasNaPrzyjemnosci = new Card (
         characterInstance.startY = o_gameManager.startRow + o_gameManager.rowIncrement * rowMultiply;
         characterInstance.vizualizationY = o_gameManager.startRow + o_gameManager.rowIncrement * rowMultiply + 100;
         array_push(o_gameManager.playerCharacters, characterInstance);
-    }
+    },
+    c_aqua
 )
 
 //Potencjalny rework że +1HP gdy jest gniew i wtedy go usuwa
@@ -245,7 +261,9 @@ najlepszymLekarstwemJestSpokoj = new Card (
                 o_gameManager.enemiesCharacters[i].hp++;
             }
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 toCoSzkodziUczy = new Card (
@@ -311,7 +329,9 @@ miloscNajlepszymNauczycielem = new Card (
                 o_gameManager.enemiesCharacters[i].int++;
             }
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 winoRozpalaGniew = new Card (
@@ -339,7 +359,9 @@ winoRozpalaGniew = new Card (
                 o_gameManager.enemiesCharacters[i].addEffect(StatusEffect.Angry);
             }
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 zakochaniSaJakSzalency = new Card (
@@ -367,7 +389,9 @@ zakochaniSaJakSzalency = new Card (
                 o_gameManager.enemiesCharacters[i].atk++;
             }
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 //TODO: Iterowanie po wszystkich i sprawdzanie hp
@@ -403,7 +427,9 @@ okoZaOkoZabZaZab = new Card (
         {
             o_gameManager.kill(character2);
         }
-    }
+    },
+    c_sea,
+    2
 )
 
 zdrowieChoregoNajwyzszymPrawem = new Card (
@@ -442,7 +468,9 @@ uPrzyjaciolWszystkoJestWspolne = new Card (
         character2.int = avgINT;
         character2.def = avgDEF;
         character2.dex = avgDEX;
-    }
+    },
+    c_sea,
+    2
 )
 
 jedenZaWszystkich = new Card (
@@ -487,7 +515,9 @@ zycieBezNaukiSmierciaJest = new Card (
                 o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
             }
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 ostrzezonyUzbrojony = new Card (
@@ -540,7 +570,9 @@ czystaTablica = new Card (
        {
             o_gameManager.enemiesCharacters[i].removeAllEffect();
        }
-    }
+    },
+    c_gold,
+    1
 )
 
 wiemZeNicNieWiem = new Card (
@@ -594,13 +626,15 @@ kazdyKtoSieWywyzszaBedziePonizony = new Card (
             if (enemy.def == highestValue) {enemy.def = 0;}
             if (enemy.dex == highestValue) {enemy.dex = 0;}
         }
-    }
+    },
+    c_gold,
+    1
 )
 
 douczajacSieNieustannieDochodzeDoStarosci = new Card (
     "Assidue addiscens ad senium venio",
     "Douczając się nieustannie dochodzę do starości",
-    "+1 INT, +1 AGE",
+    "+1 INT, +1 WIEK",
     SelectType.Character,
     function(character) 
     {
