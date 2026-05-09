@@ -24,7 +24,10 @@ for (var i = array_length(particleSystems) - 1; i >= 0; i--)
     }
 }
 
-hover_character_under_mouse();
+var onlyUnhover = !(selectType == SelectType.Character || selectType == SelectType.Duo || selectType == SelectType.Team);
+
+hover_character_under_mouse(onlyUnhover);
+
 hover_team_under_mouse();
 
 if (roundState != RoundState.Visualization and mouse_check_button_pressed(mb_left))

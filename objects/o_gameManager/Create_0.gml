@@ -357,7 +357,7 @@ function hover_team_under_mouse()
     }
 }
 
-function hover_character_under_mouse()
+function hover_character_under_mouse(onlyUnhover)
 {
     var hovered = false;
     var allCharacters = array_concat(playerCharacters, enemiesCharacters);
@@ -386,11 +386,11 @@ function hover_character_under_mouse()
                 //audio_play_sound(sn_cardFromHand, 0, false, random_range(0.5, 1), 0, lerp(0.5, 1, i / array_length(inventory)));
             }
             
-            if (mouseY < (down + up) * 0.5)
+            if (mouseY < (down + up) * 0.5 and !onlyUnhover)
             {
                 allCharacters[i].hover();
             }
-            else 
+            else if (!onlyUnhover)
             {
             	allCharacters[i].hover();
             }
