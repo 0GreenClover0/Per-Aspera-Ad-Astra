@@ -50,6 +50,14 @@ if (roundState == RoundState.Visualization and o_inventory.yHide > 399)
 
 if (array_length(enemiesCharacters) <= 0)
 {
+    var percent = o_cardManager.chancesForAstra / array_length(o_cardManager.cardTypes) * 100;
+    
+    while(percent + 1 > o_cardManager.chancesForAstra / array_length(o_cardManager.cardTypes) * 100)
+    {
+        o_cardManager.chancesForAstra++;
+        array_push(o_cardManager.cardTypes, o_cardManager.przezTrudyDoGwiazd);
+    }
+    
     startNewWave();
 }
 
