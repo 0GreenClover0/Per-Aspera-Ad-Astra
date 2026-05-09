@@ -17,20 +17,18 @@ if (mouse_check_button_pressed(mb_left))
     {
         if (o_inventory.inventory[i].isHovered)
         {
-            o_inventory.inventory[i].use();
+            pickedCard = o_inventory.inventory[i];
+            o_inventory.inventory[i].pick();
             
             selectType = o_inventory.inventory[i].card.selectType;
             cardEffect = o_inventory.inventory[i].card.effect;
-            
-            pickedCards += 1;
-            o_inventory.remove_card(o_inventory.inventory[i]);
             
             break;
         }
     }
 }
 
-if (pickedCards >= 3)
+if (usedCards >= 3)
 {
     startCombatDebate();
 }
@@ -47,6 +45,10 @@ if (selectType != undefined and cardEffect != undefined)
         cardEffect();
         selectType = undefined;
         cardEffect = undefined;
+        
+        usedCards += 1;
+        o_inventory.remove_card(pickedCard);
+        pickedCard = undefined;
     }
     else if (selectType == SelectType.Team)
     {
@@ -65,6 +67,10 @@ if (selectType != undefined and cardEffect != undefined)
             
             selectType = undefined;
             cardEffect = undefined;
+            
+            usedCards += 1;
+            o_inventory.remove_card(pickedCard);
+            pickedCard = undefined;
         }
     }
     else
@@ -76,6 +82,10 @@ if (selectType != undefined and cardEffect != undefined)
             cardEffect(target);
             selectType = undefined;
             cardEffect = undefined;
+            
+            usedCards += 1;
+            o_inventory.remove_card(pickedCard);
+            pickedCard = undefined;
         }
     }
 }

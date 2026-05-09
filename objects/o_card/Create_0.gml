@@ -10,6 +10,12 @@ initialDepth = depth;
 
 isHovered = false;
 
+function pick()
+{
+    newX = room_width / 2;
+    newY = room_height / 2 - room_height * 0.1;
+}
+
 function use()
 {
     show_debug_message("USE");

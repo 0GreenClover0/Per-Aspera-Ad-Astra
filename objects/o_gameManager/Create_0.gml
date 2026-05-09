@@ -27,16 +27,17 @@ enum Team
 
 roundState = RoundState.PickingCards;
 roundType = FightType.Combat;
-pickedCards = 0;
+usedCards = 0;
 
 minEnemies = 1;
 maxEnemies = 3;
 
+pickedCard = undefined;
 cardEffect = undefined;
 selectType = undefined;
 
-playerColumn = room_width / 2 - room_width * 0.1;
-enemyColumn = room_width / 2 + room_width * 0.1;
+playerColumn = room_width / 2 - room_width * 0.27;
+enemyColumn = room_width / 2 + room_width * 0.27;
 startRow = room_height / 6;
 rowIncrement = 100;
 
@@ -97,7 +98,7 @@ function startRound()
     o_inventory.add_card();
     o_inventory.add_card();
 
-    pickedCards = 0;
+    usedCards = 0;
     roundState = RoundState.PickingCards;
     roundType = irandom_range(0, 1);
     rewriteTextCombatOrDebate();
