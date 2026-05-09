@@ -178,6 +178,8 @@ function hover_team_under_mouse()
     
     var selectionTolerance = 80;
     
+    hoveredTeam = undefined;
+    
     if (array_length(playerCharacters) > 0)
     {
         var left = playerCharacters[0].x - selectionTolerance;
@@ -277,6 +279,6 @@ function selectTeamUnderMouse()
 {
     if (mouse_check_button_pressed(mb_left))
     {
-        return hoveredCharacter;
+        return hoveredTeam;
     }
 }

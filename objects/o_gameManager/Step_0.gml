@@ -50,7 +50,22 @@ if (selectType != undefined and cardEffect != undefined)
     }
     else if (selectType == SelectType.Team)
     {
-        //var target = 
+        var target = selectTeamUnderMouse();
+        
+        if (target != undefined)
+        {
+            if (hoveredTeam == Team.Player)
+            {
+                cardEffect(playerCharacters);
+            }
+            else
+            {
+                cardEffect(enemiesCharacters);
+            }
+            
+            selectType = undefined;
+            cardEffect = undefined;
+        }
     }
     else
     {
