@@ -161,6 +161,8 @@ function runEvent(event)
             	event.whom.yScale = random_range(1.25, 2);
                 event.whom.xScale = 1 / event.whom.yScale * 1.2;
             }
+            
+            event.whom.rot = random_range(-30, 30);
         }
         
         if (event.who.fightingCounter <= 0)

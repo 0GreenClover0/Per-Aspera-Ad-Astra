@@ -51,7 +51,7 @@ poraPic = new Card (
 kazdyUlegaSwoimNamietnosciom = new Card (
     "Trahit sua quemque voluptas",
     "Każdy ulega swoim namiętnościom",
-    "Status wszystkich: miłość",
+    "Status wszystkich: zakochany",
     SelectType.All,
     function() 
     {
@@ -84,7 +84,7 @@ zycieJestWalka = new Card (
 nienawidzeIKocham = new Card (
     "Odi et amo",
     "Nienawidzę i kocham",
-    "Status: gniew + miłość",
+    "Status: wściekły + zakochany",
     SelectType.Character,
     function(character) 
     {
@@ -116,7 +116,6 @@ jedyniePismo = new Card (
     }
 )
 
-//TODO: Dodać wybór dwóch dowolnych postaci
 powtarzamCoUslyszakem = new Card (
     "Relata refero",
     "Powtarzam, co usłyszałem",
@@ -180,6 +179,7 @@ brodaRosnieRozumuNiePrzybywa = new Card (
     }
 )
 
+//SUS
 slowaISlowaNicPonadto = new Card (
     "Verba et voces praetereaque nihil",
     "Słowa i słowa, nic ponadto",
@@ -207,7 +207,7 @@ poSmierciNieCzasNaPrzyjemnosci = new Card (
 najlepszymLekarstwemJestSpokoj = new Card (
     "Optimum medicamentum quies est",
     "Najlepszym lekarstwem jest spokój",
-    "+1 HP jeśli nie ma statusu gniew",
+    "+1 HP jeśli nie ma statusu wściekły",
     SelectType.All,
     function() 
     {
@@ -271,7 +271,7 @@ alboZwyciezacAlboUmierac = new Card (
 miloscNajlepszymNauczycielem = new Card (
     "Amor magister optimus",
     "Miłość najlepszym nauczycielem",
-    "+1 INT jeśli ma status miłość",
+    "+1 INT jeśli ma status zakochany",
     SelectType.All,
     function() 
     {
@@ -299,7 +299,7 @@ miloscNajlepszymNauczycielem = new Card (
 winoRozpalaGniew = new Card (
     "Vinum incendit iras",
     "Wino rozpala gniew",
-    "Status: gniew jeśli ma status pijany",
+    "Status: wściekły jeśli ma status pijany",
     SelectType.All,
     function() 
     {
@@ -327,7 +327,7 @@ winoRozpalaGniew = new Card (
 zakochaniSaJakSzalency = new Card (
     "Amantes amentes",
     "Zakochani są jak szaleńcy",
-    "+1 ATK jeśli ma status miłość",
+    "+1 ATK jeśli ma status zakochany",
     SelectType.All,
     function() 
     {
@@ -367,7 +367,7 @@ podobneLeczySiePodobnym = new Card (
 okoZaOkoZabZaZab = new Card (
     "Oculum pro oculo, dentem pro dente",
     "Oko za oko, ząb za ząb",
-    "-1 HP dla bohatera i wroga",
+    "-1 HP dla dwóch wojowników",
     SelectType.Duo,
     function(character1, character2) 
     {
@@ -403,7 +403,7 @@ zdrowieChoregoNajwyzszymPrawem = new Card (
 uPrzyjaciolWszystkoJestWspolne = new Card (
     "Amicorum omnia communia",
     "U przyjaciół wszystko jest wspólne",
-    "Uśrednij statystyki dwóch bohaterów",
+    "Uśrednij statystyki dwóch wojowników",
     SelectType.Duo,
     function(character1, character2) 
     {
@@ -471,7 +471,7 @@ zycieBezNaukiSmierciaJest = new Card (
 ostrzezonyUzbrojony = new Card (
     "Praemonitus, praemunitus",
     "Ostrzeżony, uzbrojony",
-    "+1 DEF",
+    "+1 OBR",
     SelectType.Character,
     function(character) 
     {
@@ -588,35 +588,35 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
 )
 
 array_push(cardTypes,
-    //trzezwoscJestStanemPrzejsciowym,
-    //poraPic,
-    //kazdyUlegaSwoimNamietnosciom,
-    //zycieJestWalka,
-    //nienawidzeIKocham,
-    //zycieSlowoKsztalci,
-    //jedyniePismo,
-    //
-    //odwazSieBycMadrym,
-    //pijanstwoGubiGorzejOdMiecza,
-    //brodaRosnieRozumuNiePrzybywa,
-    //slowaISlowaNicPonadto,
-    // 
-    //najlepszymLekarstwemJestSpokoj,
-    //toCoSzkodziUczy,
-    //
-    //miloscNajlepszymNauczycielem,
-    //winoRozpalaGniew,
-    //zakochaniSaJakSzalency,
-    //
-    //
-    //
-    //
-    //
-    //zycieBezNaukiSmierciaJest,
-    //ostrzezonyUzbrojony,
-    //niechPijeAlboNiechSobieIdzie,
-    //czystaTablica,
-    //wiemZeNicNieWiem,
-    //kazdyKtoSieWywyzszaBedziePonizony,
+    trzezwoscJestStanemPrzejsciowym,
+    poraPic,
+    kazdyUlegaSwoimNamietnosciom,
+    zycieJestWalka,
+    nienawidzeIKocham,
+    zycieSlowoKsztalci,
+    jedyniePismo,
+    powtarzamCoUslyszakem,
+    odwazSieBycMadrym,
+    pijanstwoGubiGorzejOdMiecza,
+    brodaRosnieRozumuNiePrzybywa,
+    slowaISlowaNicPonadto,
+     
+    najlepszymLekarstwemJestSpokoj,
+    toCoSzkodziUczy,
+    
+    miloscNajlepszymNauczycielem,
+    winoRozpalaGniew,
+    zakochaniSaJakSzalency,
+    
+    okoZaOkoZabZaZab,
+    zdrowieChoregoNajwyzszymPrawem,
+    uPrzyjaciolWszystkoJestWspolne,
+    
+    zycieBezNaukiSmierciaJest,
+    ostrzezonyUzbrojony,
+    niechPijeAlboNiechSobieIdzie,
+    czystaTablica,
+    wiemZeNicNieWiem,
+    kazdyKtoSieWywyzszaBedziePonizony,
     douczajacSieNieustannieDochodzeDoStarosci,
 )

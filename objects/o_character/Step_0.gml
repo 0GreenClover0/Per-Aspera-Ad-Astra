@@ -23,3 +23,4 @@ if (age > 3)
 
 xScale = lerp(xScale, 1, 0.05);
 yScale = lerp(yScale, 1, 0.05);
+rot = lerp(rot, 0, 0.05);

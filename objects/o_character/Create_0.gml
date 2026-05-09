@@ -46,6 +46,7 @@ vizualizationY = 0;
 orientation = 1;
 xScale = 1;
 yScale = 1;
+rot = 0;
 
 function hasEffect(effect)
 {
@@ -100,23 +101,23 @@ function effectToString(effect)
     {
         case StatusEffect.Drunk:
         {
-            return "Drunk";
+            return "Pijany";
         }
             case StatusEffect.InLove:
         {
-            return "In Love";
+            return "Zakochany";
         }
             case StatusEffect.Angry:
         {
-            return "Angry";
+            return "Wściekły";
         }
             case StatusEffect.Ill:
         {
-            return "Ill";
+            return "Chory";
         }
             case StatusEffect.Scared:
         {
-            return "Scared";
+            return "Przerażony";
         }
     }
 }

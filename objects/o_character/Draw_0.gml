@@ -6,7 +6,7 @@ if (keyboard_check_pressed(vk_f1))
 
 image_xscale = orientation;
 
-draw_sprite_ext(sprite_index, image_index, x, y, xScale * orientation, yScale, image_angle, image_blend, image_alpha);
+draw_sprite_ext(sprite_index, image_index, x, y, xScale * orientation, yScale, rot, image_blend, image_alpha);
 
 
 var heatX = x + sprite_xoffset - 18 * orientation;
@@ -93,12 +93,12 @@ var closestDist = min(distToHP, distToATK, distToINT, distToDEF, distToDEX, dist
 if (closestDist < 16)
 {
     var tooltip = "";
-    if (closestDist == distToHP) {tooltip = "Health Points";}
-    if (closestDist == distToATK) {tooltip = "Attack";}
-    if (closestDist == distToINT) {tooltip = "Inteligence";}
-    if (closestDist == distToDEF) {tooltip = "Defense";}
-    if (closestDist == distToDEX) {tooltip = "Dexterity";}
-    if (closestDist == distToAGE) {tooltip = "Age";}
+    if (closestDist == distToHP) {tooltip = "Punkty Życia";}
+    if (closestDist == distToATK) {tooltip = "Atak";}
+    if (closestDist == distToINT) {tooltip = "Inteligencja";}
+    if (closestDist == distToDEF) {tooltip = "Obrona";}
+    if (closestDist == distToDEX) {tooltip = "Zręczność";}
+    if (closestDist == distToAGE) {tooltip = "Wiek";}
     if (closestDist == distToStatus) {tooltip = effectToString(statusEffects[closestStatus]);}
     
     draw_set_halign(fa_center);

@@ -17,11 +17,16 @@ draw_text(room_width / 2, 7 + debateY + 15, "Debata na INT");
 draw_sprite_ext(s_statIcons, 1, room_width / 2 - string_width(textCombatOrDebate) / 2 - sprite_get_width(s_statIcons) / 1.7, 22 + debateY + 35 - 18, 0.7, 0.7, 0, c_white, 1);
 draw_sprite_ext(s_statIcons, 1, room_width / 2 + string_width(textCombatOrDebate) / 2 + sprite_get_width(s_statIcons) / 1.7, 22 + debateY + 35 - 18, -0.7, 0.7, 0, c_white, 1);
 
-var sentenceCounter = string("Jescze {0} sentencje", 3 - usedCards);
+var sentenceCounter = string("Jeszcze {0} sentencje", 3 - usedCards);
 
 if (usedCards == 2)
 {
-    sentenceCounter = string("Jescze {0} sentencja", 3 - usedCards);
+    sentenceCounter = string("Jeszcze {0} sentencja", 3 - usedCards);
+}
+
+if (usedCards == 3)
+{
+    sentenceCounter = string("WALKA!!!");
 }
 
 draw_text(room_width / 2, 60, sentenceCounter);
