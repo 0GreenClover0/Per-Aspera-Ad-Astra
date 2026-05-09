@@ -45,6 +45,7 @@
     {"id":{"name":"s_noiseTexture","path":"sprites/s_noiseTexture/s_noiseTexture.yy",},},
     {"id":{"name":"s_noiseTexture2","path":"sprites/s_noiseTexture2/s_noiseTexture2.yy",},},
     {"id":{"name":"s_sprinter","path":"sprites/s_sprinter/s_sprinter.yy",},},
+    {"id":{"name":"s_sprinterFight","path":"sprites/s_sprinterFight/s_sprinterFight.yy",},},
     {"id":{"name":"s_statIcons","path":"sprites/s_statIcons/s_statIcons.yy",},},
     {"id":{"name":"s_statusEffects","path":"sprites/s_statusEffects/s_statusEffects.yy",},},
     {"id":{"name":"s_topBar","path":"sprites/s_topBar/s_topBar.yy",},},

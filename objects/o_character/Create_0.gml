@@ -36,6 +36,17 @@ show_debug_message("HP {0}, ATK {1}, DEF {2}, INT {3}, DEX {4}", hp, atk, def, i
 
 isHovered = false;
 
+normalSprite = s_warrior;
+fightSprite = s_warriorFight;
+isFighting = false;
+isBeingBeaten = false;
+fightingCounter = 0;
+startY = 0;
+vizualizationY = 0;
+orientation = 1;
+xScale = 1;
+yScale = 1;
+
 function hasEffect(effect)
 {
     for (var i = 0; i < array_length(statusEffects); ++i)
@@ -122,6 +133,16 @@ function unhover()
     image_blend = c_white;
 }
 
+function aging()
+{
+    age++;
+    
+    if (age > 3)
+    {
+        o_gameManager.kill(self);
+    }
+}
+
 function randomizeParameters(baseParametersCap)
 {
     // First initialize random cap at equal contribution.
@@ -182,10 +203,12 @@ function randomizeParameters(baseParametersCap)
     }
     
     var highest = max(atk, int, def, dex);
-    if (highest == atk) {sprite_index = s_warriorFight};
-    if (highest == int) {sprite_index = s_jesusFight};
-    if (highest == dex) {sprite_index = s_sprinter};
-    if (highest == def) {sprite_index = s_defenderFight};
+    if (highest == atk) {normalSprite = s_warrior; fightSprite = s_warriorFight};
+    if (highest == int) {normalSprite = s_jesus; fightSprite = s_jesusFight};
+    if (highest == dex) {normalSprite = s_sprinter; fightSprite = s_sprinterFight};
+    if (highest == def) {normalSprite = s_defender; fightSprite = s_defenderFight};
+    
+    sprite_index = normalSprite;
 }
 
 function die()

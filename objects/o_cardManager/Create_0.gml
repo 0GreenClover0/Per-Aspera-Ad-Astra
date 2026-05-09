@@ -176,7 +176,7 @@ brodaRosnieRozumuNiePrzybywa = new Card (
     function(character) 
     {
         character.int--;
-        character.age++;
+        character.aging();
     }
 )
 
@@ -583,7 +583,7 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
     function(character) 
     {
         character.int++;
-        character.age++;
+        character.aging();
     }
 )
 
@@ -594,12 +594,12 @@ array_push(cardTypes,
     //zycieJestWalka,
     //nienawidzeIKocham,
     //zycieSlowoKsztalci,
-    jedyniePismo,
+    //jedyniePismo,
     //
     //odwazSieBycMadrym,
     //pijanstwoGubiGorzejOdMiecza,
     //brodaRosnieRozumuNiePrzybywa,
-    slowaISlowaNicPonadto,
+    //slowaISlowaNicPonadto,
     // 
     //najlepszymLekarstwemJestSpokoj,
     //toCoSzkodziUczy,
@@ -618,5 +618,5 @@ array_push(cardTypes,
     //czystaTablica,
     //wiemZeNicNieWiem,
     //kazdyKtoSieWywyzszaBedziePonizony,
-    //douczajacSieNieustannieDochodzeDoStarosci,
+    douczajacSieNieustannieDochodzeDoStarosci,
 )

@@ -66,6 +66,8 @@ function spawnPlayerCharacters()
         var characterInstance = instance_create_depth(playerColumn, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Player;
         characterInstance.randomizeParameters(10);
+        characterInstance.startY = startRow + rowIncrement * rowMultiply;
+        characterInstance.vizualizationY = startRow + rowIncrement * rowMultiply + 100;
         array_push(playerCharacters, characterInstance);
         
         rowMultiply += 1;
@@ -95,8 +97,10 @@ function startNewWave()
     {
         var characterInstance = instance_create_depth(enemyColumn, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Enemy;
-        characterInstance.image_xscale = -1;
+        characterInstance.orientation = -1;
         characterInstance.randomizeParameters(maxHp + maxAtk + maxDef + maxInt + maxDex);
+        characterInstance.startY = startRow + rowIncrement * rowMultiply;
+        characterInstance.vizualizationY = startRow + rowIncrement * rowMultiply + 100;
         array_push(enemiesCharacters, characterInstance);
         
         rowMultiply += 1;
@@ -134,13 +138,53 @@ function rewriteTextCombatOrDebate()
 
 function runEvent(event)
 {
-    show_debug_message("Events {0}", fightEvents);
+    if (!event.who.isFighting)
+    {
+        event.who.isFighting = true;
+        event.whom.isBeingBeaten = true;
+        event.who.fightingCounter = 150;
+        event.who.sprite_index = event.who.fightSprite;
+    }
+    else 
+    {
+    	event.who.fightingCounter--;
+        
+        if (event.who.image_index == 0)
+        {
+            if (choose(false, true))
+            {
+                event.whom.xScale = random_range(1.25, 2);
+                event.whom.yScale = 1 / event.whom.xScale * 1.2;
+            }
+            else 
+            {
+            	event.whom.yScale = random_range(1.25, 2);
+                event.whom.xScale = 1 / event.whom.yScale * 1.2;
+            }
+        }
+        
+        if (event.who.fightingCounter <= 0)
+        {
+            event.who.fightingCounter = 0;
+            event.who.isFighting = false;
+            event.whom.isBeingBeaten = false;
+            event.who.sprite_index = event.who.normalSprite;
+            
+            afterEvent(event);
+        }
+    }
+    
+}
+
+function afterEvent(event)
+{
     event.whom.hp = clamp(event.whom.hp - event.dmg, 0, event.whom.hp);
     
     if (event.whom.hp <= 0)
     {
         kill(event.whom);
     }
+    array_delete(fightEvents, 0, 1);
 }
 
 function kill(character)

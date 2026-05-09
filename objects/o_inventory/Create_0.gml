@@ -12,6 +12,8 @@ hoveredCard = undefined;
 
 centerPosition = surface_get_width(application_surface) / 2;
 
+yHide = 0;
+
 function add_card()
 {
     var inventoryCard = instance_create_depth(x, y, 0, o_card);
@@ -82,7 +84,7 @@ function arrange()
         }
         
         inventory[i].newX = firstPosition + i * global.cardSizeX + i * offsetBetweenCards;
-        inventory[i].newY = surface_get_height(application_surface) - global.cardSizeY * 0.5 - offsetYAlternate;
+        inventory[i].newY = surface_get_height(application_surface) - global.cardSizeY * 0.5 - offsetYAlternate + yHide;
     }
 }
 

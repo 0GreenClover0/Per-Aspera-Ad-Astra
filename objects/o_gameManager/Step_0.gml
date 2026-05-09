@@ -38,21 +38,13 @@ if (usedCards >= 3 and roundState == RoundState.PickingCards)
     runFight();
 }
 
-if (roundState == RoundState.Visualization)
+if (roundState == RoundState.Visualization and o_inventory.yHide > 399)
 {
+    runEvent(fightEvents[0]);
+    
     if (array_length(fightEvents) <= 0)
     {
-        show_debug_message("Weird. 0 events.")
-    }
-    else
-    {
-        runEvent(fightEvents[0]);
-        array_delete(fightEvents, 0, 1);
-        
-        if (array_length(fightEvents) <= 0)
-        {
-            startRound();
-        }
+        startRound();
     }
 }
 
