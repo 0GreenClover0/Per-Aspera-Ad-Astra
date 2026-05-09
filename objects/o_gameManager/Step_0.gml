@@ -47,6 +47,7 @@ if (selectType != undefined and cardEffect != undefined)
         cardEffect = undefined;
         
         usedCards += 1;
+        pickedCard.use();
         o_inventory.remove_card(pickedCard);
         pickedCard = undefined;
     }
@@ -69,6 +70,7 @@ if (selectType != undefined and cardEffect != undefined)
             cardEffect = undefined;
             
             usedCards += 1;
+            pickedCard.use();
             o_inventory.remove_card(pickedCard);
             pickedCard = undefined;
         }
@@ -84,6 +86,7 @@ if (selectType != undefined and cardEffect != undefined)
             cardEffect = undefined;
             
             usedCards += 1;
+            pickedCard.use();
             o_inventory.remove_card(pickedCard);
             pickedCard = undefined;
         }

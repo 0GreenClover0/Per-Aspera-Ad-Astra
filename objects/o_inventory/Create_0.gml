@@ -39,7 +39,6 @@ function remove_card(card)
         }
     }
     
-    instance_destroy(card);
     arrange();
 }
 

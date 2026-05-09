@@ -62,5 +62,22 @@ else
     yOffset = yOffsetLerp;
     scale *= scaleLerp;
     
-    draw_sprite_ext(cardSprite, 0, x, y + y_bob + yOffset, scale, scale, rot, c_white, 1); 
+    if (isDissolving)
+    {
+        shader_set(shd_dissolve);
+        var map = shader_get_sampler_index(shd_dissolve, "dissolveTexture");
+        var mapTex = sprite_get_texture(s_noiseTexture2, 0);
+        texture_set_stage(map, mapTex);
+
+        var dissolveValueUniform = shader_get_uniform(shd_dissolve, "dissolveValue");
+        var burnSizeUniform = shader_get_uniform(shd_dissolve, "burnSize");
+        var burnColorUniform = shader_get_uniform(shd_dissolve, "burnColor");
+
+        shader_set_uniform_f(dissolveValueUniform, dissolveValue);
+        shader_set_uniform_f(burnSizeUniform, 0.04);
+        shader_set_uniform_f(burnColorUniform, 251 / 255, 183 / 255, 65 / 255, 1.0);
+    }
+    
+    draw_sprite_ext(cardSprite, 0, x, y + y_bob + yOffset, scale, scale, rot, c_white, 1);
+    shader_reset();
 }

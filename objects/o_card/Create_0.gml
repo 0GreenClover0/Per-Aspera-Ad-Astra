@@ -10,6 +10,9 @@ initialDepth = depth;
 
 isHovered = false;
 
+isDissolving = false;
+dissolveValue = 1.0;
+
 function pick()
 {
     newX = room_width / 2;
@@ -18,7 +21,7 @@ function pick()
 
 function use()
 {
-    show_debug_message("USE");
+    isDissolving = true;
 }
 
 function hover()
