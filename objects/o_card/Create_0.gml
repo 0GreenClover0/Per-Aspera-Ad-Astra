@@ -1,4 +1,13 @@
-card = o_cardManager.cardTypes[irandom(array_length(o_cardManager.cardTypes) - 1)];
+var chancePerAstra = o_cardManager.getAstraChancePerCard();
+
+if (random_range(0, 100) < chancePerAstra)
+{
+    card = o_cardManager.przezTrudyDoGwiazd;
+}
+else
+{
+    card = o_cardManager.cardTypes[irandom(array_length(o_cardManager.cardTypes) - 1)];
+}
 
 newX = x;
 newY = y;

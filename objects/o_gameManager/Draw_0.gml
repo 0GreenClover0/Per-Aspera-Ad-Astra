@@ -50,4 +50,4 @@ draw_text(room_width / 2, 60, sentenceCounter);
 
 
 draw_set_halign(fa_right);
-draw_text(room_width - 10, 10, string("{0}%", 0));
+draw_text(room_width - 10, 10, string("{0}%", o_cardManager.getAstraChancePerCard()));

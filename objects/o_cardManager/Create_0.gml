@@ -1,5 +1,13 @@
 randomise();
 
+chancesForAstra = 0;
+perRoundIncrease = 1.5;
+
+function getAstraChancePerCard()
+{
+    return chancesForAstra * perRoundIncrease;
+}
+
 enum SelectType
 {
     Player,
