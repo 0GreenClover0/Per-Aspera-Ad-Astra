@@ -33,6 +33,8 @@
     {"id":{"name":"o_character","path":"objects/o_character/o_character.yy",},},
     {"id":{"name":"o_gameManager","path":"objects/o_gameManager/o_gameManager.yy",},},
     {"id":{"name":"o_inventory","path":"objects/o_inventory/o_inventory.yy",},},
+    {"id":{"name":"ps_DMG","path":"particles/ps_DMG/ps_DMG.yy",},},
+    {"id":{"name":"ps_noDMG","path":"particles/ps_noDMG/ps_noDMG.yy",},},
     {"id":{"name":"InitRoom","path":"rooms/InitRoom/InitRoom.yy",},},
     {"id":{"name":"shd_dissolve","path":"shaders/shd_dissolve/shd_dissolve.yy",},},
     {"id":{"name":"shd_FXAA","path":"shaders/shd_FXAA/shd_FXAA.yy",},},

@@ -37,7 +37,7 @@ if (usedCards == 3)
         var defenseIcon = string_width(string_copy(sentenceCounter, 0, string_pos("[D]", sentenceCounter)));
         var damageIcon = string_width(string_copy(sentenceCounter, 0, string_pos("[H]", sentenceCounter)));
         
-        draw_sprite_ext(s_statIcons, 0, room_width / 2 - string_width(sentenceCounter) / 2 + attackIcon + 15, 80, 0.75, 0.75, 0, c_white, 1);
+        draw_sprite_ext(s_statIcons, roundType == FightType.Combat ? 0 : 1, room_width / 2 - string_width(sentenceCounter) / 2 + attackIcon + 15, 80, 0.75, 0.75, 0, c_white, 1);
         draw_sprite_ext(s_statIcons, 2, room_width / 2 - string_width(sentenceCounter) / 2 + defenseIcon + 15, 80, 0.75, 0.75, 0, c_white, 1);
         draw_sprite_ext(s_heart, 1, room_width / 2 - string_width(sentenceCounter) / 2 + damageIcon + 7, 80, 2, 2, 0, c_white, 1);
         sentenceCounter = string_replace(sentenceCounter, "[A]", "      ");

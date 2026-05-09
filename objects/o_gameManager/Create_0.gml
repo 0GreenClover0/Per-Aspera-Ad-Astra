@@ -151,8 +151,33 @@ function runEvent(event)
     {
     	event.who.fightingCounter--;
         
+        var partType = particle_get_info(ps_noDMG).emitters[0].parttype.ind;
+        var minD = min(90 + 35 * event.who.orientation, 90 + 75 * event.who.orientation);
+        var maxD = max(90 + 35 * event.who.orientation, 90 + 75 * event.who.orientation);
+        part_type_direction(partType, minD, maxD, 0, 0);
+        
+        var partType = particle_get_info(ps_DMG).emitters[0].parttype.ind;
+        var minD = min(90, 90 + 30 * event.who.orientation);
+        var maxD = max(90, 90 + 30 * event.who.orientation);
+        part_type_direction(partType, minD, maxD, 0, 0);
+        
         if (event.who.image_index == 0)
         {
+            if (event.dmg <= 0)
+            {
+                var particlesNoDMG = part_system_create(ps_noDMG);
+                part_system_position(particlesNoDMG, event.whom.x, event.whom.y);
+                part_system_depth(particlesNoDMG, -999999);
+                array_push(particleSystems, particlesNoDMG);
+            }
+            else 
+            {
+            	var particlesDMG = part_system_create(ps_DMG);
+                part_system_position(particlesDMG, event.whom.x, event.whom.y);
+                part_system_depth(particlesDMG, -999999);
+                array_push(particleSystems, particlesDMG);
+            }
+            
             if (choose(false, true))
             {
                 event.whom.xScale = random_range(1.25, 2);
