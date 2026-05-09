@@ -6,8 +6,29 @@ playerCharacters = [];
 enemiesCharacters = [];
 
 particleSystems = [];
-
+titleY = h_to_gui(camera_get_view_height(view_camera[0]) * 3 / 15);
 textFightOrDebate = "";
+
+function x_to_gui(xx)
+{
+    return ((xx - camera_get_view_x(view_camera[0])) / camera_get_view_width(view_camera[0])) * display_get_gui_width();
+}
+
+function w_to_gui(xx)
+{
+    return ((xx) / camera_get_view_width(view_camera[0])) * display_get_gui_width();
+}
+
+function y_to_gui(yy)
+{
+    return ((yy - camera_get_view_y(view_camera[0])) / camera_get_view_height(view_camera[0])) * display_get_gui_height();
+}
+
+function h_to_gui(yy)
+{
+    return ((yy) / camera_get_view_height(view_camera[0])) * display_get_gui_height();
+}
+
 
 enum RoundState
 {
