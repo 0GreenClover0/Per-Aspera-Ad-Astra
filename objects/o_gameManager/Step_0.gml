@@ -90,7 +90,7 @@ if (selectType != SelectType.Duo)
 {
     if (array_length(selectedDuo) == 1)
     {
-        selectedDuo[0].image_blend = c_white;
+        selectedDuo[0].sprite_index = selectedDuo[0].normalSprite;
     }
     
     if (array_length(selectedDuo) > 0)
@@ -101,7 +101,7 @@ if (selectType != SelectType.Duo)
 
 if (array_length(selectedDuo) == 1)
 {
-    selectedDuo[0].image_blend = c_lime;
+    selectedDuo[0].sprite_index = selectedDuo[0].fightSprite;
 }
 
 if (roundState != RoundState.Visualization and selectType != undefined and cardEffect != undefined)

@@ -131,13 +131,13 @@ function effectToString(effect)
 function hover()
 {
     isHovered = true;
-    image_blend = c_lime;
+    sprite_index = fightSprite;
 }
 
 function unhover()
 {
     isHovered = false;
-    image_blend = c_white;
+    sprite_index = normalSprite;
 }
 
 function aging()
