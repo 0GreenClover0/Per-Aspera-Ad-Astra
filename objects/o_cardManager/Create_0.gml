@@ -372,15 +372,17 @@ zakochaniSaJakSzalency = new Card (
 
 //TODO: Iterowanie po wszystkich i sprawdzanie hp
 //Ewentualny rework
-podobneLeczySiePodobnym = new Card (
-    "Similia similibus curantur",
-    "Podobne leczy się podobnym",
-    "+1 HP dla bohaterów ze wspólną liczbą HP",
-    SelectType.All,
-    function() 
-    {
-    }
-)
+//podobneLeczySiePodobnym = new Card (
+    //"Similia similibus curantur",
+    //"Podobne leczy się podobnym",
+    //"+1 HP dla bohaterów ze wspólną liczbą HP",
+    //SelectType.All,
+    //function()
+    //{
+        //
+        //for (var i = 0; )
+    //}
+//)
 
 okoZaOkoZabZaZab = new Card (
     "Oculum pro oculo, dentem pro dente",
@@ -639,7 +641,6 @@ array_push(cardTypes,
     miloscNajlepszymNauczycielem,
     winoRozpalaGniew,
     zakochaniSaJakSzalency,
-    
     okoZaOkoZabZaZab,
     zdrowieChoregoNajwyzszymPrawem,
     uPrzyjaciolWszystkoJestWspolne,

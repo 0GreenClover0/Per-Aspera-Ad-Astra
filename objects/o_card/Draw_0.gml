@@ -95,6 +95,23 @@ else
         shader_set_uniform_f(u_time,   current_time / 1000.0); // ms -> seconds
         shader_set_uniform_f(u_intensity, 0.4);
     }
+    else if (card == o_cardManager.poSmierciNieCzasNaPrzyjemnosci)
+    {
+        shd       = shd_foil;
+        u_offset  = shader_get_uniform(shd, "u_offset");
+        u_speed   = shader_get_uniform(shd, "u_speed");
+        u_time    = shader_get_uniform(shd, "u_time");
+        u_uvs     = shader_get_uniform(shd, "u_uvs");
+        u_intensity = shader_get_uniform(shd, "u_intensity");
+        
+        shader_set(shd);
+        var uvs = sprite_get_uvs(sprite_index, image_index);
+        shader_set_uniform_f(u_uvs,    uvs[0], uvs[1], uvs[2], uvs[3]);
+        shader_set_uniform_f(u_offset, 0.0, 0.0); // pan the foil pattern
+        shader_set_uniform_f(u_speed,  0.6); // 0.0 → 1.0
+        shader_set_uniform_f(u_time,   current_time / 1000.0); // ms -> seconds
+        shader_set_uniform_f(u_intensity, 0.1);
+    }
     
     draw_sprite_ext(cardSprite, 0, x, y + y_bob + yOffset, scale, scale, rot, c_white, 1);
     shader_reset();
