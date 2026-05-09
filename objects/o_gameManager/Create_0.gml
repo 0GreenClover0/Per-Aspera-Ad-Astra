@@ -282,7 +282,13 @@ function runFight()
     
     array_sort(sortedCharacters, function(current, next)
     {
-        return next.dex - current.dex;
+        var value = next.dex - current.dex;
+        if (value == 0)
+        {
+            return -1;
+        }
+        
+        return value;
     });
     
     var savedHp = [];
