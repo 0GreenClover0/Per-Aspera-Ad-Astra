@@ -26,3 +26,7 @@ function unhover()
 {
     isHovered = false;
 }
+
+cardSurface = surface_create(global.cardSizeX, global.cardSizeY);
+cardSprite = undefined;
+isSurfaceInitiatied = false;

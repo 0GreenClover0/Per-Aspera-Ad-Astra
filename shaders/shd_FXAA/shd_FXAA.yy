@@ -1,0 +1,12 @@
+{
+  "$GMShader":"",
+  "%Name":"shd_FXAA",
+  "name":"shd_FXAA",
+  "parent":{
+    "name":"Shaders",
+    "path":"folders/Shaders.yy",
+  },
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
+}
