@@ -25,3 +25,8 @@ if (pickedCards >= 3)
 {
     startCombatDebate();
 }
+
+if (array_length(enemiesCharacters) <= 0)
+{
+    startNewWave();
+}

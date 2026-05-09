@@ -32,7 +32,7 @@ function randomizeParameters(baseParametersCap)
     var parameterRandomCap = baseParametersCap / BASE_PARAMETERS_COUNT;
     
     // Randomly move the parameter cap towards the full cap.
-    parameterRandomCap += random_range(0, parameterRandomCap * (BASE_PARAMETERS_COUNT - 1));
+    parameterRandomCap += random_range(0, parameterRandomCap);
     
     var parametersSum = 0;
     
@@ -83,4 +83,11 @@ function randomizeParameters(baseParametersCap)
             }
         }
     }
+}
+
+function die()
+{
+    // Some animation or something...
+    
+    instance_destroy(self);
 }
