@@ -2,10 +2,17 @@ draw_set_colour(c_black);
 draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 
-draw_sprite_ext(s_topBar, 0, room_width / 2, 35, 0.9, 1, 0, c_white, 1);
+draw_sprite_ext(s_topBar, 0, room_width / 2, sententionY, 0.9, 1, 0, c_white, 1);
 
-battleY = lerp(battleY, battleYTarget, 0.05);
-debateY = lerp(debateY, debateYTarget, 0.05);
+if (!isMenu)
+{
+    battleY = lerp(battleY, battleYTarget, 0.05);
+    debateY = lerp(debateY, debateYTarget, 0.05);
+    sententionY = lerp(sententionY, 35, 0.05);
+    percentY = lerp(percentY, 10, 0.05);
+    titleY = lerp(titleY, -165, 0.05);
+}
+
 
 draw_sprite(s_topBar, 0, room_width / 2, battleY);
 draw_text(room_width / 2, 7 + battleY + 15, "Walka na ATK");
@@ -46,8 +53,8 @@ if (usedCards == 3)
     }
 }
 
-draw_text(room_width / 2, 60, sentenceCounter);
+draw_text(room_width / 2, sententionY + 25, sentenceCounter);
 
 
 draw_set_halign(fa_right);
-draw_text(room_width - 10, 10, string("{0}%", o_cardManager.getAstraChancePerCard()));
+draw_text(room_width - 10, percentY, string("{0}%", o_cardManager.getAstraChancePerCard()));

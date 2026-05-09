@@ -46,6 +46,11 @@ function remove_card(card)
 
 function arrange()
 {
+    if (o_gameManager.isMenu)
+    {
+        return;
+    }
+    
     var screenWidth = surface_get_width(application_surface);
     var inventorySize = array_length(inventory);
 

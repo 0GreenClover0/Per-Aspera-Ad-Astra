@@ -1,35 +1,38 @@
-if (isFighting or isBeingBeaten)
+if (!o_gameManager.isMenu)
 {
-    x = lerp(x, room_width / 2 - orientation * 25, 0.01);
-}
-else 
-{
-	x = lerp(x, room_width / 2 - room_width * 0.27 * orientation, 0.05);
-}
-
-if (team == Team.Enemy)
-{
-   if (x <= room_width / 2 - room_width * 0.27 * orientation)
+   if (isFighting or isBeingBeaten)
    {
-       isEntering = false;
+       x = lerp(x, room_width / 2 - orientation * 25, 0.01);
    }
-}
-
-if (team == Team.Player)
-{
-   if (x >= room_width / 2 - room_width * 0.27 * orientation)
+   else 
    {
-       isEntering = false;
+   	x = lerp(x, room_width / 2 - room_width * 0.27 * orientation, 0.05);
    }
-}
-
-if (o_gameManager.roundState == RoundState.Visualization or o_gameManager.roundState == RoundState.Fight)
-{
-    y = lerp(y, vizualizationY, 0.1);
-}
-else 
-{
-	y = lerp(y, startY, 0.1);
+   
+   if (team == Team.Enemy)
+   {
+      if (x <= room_width / 2 - room_width * 0.27 * orientation)
+      {
+          isEntering = false;
+      }
+   }
+   
+   if (team == Team.Player)
+   {
+      if (x >= room_width / 2 - room_width * 0.27 * orientation)
+      {
+          isEntering = false;
+      }
+   }
+   
+   if (o_gameManager.roundState == RoundState.Visualization or o_gameManager.roundState == RoundState.Fight)
+   {
+       y = lerp(y, vizualizationY, 0.1);
+   }
+   else 
+   {
+   	y = lerp(y, startY, 0.1);
+   }
 }
 
 if (age > 3)

@@ -72,11 +72,16 @@ rowIncrement = 100;
 hoveredCharacter = undefined;
 hoveredTeam = undefined;
 
-battleY = -35;
+battleY = -165;
 battleYTarget = -35;
 
-debateY = -35;
+debateY = -165;
 debateYTarget = -35;
+
+isMenu = true;
+
+sententionY = -165;
+percentY = -165;
 
 spawnPlayerCharacters();
 startNewWave();

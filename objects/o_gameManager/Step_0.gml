@@ -195,6 +195,12 @@ if (roundState != RoundState.Visualization and selectType != undefined and cardE
     }
 }
 
+if (keyboard_check_pressed(vk_anykey))
+{
+    isMenu = false;
+    o_inventory.arrange();
+}
+
 array_sort(playerCharacters, function(current, next)
 {
     return next.dex - current.dex;
