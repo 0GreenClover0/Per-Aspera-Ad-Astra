@@ -17,8 +17,14 @@ if (mouse_check_button_pressed(mb_left))
         if (o_inventory.inventory[i].isHovered)
         {
             o_inventory.inventory[i].use();
+            
+            selectType = o_inventory.inventory[i].card.selectType;
+            cardEffect = o_inventory.inventory[i].card.effect;
+            
             pickedCards += 1;
             o_inventory.remove_card(o_inventory.inventory[i]);
+            
+            break;
         }
     }
 }
@@ -31,4 +37,25 @@ if (pickedCards >= 3)
 if (array_length(enemiesCharacters) <= 0)
 {
     startNewWave();
+}
+    
+if (selectType != undefined and cardEffect != undefined)
+{
+    if (selectType == SelectType.All)
+    {
+        cardEffect();
+        selectType = undefined;
+        cardEffect = undefined;
+    }
+    else 
+    {
+        var target = selectCharacterUnderMouse();
+        
+        if (target != undefined)
+        {
+            cardEffect(target);
+            selectType = undefined;
+            cardEffect = undefined;
+        }
+    }
 }

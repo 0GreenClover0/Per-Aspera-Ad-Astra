@@ -32,7 +32,10 @@ pickedCards = 0;
 minEnemies = 1;
 maxEnemies = 3;
 
-playerColumn = room_width / 2 - room_width * 0.2;
+cardEffect = undefined;
+selectType = undefined;
+
+playerColumn = room_width / 2 - room_width * 0.1;
 enemyColumn = room_width / 2 + room_width * 0.1;
 startRow = room_height / 6;
 rowIncrement = 100;
@@ -94,6 +97,11 @@ function startRound()
     pickedCards = 0;
     roundState = RoundState.PickingCards;
     roundType = irandom_range(0, 1);
+    rewriteTextCombatOrDebate();
+}
+
+function rewriteTextCombatOrDebate()
+{
     textCombatOrDebate = roundType == FightType.Combat ? "Walka na ATK" : "Debata na INT";
 }
 
@@ -209,5 +217,13 @@ function hover_character_under_mouse()
     if (not hovered)
     {
         hoveredCharacter = undefined;
+    }
+}
+
+function selectCharacterUnderMouse()
+{
+    if (mouse_check_button_pressed(mb_left))
+    {
+        return hoveredCharacter;
     }
 }

@@ -8,13 +8,13 @@ if (!isSurfaceInitiatied)
     draw_set_halign(fa_center);
     draw_set_valign(fa_top);
     draw_set_font(f_latin);
-    draw_text(global.cardSizeX / 2, 20, textLatin);
-    draw_text(global.cardSizeX / 2, 60, textPolish);
-    draw_text(global.cardSizeX / 2, 100, textEffect);
+    draw_text(global.cardSizeX / 2, 20, card.textLatin);
+    draw_text(global.cardSizeX / 2, 60, card.textPolish);
+    draw_text(global.cardSizeX / 2, 100, card.textEffect);
     draw_set_colour(c_white);
     
     surface_reset_target();
-    cardSprite = sprite_create_from_surface(cardSurface, 0, 0, global.cardSizeX, global.cardSizeY, false, true, global.cardSizeX / 2, global.cardSizeY / 2);
+    cardSprite = sprite_create_from_surface(cardSurface, 0, 0, global.cardSizeX, global.cardSizeY, false, false, global.cardSizeX / 2, global.cardSizeY / 2);
     surface_free(cardSurface);
     
     isSurfaceInitiatied = true;

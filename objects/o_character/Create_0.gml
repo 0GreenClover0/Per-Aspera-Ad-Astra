@@ -80,11 +80,13 @@ function removeEffect(effect)
 function hover()
 {
     isHovered = true;
+    image_blend = c_lime;
 }
 
 function unhover()
 {
     isHovered = false;
+    image_blend = c_white;
 }
 
 function randomizeParameters(baseParametersCap)

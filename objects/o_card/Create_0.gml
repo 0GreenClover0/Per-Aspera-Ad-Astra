@@ -1,6 +1,4 @@
-textLatin = "Vivere militare est";
-textPolish = "Życie jest walką";
-textEffect = "Ustawia ATK na HP";
+card = o_cardManager.cardTypes[irandom(array_length(o_cardManager.cardTypes) - 1)];
 
 newX = x;
 newY = y;

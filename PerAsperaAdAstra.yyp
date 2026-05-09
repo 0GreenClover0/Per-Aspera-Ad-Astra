@@ -29,6 +29,7 @@
   "resources":[
     {"id":{"name":"f_latin","path":"fonts/f_latin/f_latin.yy",},},
     {"id":{"name":"o_card","path":"objects/o_card/o_card.yy",},},
+    {"id":{"name":"o_cardManager","path":"objects/o_cardManager/o_cardManager.yy",},},
     {"id":{"name":"o_character","path":"objects/o_character/o_character.yy",},},
     {"id":{"name":"o_gameManager","path":"objects/o_gameManager/o_gameManager.yy",},},
     {"id":{"name":"o_inventory","path":"objects/o_inventory/o_inventory.yy",},},
