@@ -241,6 +241,11 @@ toCoSzkodziUczy = new Card (
     {
         character.int++;
         character.hp--;
+        
+        if (character.hp <= 0)
+        {
+            o_gameManager.kill(character);
+        }
     }
 )
 
@@ -368,6 +373,16 @@ okoZaOkoZabZaZab = new Card (
     {
         character1.hp--;
         character2.hp--;
+        
+        if (character1.hp <= 0)
+        {
+            o_gameManager.kill(character1);
+        }
+        
+        if (character2.hp <= 0)
+        {
+            o_gameManager.kill(character2);
+        }
     }
 )
 
