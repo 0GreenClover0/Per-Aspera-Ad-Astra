@@ -5,6 +5,8 @@ init = false;
 playerCharacters = [];
 enemiesCharacters = [];
 
+particleSystems = [];
+
 textFightOrDebate = "";
 
 enum RoundState

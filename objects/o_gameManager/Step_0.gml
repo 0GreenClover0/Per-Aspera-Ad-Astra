@@ -8,6 +8,22 @@ if (!init)
     startRound();
 }
 
+for (var i = array_length(particleSystems) - 1; i >= 0; i--)
+{
+    if (part_system_exists(particleSystems[i]))
+    {
+        if (part_particles_count(particleSystems[i]) == 0)
+        {
+            part_system_destroy(particleSystems[i]);
+            array_delete(particleSystems, i, 1);
+        }
+    }
+    else
+    {
+        array_delete(particleSystems, i, 1);
+    }
+}
+
 hover_character_under_mouse();
 hover_team_under_mouse();
 
