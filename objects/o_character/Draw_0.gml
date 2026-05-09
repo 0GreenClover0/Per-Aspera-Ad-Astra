@@ -14,8 +14,8 @@ var heartSpace = (sprite_get_width(s_heart)) * image_xscale;
 
 var segmentX = x - sprite_xoffset + 10 * image_xscale;
 var segmentY = y - sprite_yoffset + 35;
-var segmentHorizontalSpace = (sprite_get_width(s_segmentBar) * 2) * image_xscale;
-var segmentVerticalSpace = (sprite_get_height(s_segmentBar) * 2);
+var segmentHorizontalSpace = (32) * image_xscale;
+var segmentVerticalSpace = (32);
 
 for (var i = 0; i < hp; i++)
 {
