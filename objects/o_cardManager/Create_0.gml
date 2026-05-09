@@ -574,18 +574,18 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
 )
 
 array_push(cardTypes,
-    trzezwoscJestStanemPrzejsciowym,
+    //trzezwoscJestStanemPrzejsciowym,
     //poraPic,
     //kazdyUlegaSwoimNamietnosciom,
     //zycieJestWalka,
-    nienawidzeIKocham,
+    //nienawidzeIKocham,
     //zycieSlowoKsztalci,
-    //jedyniePismo,
+    jedyniePismo,
     //
     //odwazSieBycMadrym,
     //pijanstwoGubiGorzejOdMiecza,
     //brodaRosnieRozumuNiePrzybywa,
-    //slowaISlowaNicPonadto,
+    slowaISlowaNicPonadto,
     // 
     //najlepszymLekarstwemJestSpokoj,
     //toCoSzkodziUczy,

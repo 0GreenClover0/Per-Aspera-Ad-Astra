@@ -47,6 +47,12 @@ rowIncrement = 100;
 hoveredCharacter = undefined;
 hoveredTeam = undefined;
 
+battleY = -35;
+battleYTarget = -35;
+
+debateY = -35;
+debateYTarget = -35;
+
 spawnPlayerCharacters();
 startNewWave();
 
@@ -110,6 +116,17 @@ function startRound()
 function rewriteTextCombatOrDebate()
 {
     textCombatOrDebate = roundType == FightType.Combat ? "Walka na ATK" : "Debata na INT";
+    
+    if (roundType == FightType.Combat)
+    {
+        battleYTarget = -15;
+        debateYTarget = -165;
+    }
+    else 
+    {
+    	battleYTarget = -165;
+        debateYTarget = -15;
+    }
 }
 
 function runEvent(event)

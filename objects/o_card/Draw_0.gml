@@ -75,7 +75,7 @@ else
 
         shader_set_uniform_f(dissolveValueUniform, dissolveValue);
         shader_set_uniform_f(burnSizeUniform, 0.04);
-        shader_set_uniform_f(burnColorUniform, 251 / 255, 183 / 255, 65 / 255, 1.0);
+        shader_set_uniform_f(burnColorUniform, 217 / 255, 160 / 255, 102 / 255, 1.0);
     }
     
     draw_sprite_ext(cardSprite, 0, x, y + y_bob + yOffset, scale, scale, rot, c_white, 1);

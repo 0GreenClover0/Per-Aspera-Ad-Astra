@@ -1,8 +1,6 @@
 // Base parameters
 #macro BASE_PARAMETERS_COUNT 5
 
-image_speed = 0;
-
 enum BaseParameters
 {
     Health = 0,
@@ -184,10 +182,10 @@ function randomizeParameters(baseParametersCap)
     }
     
     var highest = max(atk, int, def, dex);
-    if (highest == atk) {image_index = 0};
-    if (highest == int) {image_index = 1};
-    if (highest == dex) {image_index = 2};
-    if (highest == def) {image_index = 3};
+    if (highest == atk) {sprite_index = s_warriorFight};
+    if (highest == int) {sprite_index = s_jesusFight};
+    if (highest == dex) {sprite_index = s_sprinter};
+    if (highest == def) {sprite_index = s_defenderFight};
 }
 
 function die()
