@@ -47,6 +47,7 @@ function spawnPlayerCharacters()
     {
         var characterInstance = instance_create_depth(playerColumn, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Player;
+        characterInstance.randomizeParameters(10);
         array_push(playerCharacters, characterInstance);
         
         rowMultiply += 1;
@@ -57,12 +58,27 @@ function startNewWave()
 {
     var enemiesCount = irandom_range(minEnemies, maxEnemies);
     
+    var maxHp = 0;
+    var maxAtk = 0;
+    var maxDef = 0;
+    var maxInt = 0;
+    var maxDex = 0;
+    for (var i = 0; i < array_length(playerCharacters); ++i)
+    {
+        maxHp = max(maxHp, playerCharacters[i].hp);
+        maxAtk = max(maxAtk, playerCharacters[i].atk);
+        maxDef = max(maxDef, playerCharacters[i].def);
+        maxInt = max(maxInt, playerCharacters[i].int);
+        maxDex = max(maxDex, playerCharacters[i].dex);
+    }
+    
     var rowMultiply = 0;
     for (var i = 0; i < enemiesCount; ++i)
     {
         var characterInstance = instance_create_depth(enemyColumn, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Enemy;
         characterInstance.image_xscale = -1;
+        characterInstance.randomizeParameters(maxHp + maxAtk + maxDef + maxInt + maxDex);
         array_push(enemiesCharacters, characterInstance);
         
         rowMultiply += 1;
@@ -102,7 +118,7 @@ function runFight()
     
     for (var i = 0; i < array_length(sortedCharacters); ++i)
     {
-        if (sortedCharacters[i].hp <= 0)
+        if (!instance_exists(sortedCharacters[i]) or sortedCharacters[i].hp <= 0)
         {
             continue;
         }

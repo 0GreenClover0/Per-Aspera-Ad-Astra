@@ -21,8 +21,6 @@ age = 0;
 
 team = undefined;
 
-randomizeParameters(10);
-
 show_debug_message("HP {0}, ATK {1}, DEF {2}, INT {3}, DEX {4}", hp, atk, def, int, dex);
 
 isHovered = false;
