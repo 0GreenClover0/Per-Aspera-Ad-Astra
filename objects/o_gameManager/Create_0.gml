@@ -10,7 +10,8 @@ textFightOrDebate = "";
 enum RoundState
 {
     PickingCards,
-    Fight
+    Fight,
+    Visualization,
 }
 
 enum FightType
@@ -28,6 +29,8 @@ enum Team
 roundState = RoundState.PickingCards;
 roundType = FightType.Combat;
 usedCards = 0;
+
+fightEvents = [];
 
 minEnemies = 1;
 maxEnemies = 3;
@@ -109,14 +112,15 @@ function rewriteTextCombatOrDebate()
     textCombatOrDebate = roundType == FightType.Combat ? "Walka na ATK" : "Debata na INT";
 }
 
-function startCombatDebate()
+function runEvent(event)
 {
-    roundState = RoundState.Fight;
+    show_debug_message("Events {0}", fightEvents);
+    event.whom.hp = clamp(event.whom.hp - event.dmg, 0, event.whom.hp);
     
-    // Fight
-    runFight();
-    
-    startRound();
+    if (event.whom.hp <= 0)
+    {
+        kill(event.whom);
+    }
 }
 
 function kill(character)
@@ -151,12 +155,20 @@ function kill(character)
 
 function runFight()
 {
+    roundState = RoundState.Fight;
+    
     var sortedCharacters = array_concat(playerCharacters, enemiesCharacters);
     
     array_sort(sortedCharacters, function(current, next)
     {
         return next.dex - current.dex;
     });
+    
+    var savedHp = [];
+    for (var i = 0; i < array_length(sortedCharacters); ++i)
+    {
+        array_push(savedHp, sortedCharacters[i].hp);
+    }
     
     for (var i = 0; i < array_length(sortedCharacters); ++i)
     {
@@ -186,19 +198,26 @@ function runFight()
             
             var dealtDmg = dmg - opponents[k].def;
             
-            if (dealtDmg > 0)
-            {
-                opponents[k].hp = clamp(opponents[k].hp - dealtDmg, 0, opponents[k].hp);
-                
-                if (opponents[k].hp == 0)
-                {
-                    o_gameManager.kill(opponents[k]);
-                }
-            }
+            opponents[k].hp = clamp(opponents[k].hp - dealtDmg, 0, opponents[k].hp);
+            
+            var event = {
+                who: sortedCharacters[i],
+                whom: opponents[k],
+                dmg: dealtDmg
+            };
+
+            array_push(fightEvents, event);
             
             break;
         }
     }
+    
+    for (var i = 0; i < array_length(sortedCharacters); ++i)
+    {
+        sortedCharacters[i].hp = savedHp[i];
+    }
+    
+    roundState = RoundState.Visualization;
 }
 
 function hover_team_under_mouse()
