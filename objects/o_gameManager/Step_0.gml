@@ -17,6 +17,11 @@ if (mouse_check_button_pressed(mb_left))
     {
         if (o_inventory.inventory[i].isHovered)
         {
+            if (pickedCard != undefined)
+            {
+                o_inventory.arrange();
+            }
+            
             pickedCard = o_inventory.inventory[i];
             o_inventory.inventory[i].pick();
             
