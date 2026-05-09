@@ -83,7 +83,7 @@ zycieJestWalka = new Card (
 nienawidzeIKocham = new Card (
     "Odi et amo",
     "Nienawidzę i kocham",
-    "Status: gniew, Status: miłość",
+    "Status: gniew + miłość",
     SelectType.Character,
     function(character) 
     {
@@ -293,7 +293,7 @@ miloscNajlepszymNauczycielem = new Card (
 winoRozpalaGniew = new Card (
     "Vinum incendit iras",
     "Wino rozpala gniew",
-    "Status: gniew jeśli ma statusu pijany",
+    "Status: gniew jeśli ma status pijany",
     SelectType.All,
     function() 
     {
@@ -321,7 +321,7 @@ winoRozpalaGniew = new Card (
 zakochaniSaJakSzalency = new Card (
     "Amantes amentes",
     "Zakochani są jak szaleńcy",
-    "+1 ATK jeśli ma statusu miłość",
+    "+1 ATK jeśli ma status miłość",
     SelectType.All,
     function() 
     {
@@ -468,7 +468,7 @@ ostrzezonyUzbrojony = new Card (
 niechPijeAlboNiechSobieIdzie = new Card (
     "Aut bibat, aut abeat",
     "Niech pije albo niech sobie idzie",
-    "50%: status: pijany, 50%: śmierć",
+    "50% status: pijany, 50% śmierć",
     SelectType.Character,
     function(character) 
     {
