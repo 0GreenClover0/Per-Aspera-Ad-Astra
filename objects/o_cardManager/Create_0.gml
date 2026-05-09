@@ -587,6 +587,18 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
     }
 )
 
+//TODO: Wygrana or smth;
+przezTrudyDoGwiazd = new Card (
+    "Per Aspera Ad Astra",
+    "Przez Trudy Do Gwiazd",
+    "!WYGRYWASZ!",
+    SelectType.All,
+    function() 
+    {
+        game_end();
+    }
+)
+
 array_push(cardTypes,
     trzezwoscJestStanemPrzejsciowym,
     poraPic,
