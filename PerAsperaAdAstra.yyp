@@ -36,6 +36,7 @@
     {"id":{"name":"InitRoom","path":"rooms/InitRoom/InitRoom.yy",},},
     {"id":{"name":"shd_dissolve","path":"shaders/shd_dissolve/shd_dissolve.yy",},},
     {"id":{"name":"shd_FXAA","path":"shaders/shd_FXAA/shd_FXAA.yy",},},
+    {"id":{"name":"s_bg","path":"sprites/s_bg/s_bg.yy",},},
     {"id":{"name":"s_card","path":"sprites/s_card/s_card.yy",},},
     {"id":{"name":"s_defender","path":"sprites/s_defender/s_defender.yy",},},
     {"id":{"name":"s_defenderFight","path":"sprites/s_defenderFight/s_defenderFight.yy",},},
