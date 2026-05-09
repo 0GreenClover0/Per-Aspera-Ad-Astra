@@ -1,6 +1,8 @@
 // Base parameters
 #macro BASE_PARAMETERS_COUNT 5
 
+image_speed = 0;
+
 enum BaseParameters
 {
     Health = 0,
@@ -79,7 +81,7 @@ function removeEffect(effect)
 
 function removeAllEffect()
 {
-    array_delete(statusEffects, 0, array_length(statusEffects) - 1);
+    array_delete(statusEffects, 0, array_length(statusEffects));
     return true;
 }
 
@@ -180,6 +182,12 @@ function randomizeParameters(baseParametersCap)
             }
         }
     }
+    
+    var highest = max(atk, int, def, dex);
+    if (highest == atk) {image_index = 0};
+    if (highest == int) {image_index = 1};
+    if (highest == dex) {image_index = 2};
+    if (highest == def) {image_index = 3};
 }
 
 function die()

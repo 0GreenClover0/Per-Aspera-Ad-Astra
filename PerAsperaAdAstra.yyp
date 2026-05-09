@@ -38,6 +38,7 @@
     {"id":{"name":"s_card","path":"sprites/s_card/s_card.yy",},},
     {"id":{"name":"s_heart","path":"sprites/s_heart/s_heart.yy",},},
     {"id":{"name":"s_statIcons","path":"sprites/s_statIcons/s_statIcons.yy",},},
+    {"id":{"name":"s_statusEffects","path":"sprites/s_statusEffects/s_statusEffects.yy",},},
     {"id":{"name":"s_topBar","path":"sprites/s_topBar/s_topBar.yy",},},
     {"id":{"name":"s_warrior","path":"sprites/s_warrior/s_warrior.yy",},},
   ],

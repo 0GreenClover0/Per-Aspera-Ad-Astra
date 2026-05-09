@@ -6,7 +6,6 @@ if (keyboard_check_pressed(vk_f1))
 
 draw_self();
 
-//draw_rectangle_colour(x, y, x + 50, y + 50, c_grey, c_grey, c_grey, c_grey, false);
 
 var heatX = x + sprite_xoffset - 18 * image_xscale;
 var heatY = y + sprite_yoffset + 10;
@@ -17,12 +16,18 @@ var segmentY = y - sprite_yoffset + 35;
 var segmentHorizontalSpace = (32) * image_xscale;
 var segmentVerticalSpace = (32);
 
+draw_set_colour(c_black);
+draw_set_alpha(0.3);
+draw_rectangle(segmentX - 15 * image_xscale, segmentY - 20, segmentX - segmentHorizontalSpace * 7.5, segmentY + segmentVerticalSpace + 20, false);
+draw_set_colour(c_white);
+draw_set_alpha(1);
+
+var distToHP = room_width;
 for (var i = 0; i < hp; i++)
 {
+    distToHP = min(distToHP, point_distance(mouse_x, mouse_y, heatX - i * heartSpace, heatY));
     draw_sprite(s_heart, 0, heatX - i * heartSpace, heatY);
 }
-
-draw_set_colour(c_black);
 
 if (image_xscale == 1)
 {
@@ -47,6 +52,68 @@ draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segment
 draw_sprite_ext(s_statIcons, 3, segmentX - segmentHorizontalSpace * 3.85, segmentY, image_xscale / 2, 0.5, 0, c_white, 1);
 draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY, dex);
 
-draw_set_colour(c_black);
-//draw_text(x, y, string("HP {0}, ATK {1}, DEF {2}, INT {3} DEX {4}", hp, atk, def, int, dex));
-draw_set_colour(c_white);
+draw_sprite_ext(s_statIcons, 4, segmentX - segmentHorizontalSpace * 6.85, segmentY, image_xscale / 2, 0.5, 0, c_white, 1);
+draw_text(                      segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/3", age));
+
+var distToStatus = room_width;
+var closestStatus = 0;
+
+var numberOfStatusEffects = array_length(statusEffects);
+for (var i = 0; i < numberOfStatusEffects; i++)
+{
+    var potentialDistanceToStatus = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * (4.85 + i), segmentY + segmentVerticalSpace);
+    
+    if (potentialDistanceToStatus < distToStatus)
+    {
+        distToStatus = potentialDistanceToStatus;
+        closestStatus = i;
+    }
+    
+    draw_sprite_ext(s_statusEffects, statusEffects[i], segmentX - segmentHorizontalSpace * (4.85 + i), segmentY + segmentVerticalSpace, image_xscale / 2, 0.5, 0, c_white, 1);
+}
+
+var distToATK = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 1.85, segmentY);
+var distToINT = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 1.85, segmentY + segmentVerticalSpace);
+var distToDEF = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 3.85, segmentY + segmentVerticalSpace);
+var distToDEX = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 3.85, segmentY);
+var distToAGE = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 6.85, segmentY);
+
+var closestDist = min(distToHP, distToATK, distToINT, distToDEF, distToDEX, distToAGE, distToStatus);
+
+if (closestDist < 16)
+{
+    var tooltip = "";
+    if (closestDist == distToHP) {tooltip = "Health Points";}
+    if (closestDist == distToATK) {tooltip = "Attack";}
+    if (closestDist == distToINT) {tooltip = "Inteligence";}
+    if (closestDist == distToDEF) {tooltip = "Defense";}
+    if (closestDist == distToDEX) {tooltip = "Dexterity";}
+    if (closestDist == distToAGE) {tooltip = "Age";}
+    if (closestDist == distToStatus) {tooltip = effectToString(statusEffects[closestStatus]);}
+    
+    draw_set_halign(fa_center);
+    var tooltipWidth = string_width(tooltip) / 2;
+    var tooltipHeigh = string_height(tooltip) / 2;
+    draw_set_colour(c_black);
+    draw_set_alpha(0.5);
+    
+    var tooltipMinX = mouse_x - tooltipWidth * 1.1;
+    var tooltipMaxX = mouse_x + tooltipWidth * 1.1;
+    
+    var shiftX = 0;
+    while(tooltipMinX + shiftX < 0)
+    {
+        shiftX++;
+    }
+    
+    while(tooltipMaxX + shiftX > room_width)
+    {
+        shiftX--;
+    }
+    
+    
+    draw_rectangle(tooltipMinX + shiftX, mouse_y + 30 - tooltipHeigh * 1.1, tooltipMaxX + shiftX, mouse_y + 30 + tooltipHeigh * 1.1, false);
+    draw_set_colour(c_white);
+    draw_set_alpha(1);
+    draw_text(mouse_x + shiftX, mouse_y + 30, tooltip);
+}

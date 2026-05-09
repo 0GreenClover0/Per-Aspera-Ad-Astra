@@ -575,34 +575,34 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
 
 array_push(cardTypes,
     trzezwoscJestStanemPrzejsciowym,
-    poraPic,
-    kazdyUlegaSwoimNamietnosciom,
-    zycieJestWalka,
+    //poraPic,
+    //kazdyUlegaSwoimNamietnosciom,
+    //zycieJestWalka,
     nienawidzeIKocham,
-    zycieSlowoKsztalci,
-    jedyniePismo,
+    //zycieSlowoKsztalci,
+    //jedyniePismo,
     //
-    odwazSieBycMadrym,
-    pijanstwoGubiGorzejOdMiecza,
-    brodaRosnieRozumuNiePrzybywa,
-    slowaISlowaNicPonadto,
+    //odwazSieBycMadrym,
+    //pijanstwoGubiGorzejOdMiecza,
+    //brodaRosnieRozumuNiePrzybywa,
+    //slowaISlowaNicPonadto,
     // 
-    najlepszymLekarstwemJestSpokoj,
-    toCoSzkodziUczy,
+    //najlepszymLekarstwemJestSpokoj,
+    //toCoSzkodziUczy,
     //
-    miloscNajlepszymNauczycielem,
-    winoRozpalaGniew,
-    zakochaniSaJakSzalency,
-    //
-    //
+    //miloscNajlepszymNauczycielem,
+    //winoRozpalaGniew,
+    //zakochaniSaJakSzalency,
     //
     //
     //
-    zycieBezNaukiSmierciaJest,
-    ostrzezonyUzbrojony,
-    niechPijeAlboNiechSobieIdzie,
-    czystaTablica,
-    wiemZeNicNieWiem,
-    kazdyKtoSieWywyzszaBedziePonizony,
-    douczajacSieNieustannieDochodzeDoStarosci,
+    //
+    //
+    //zycieBezNaukiSmierciaJest,
+    //ostrzezonyUzbrojony,
+    //niechPijeAlboNiechSobieIdzie,
+    //czystaTablica,
+    //wiemZeNicNieWiem,
+    //kazdyKtoSieWywyzszaBedziePonizony,
+    //douczajacSieNieustannieDochodzeDoStarosci,
 )
