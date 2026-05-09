@@ -201,12 +201,52 @@ if (keyboard_check_pressed(vk_anykey))
     o_inventory.arrange();
 }
 
-array_sort(playerCharacters, function(current, next)
+var isPlayersSprted = true;
+var numberOfPlayers = array_length(playerCharacters);
+for (var i = 0; i < numberOfPlayers - 1; i++)
 {
-    return next.dex - current.dex;
-});
+    if (playerCharacters[i].dex < playerCharacters[i + 1].dex)
+    {
+        isPlayersSprted = false;
+        break;
+    }
+}
 
-array_sort(enemiesCharacters, function(current, next)
+var isEnemiesSprted = true;
+var numberOfEnemies = array_length(enemiesCharacters);
+for (var i = 0; i < numberOfEnemies - 1; i++)
 {
-    return next.dex - current.dex;
-});
+    if (enemiesCharacters[i].dex < enemiesCharacters[i + 1].dex)
+    {
+        isEnemiesSprted = false;
+        break;
+    }
+}
+
+if (!isPlayersSprted)
+{
+    array_sort(playerCharacters, function(current, next)
+    {
+        return next.dex - current.dex;
+    });
+}
+
+if (!isEnemiesSprted)
+{
+    array_sort(enemiesCharacters, function(current, next)
+    {
+        return next.dex - current.dex;
+    });
+}
+
+var numberOfPlayers = array_length(playerCharacters);
+for (var i = 0; i < numberOfPlayers; i++)
+{
+    playerCharacters[i].idInArray = i;
+}
+
+var numberOfEnemies = array_length(enemiesCharacters);
+for (var i = 0; i < numberOfEnemies; i++)
+{
+    enemiesCharacters[i].idInArray = i;
+}

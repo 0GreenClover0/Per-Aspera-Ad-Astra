@@ -49,6 +49,8 @@ xScale = 1;
 yScale = 1;
 rot = 0;
 
+idInArray = 0;
+
 isEntering = true;
 isSkeletor = false;
 

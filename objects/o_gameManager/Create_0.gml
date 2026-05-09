@@ -96,6 +96,7 @@ function spawnPlayerCharacters()
         characterInstance.randomizeParameters(10);
         characterInstance.startY = startRow + rowIncrement * rowMultiply;
         characterInstance.vizualizationY = startRow + rowIncrement * rowMultiply + 100;
+        characterInstance.idInArray = i;
         array_push(playerCharacters, characterInstance);
         
         rowMultiply += 1;
@@ -129,6 +130,7 @@ function startNewWave()
         characterInstance.randomizeParameters(maxHp + maxAtk + maxDef + maxInt + maxDex);
         characterInstance.startY = startRow + rowIncrement * rowMultiply;
         characterInstance.vizualizationY = startRow + rowIncrement * rowMultiply + 100;
+        characterInstance.idInArray = i;
         array_push(enemiesCharacters, characterInstance);
         
         rowMultiply += 1;

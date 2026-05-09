@@ -29,6 +29,7 @@ if (!isSurfaceInitiatied)
     
     draw_text_transformed(global.cardSizeX / 2, 20, card.textLatin, latinScale, latinScale, 0);
     draw_text_transformed(global.cardSizeX / 2, 60, card.textPolish, polishScale, polishScale, 0);
+    draw_line(40, 98, global.cardSizeX - 40, 98);
     draw_text_transformed(global.cardSizeX / 2, 100, card.textEffect, effectScale, effectScale, 0);
     draw_set_colour(c_white);
     

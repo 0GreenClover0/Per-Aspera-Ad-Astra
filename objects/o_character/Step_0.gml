@@ -6,7 +6,7 @@ if (!o_gameManager.isMenu)
    }
    else 
    {
-   	x = lerp(x, room_width / 2 - room_width * 0.27 * orientation, 0.05);
+   	    x = lerp(x, room_width / 2 - room_width * 0.27 * orientation, 0.05);
    }
    
    if (team == Team.Enemy)
@@ -31,8 +31,11 @@ if (!o_gameManager.isMenu)
    }
    else 
    {
-   	y = lerp(y, startY, 0.1);
+   	    y = lerp(y, startY, 0.1);
    }
+    
+    startY = o_gameManager.startRow + o_gameManager.rowIncrement * idInArray;
+    vizualizationY = o_gameManager.startRow + o_gameManager.rowIncrement * idInArray + 100;
 }
 
 if (age > 3)
