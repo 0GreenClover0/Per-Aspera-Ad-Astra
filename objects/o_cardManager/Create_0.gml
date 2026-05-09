@@ -3,7 +3,7 @@ randomise();
 enum SelectType
 {
     Player,
-    Oponent,
+    Opponent,
     Character,
     Team,
     All

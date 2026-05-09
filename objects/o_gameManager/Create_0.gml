@@ -40,6 +40,9 @@ enemyColumn = room_width / 2 + room_width * 0.1;
 startRow = room_height / 6;
 rowIncrement = 100;
 
+hoveredCharacter = undefined;
+hoveredTeam = undefined;
+
 spawnPlayerCharacters();
 startNewWave();
 
@@ -168,6 +171,48 @@ function runFight()
     }
 }
 
+function hover_team_under_mouse()
+{
+    var mouseX = device_mouse_x_to_gui(0);
+    var mouseY = device_mouse_y_to_gui(0);
+    
+    var selectionTolerance = 80;
+    
+    if (array_length(playerCharacters) > 0)
+    {
+        var left = playerCharacters[0].x - selectionTolerance;
+        var right = playerCharacters[0].x + selectionTolerance;
+        
+        var up = playerCharacters[0].y - selectionTolerance;
+        var down = playerCharacters[array_length(playerCharacters) - 1].y + selectionTolerance;
+        
+        if (mouseX > left and mouseX < right and mouseY > up and mouseY < down)
+        {
+            for (var i = 0; i < array_length(playerCharacters); ++i)
+            {
+                hoveredTeam = Team.Player;
+            }
+        }
+    }
+    
+    if (array_length(enemiesCharacters) > 0)
+    {
+        var left = enemiesCharacters[0].x - selectionTolerance;
+        var right = enemiesCharacters[0].x + selectionTolerance;
+        
+        var up = enemiesCharacters[0].y - selectionTolerance;
+        var down = enemiesCharacters[array_length(enemiesCharacters) - 1].y + selectionTolerance;
+        
+        if (mouseX > left and mouseX < right and mouseY > up and mouseY < down)
+        {
+            for (var i = 0; i < array_length(enemiesCharacters); ++i)
+            {
+                hoveredTeam = Team.Enemy;
+            }
+        }
+    }
+}
+
 function hover_character_under_mouse()
 {
     var hovered = false;
@@ -221,6 +266,14 @@ function hover_character_under_mouse()
 }
 
 function selectCharacterUnderMouse()
+{
+    if (mouse_check_button_pressed(mb_left))
+    {
+        return hoveredCharacter;
+    }
+}
+
+function selectTeamUnderMouse()
 {
     if (mouse_check_button_pressed(mb_left))
     {

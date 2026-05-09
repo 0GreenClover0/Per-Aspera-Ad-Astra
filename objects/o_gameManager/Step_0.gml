@@ -9,6 +9,7 @@ if (!init)
 }
 
 hover_character_under_mouse();
+hover_team_under_mouse();
 
 if (mouse_check_button_pressed(mb_left))
 {
@@ -47,7 +48,11 @@ if (selectType != undefined and cardEffect != undefined)
         selectType = undefined;
         cardEffect = undefined;
     }
-    else 
+    else if (selectType == SelectType.Team)
+    {
+        //var target = 
+    }
+    else
     {
         var target = selectCharacterUnderMouse();
         
