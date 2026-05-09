@@ -31,7 +31,6 @@ trzezwoscJestStanemPrzejsciowym = new Card (
     }
 )
 
-//TODO: Nwm Miko czegoś chyba nie skończył
 poraPic = new Card (
     "Nunc est bibendum!",
     "Pora pić!",
@@ -39,7 +38,12 @@ poraPic = new Card (
     SelectType.Team,
     function(team) 
     {
-        team.addEffect(StatusEffect.Drunk);
+        var numberOfWarriorsInTeam = array_length(team);
+        
+        for (var i = 0; i < numberOfWarriorsInTeam; i++)
+        {
+            team[i].addEffect(StatusEffect.Drunk);
+        }   
     }
 )
 
@@ -47,7 +51,7 @@ kazdyUlegaSwoimNamietnosciom = new Card (
     "Trahit sua quemque voluptas",
     "Każdy ulega swoim namiętnościom",
     "Status wszystkich: miłość",
-    SelectType.Team,
+    SelectType.All,
     function() 
     {
         var numberOfPlayers = array_length(o_gameManager.playerCharacters);
@@ -488,27 +492,18 @@ czystaTablica = new Card (
     SelectType.All,
     function() 
     { 
-        function() 
-        {
-           var numberOfPlayers = array_length(o_gameManager.playerCharacters);
-           var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
-           
-           for (var i = 0; i < numberOfPlayers; i++)
-           {
-               if (o_gameManager.playerCharacters[i].int == 0)
-               {
-                   o_gameManager.playerCharacters[i].removeAllEffect();
-               }
-           }
-           
-           for (var i = 0; i < numberOfEnemies; i++)
-           {
-               if (o_gameManager.enemiesCharacters[i].int == 0)
-               {
-                   o_gameManager.enemiesCharacters[i].removeAllEffect();
-               }
-           }
-        }
+       var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+       var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+       
+       for (var i = 0; i < numberOfPlayers; i++)
+       {
+            o_gameManager.playerCharacters[i].removeAllEffect();
+       }
+       
+       for (var i = 0; i < numberOfEnemies; i++)
+       {
+            o_gameManager.enemiesCharacters[i].removeAllEffect();
+       }
     }
 )
 
@@ -530,41 +525,38 @@ kazdyKtoSieWywyzszaBedziePonizony = new Card (
     SelectType.All,
     function() 
     {
-        function() 
-        { 
-            var highestValue = 0;
-            var numberOfPlayers = array_length(o_gameManager.playerCharacters);
-            var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
-           
-            for (var i = 0; i < numberOfPlayers; i++)
-            {
-                var player = o_gameManager.playerCharacters[i];
-                highestValue = max(highestValue, player.atk, player.int, player.def, player.dex);
-            }
-           
-            for (var i = 0; i < numberOfEnemies; i++)
-            {
-                var enemy = o_gameManager.enemiesCharacters[i];
-                highestValue = max(highestValue, enemy.atk, enemy.int, enemy.def, enemy.dex);
-            }
-            
-            for (var i = 0; i < numberOfPlayers; i++)
-            {
-                var player = o_gameManager.playerCharacters[i];
-                if (player.atk == highestValue) {player.atk = 0;}
-                if (player.int == highestValue) {player.int = 0;}
-                if (player.def == highestValue) {player.def = 0;}
-                if (player.dex == highestValue) {player.dex = 0;}
-            }
-           
-            for (var i = 0; i < numberOfEnemies; i++)
-            {
-                var enemy = o_gameManager.enemiesCharacters[i];
-                if (enemy.atk == highestValue) {enemy.atk = 0;}
-                if (enemy.int == highestValue) {enemy.int = 0;}
-                if (enemy.def == highestValue) {enemy.def = 0;}
-                if (enemy.dex == highestValue) {enemy.dex = 0;}
-            }
+        var highestValue = 0;
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+    
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            highestValue = max(highestValue, player.atk, player.int, player.def, player.dex);
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            highestValue = max(highestValue, enemy.atk, enemy.int, enemy.def, enemy.dex);
+        }
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            if (player.atk == highestValue) {player.atk = 0;}
+            if (player.int == highestValue) {player.int = 0;}
+            if (player.def == highestValue) {player.def = 0;}
+            if (player.dex == highestValue) {player.dex = 0;}
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            if (enemy.atk == highestValue) {enemy.atk = 0;}
+            if (enemy.int == highestValue) {enemy.int = 0;}
+            if (enemy.def == highestValue) {enemy.def = 0;}
+            if (enemy.dex == highestValue) {enemy.dex = 0;}
         }
     }
 )

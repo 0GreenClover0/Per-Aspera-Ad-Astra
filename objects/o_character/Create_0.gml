@@ -83,6 +83,33 @@ function removeAllEffect()
     return true;
 }
 
+function effectToString(effect)
+{
+    switch(effect)
+    {
+        case StatusEffect.Drunk:
+        {
+            return "Drunk";
+        }
+            case StatusEffect.InLove:
+        {
+            return "In Love";
+        }
+            case StatusEffect.Angry:
+        {
+            return "Angry";
+        }
+            case StatusEffect.Ill:
+        {
+            return "Ill";
+        }
+            case StatusEffect.Scared:
+        {
+            return "Scared";
+        }
+    }
+}
+
 function hover()
 {
     isHovered = true;

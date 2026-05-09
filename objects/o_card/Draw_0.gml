@@ -8,9 +8,28 @@ if (!isSurfaceInitiatied)
     draw_set_halign(fa_center);
     draw_set_valign(fa_top);
     draw_set_font(f_latin);
-    draw_text(global.cardSizeX / 2, 20, card.textLatin);
-    draw_text(global.cardSizeX / 2, 60, card.textPolish);
-    draw_text(global.cardSizeX / 2, 100, card.textEffect);
+    
+    var latinScale = 1;
+    while (string_width(card.textLatin) * latinScale > 328)
+    {
+        latinScale -= 0.01;
+    }
+    
+    var polishScale = 1;
+    while (string_width(card.textPolish) * polishScale > 328)
+    {
+        polishScale -= 0.01;
+    }
+    
+    var effectScale = 1;
+    while (string_width(card.textEffect) * effectScale > 328)
+    {
+        effectScale -= 0.01;
+    }
+    
+    draw_text_transformed(global.cardSizeX / 2, 20, card.textLatin, latinScale, latinScale, 0);
+    draw_text_transformed(global.cardSizeX / 2, 60, card.textPolish, polishScale, polishScale, 0);
+    draw_text_transformed(global.cardSizeX / 2, 100, card.textEffect, effectScale, effectScale, 0);
     draw_set_colour(c_white);
     
     surface_reset_target();
