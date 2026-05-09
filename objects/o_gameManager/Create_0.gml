@@ -43,8 +43,8 @@ selectType = undefined;
 
 selectedDuo = [];
 
-playerColumn = room_width / 2 - room_width * 0.27;
-enemyColumn = room_width / 2 + room_width * 0.27;
+playerColumn = room_width / 2 - room_width * 1.27;
+enemyColumn = room_width / 2 + room_width * 1.27;
 startRow = room_height / 6;
 rowIncrement = 100;
 
@@ -65,7 +65,7 @@ function spawnPlayerCharacters()
     var rowMultiply = 0;
     for (var i = 0; i < 3; ++i)
     {
-        var characterInstance = instance_create_depth(playerColumn, startRow + rowIncrement * rowMultiply, 1, o_character);
+        var characterInstance = instance_create_depth(playerColumn - rowMultiply * 1500, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Player;
         characterInstance.randomizeParameters(10);
         characterInstance.startY = startRow + rowIncrement * rowMultiply;
@@ -97,7 +97,7 @@ function startNewWave()
     var rowMultiply = 0;
     for (var i = 0; i < enemiesCount; ++i)
     {
-        var characterInstance = instance_create_depth(enemyColumn, startRow + rowIncrement * rowMultiply, 1, o_character);
+        var characterInstance = instance_create_depth(enemyColumn + rowMultiply * 1500, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Enemy;
         characterInstance.orientation = -1;
         characterInstance.randomizeParameters(maxHp + maxAtk + maxDef + maxInt + maxDex);

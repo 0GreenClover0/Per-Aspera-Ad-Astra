@@ -394,8 +394,6 @@ okoZaOkoZabZaZab = new Card (
     }
 )
 
-//TODO: Iterowanie po wszystkich i sprawdzanie statusu
-//Potencjalny rework na sprawdzanie stanu choroby
 zdrowieChoregoNajwyzszymPrawem = new Card (
     "Salus aegroti suprema lex esto",
     "Zdrowie chorego najwyższym prawem",
@@ -435,7 +433,6 @@ uPrzyjaciolWszystkoJestWspolne = new Card (
     }
 )
 
-//TODO: insta win
 jedenZaWszystkich = new Card (
     "Unus pro multis",
     "Jeden za wszystkich",
@@ -444,7 +441,12 @@ jedenZaWszystkich = new Card (
     function(character) 
     {
         o_gameManager.kill(character);
-        //insta win
+        
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        for (var i = numberOfEnemies - 1; i >= 0; i--)
+        {
+            o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
+        }
     }
 )
 
@@ -631,7 +633,7 @@ array_push(cardTypes,
     okoZaOkoZabZaZab,
     zdrowieChoregoNajwyzszymPrawem,
     uPrzyjaciolWszystkoJestWspolne,
-    
+    jedenZaWszystkich,
     zycieBezNaukiSmierciaJest,
     ostrzezonyUzbrojony,
     niechPijeAlboNiechSobieIdzie,

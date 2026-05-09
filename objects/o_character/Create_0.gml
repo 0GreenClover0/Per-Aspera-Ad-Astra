@@ -49,6 +49,8 @@ xScale = 1;
 yScale = 1;
 rot = 0;
 
+isEntering = true;
+
 function hasEffect(effect)
 {
     for (var i = 0; i < array_length(statusEffects); ++i)

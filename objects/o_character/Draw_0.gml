@@ -14,6 +14,10 @@ var heatY = y + sprite_yoffset + 17;
 var heartSpace = (sprite_get_width(s_heart)) * orientation;
 
 var segmentX = room_width / 2 - room_width * 0.27 * orientation - sprite_xoffset + 10 * orientation;
+if (isEntering)
+{
+    segmentX = x - sprite_xoffset + 10 * orientation;
+}
 var segmentY = y - sprite_yoffset + 35;
 var segmentHorizontalSpace = (32) * orientation;
 var segmentVerticalSpace = (32);

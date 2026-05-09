@@ -7,6 +7,22 @@ else
 	x = lerp(x, room_width / 2 - room_width * 0.27 * orientation, 0.05);
 }
 
+if (team == Team.Enemy)
+{
+   if (x <= room_width / 2 - room_width * 0.27 * orientation)
+   {
+       isEntering = false;
+   }
+}
+
+if (team == Team.Player)
+{
+   if (x >= room_width / 2 - room_width * 0.27 * orientation)
+   {
+       isEntering = false;
+   }
+}
+
 if (o_gameManager.roundState == RoundState.Visualization or o_gameManager.roundState == RoundState.Fight)
 {
     y = lerp(y, vizualizationY, 0.1);
