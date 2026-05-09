@@ -1,6 +1,6 @@
 {
   "$GMFont":"",
-  "%Name":"f_latin",
+  "%Name":"f_latinMenu",
   "AntiAlias":1,
   "applyKerning":0,
   "ascender":26,
@@ -135,7 +135,7 @@
   "last":0,
   "lineHeight":36,
   "maintainGms1Font":false,
-  "name":"f_latin",
+  "name":"f_latinMenu",
   "parent":{
     "name":"Fonts",
     "path":"folders/Fonts.yy",

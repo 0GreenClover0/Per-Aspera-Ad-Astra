@@ -28,6 +28,7 @@
   "name":"PerAsperaAdAstra",
   "resources":[
     {"id":{"name":"f_latin","path":"fonts/f_latin/f_latin.yy",},},
+    {"id":{"name":"f_latinMenu","path":"fonts/f_latinMenu/f_latinMenu.yy",},},
     {"id":{"name":"o_card","path":"objects/o_card/o_card.yy",},},
     {"id":{"name":"o_cardManager","path":"objects/o_cardManager/o_cardManager.yy",},},
     {"id":{"name":"o_character","path":"objects/o_character/o_character.yy",},},
@@ -51,6 +52,9 @@
     {"id":{"name":"s_jesusFight","path":"sprites/s_jesusFight/s_jesusFight.yy",},},
     {"id":{"name":"s_noiseTexture","path":"sprites/s_noiseTexture/s_noiseTexture.yy",},},
     {"id":{"name":"s_noiseTexture2","path":"sprites/s_noiseTexture2/s_noiseTexture2.yy",},},
+    {"id":{"name":"s_sekletor","path":"sprites/s_sekletor/s_sekletor.yy",},},
+    {"id":{"name":"s_sekletorDead","path":"sprites/s_sekletorDead/s_sekletorDead.yy",},},
+    {"id":{"name":"s_sekletorFight","path":"sprites/s_sekletorFight/s_sekletorFight.yy",},},
     {"id":{"name":"s_sprinter","path":"sprites/s_sprinter/s_sprinter.yy",},},
     {"id":{"name":"s_sprinterDead","path":"sprites/s_sprinterDead/s_sprinterDead.yy",},},
     {"id":{"name":"s_sprinterFight","path":"sprites/s_sprinterFight/s_sprinterFight.yy",},},

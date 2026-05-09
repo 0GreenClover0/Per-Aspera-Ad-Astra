@@ -50,6 +50,7 @@ yScale = 1;
 rot = 0;
 
 isEntering = true;
+isSkeletor = false;
 
 function hasEffect(effect)
 {
@@ -211,6 +212,8 @@ function randomizeParameters(baseParametersCap)
     if (highest == int) {normalSprite = s_jesus; fightSprite = s_jesusFight; deadSprite = s_jesusDead};
     if (highest == dex) {normalSprite = s_sprinter; fightSprite = s_sprinterFight; deadSprite = s_sprinterDead};
     if (highest == def) {normalSprite = s_defender; fightSprite = s_defenderFight; deadSprite = s_defenderDead};
+    
+    if (isSkeletor) {normalSprite = s_sekletor; fightSprite = s_sekletorFight; deadSprite = s_sekletorDead};
     
     sprite_index = normalSprite;
 }

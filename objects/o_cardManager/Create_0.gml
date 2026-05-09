@@ -200,14 +200,21 @@ slowaISlowaNicPonadto = new Card (
     }
 )
 
-//TODO: Add select type deadman
 poSmierciNieCzasNaPrzyjemnosci = new Card (
     "Post mortem est nulla voluptas",
     "Po śmierci nie czas na przyjemności",
-    "Ożyw zmarłego bohatera",
+    "Ożyw szkieleta do pomocy",
     SelectType.All,
     function() 
     {
+        var rowMultiply = array_length(o_gameManager.playerCharacters);
+        var characterInstance = instance_create_depth(o_gameManager.playerColumn - rowMultiply * 1500, o_gameManager.startRow + o_gameManager.rowIncrement * rowMultiply, 1, o_character);
+        characterInstance.team = Team.Player;
+        characterInstance.isSkeletor = true;
+        characterInstance.randomizeParameters(10);
+        characterInstance.startY = o_gameManager.startRow + o_gameManager.rowIncrement * rowMultiply;
+        characterInstance.vizualizationY = o_gameManager.startRow + o_gameManager.rowIncrement * rowMultiply + 100;
+        array_push(o_gameManager.playerCharacters, characterInstance);
     }
 )
 
@@ -622,7 +629,7 @@ array_push(cardTypes,
     pijanstwoGubiGorzejOdMiecza,
     brodaRosnieRozumuNiePrzybywa,
     slowaISlowaNicPonadto,
-     
+    poSmierciNieCzasNaPrzyjemnosci,
     najlepszymLekarstwemJestSpokoj,
     toCoSzkodziUczy,
     
