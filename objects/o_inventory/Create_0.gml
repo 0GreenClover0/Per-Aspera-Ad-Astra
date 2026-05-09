@@ -47,7 +47,7 @@ function arrange()
     var screenWidth = surface_get_width(application_surface);
     var inventorySize = array_length(inventory);
 
-    offsetBetweenCards = -global.cardSizeX * 0.465;
+    offsetBetweenCards = -global.cardSizeX * 0.5;
 
     var totalWidth = inventorySize * global.cardSizeX + (inventorySize - 1) * offsetBetweenCards;
 
@@ -69,10 +69,20 @@ function arrange()
                         - (inventorySize - 1) * offsetBetweenCards * 0.5
                         + global.cardSizeX * 0.5;
 
+    var offsetYAlternate = 0.0;
     for (var i = 0; i < inventorySize; ++i)
     {
+        if (i % 2 == 1)
+        {
+            offsetYAlternate = 130;
+        }
+        else
+        {
+            offsetYAlternate = 0;
+        }
+        
         inventory[i].newX = firstPosition + i * global.cardSizeX + i * offsetBetweenCards;
-        inventory[i].newY = surface_get_height(application_surface) - global.cardSizeY * 0.65;
+        inventory[i].newY = surface_get_height(application_surface) - global.cardSizeY * 0.5 - offsetYAlternate;
     }
 }
 

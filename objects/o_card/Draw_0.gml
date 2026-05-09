@@ -44,7 +44,7 @@ else
     var freq = 0.28;
     var sway = sin(t * freq * (2 * pi) + sway_phase);
     var rot = sway * 3;
-    var scale = cos(sway * 0.18);
+    var scale = cos(sway * 0.18) * 0.73;
     var y_bob = sin(t * freq * (4 * pi) + sway_phase) * 1.5;
     var yOffset = 0;
    
