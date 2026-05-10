@@ -786,7 +786,6 @@ bezMilosciNieMaZycia = new Card (
     1
 )
 
-//TODO: Wygrana or smth;
 przezTrudyDoGwiazd = new Card (
     "Per Aspera Ad Astra",
     "Przez Trudy Do Gwiazd",
@@ -794,7 +793,7 @@ przezTrudyDoGwiazd = new Card (
     SelectType.All,
     function() 
     {
-        game_end();
+        o_starryNight.newAlpha = 1;
     }
 )
 
