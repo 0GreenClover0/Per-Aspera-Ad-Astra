@@ -91,6 +91,7 @@ if (roundState == RoundState.Visualization and o_inventory.yHide > 399)
 
 if (array_length(enemiesCharacters) <= 0)
 {
+    showPercent = true;
     o_cardManager.chancesForAstra += 1;
     
     startNewWave();

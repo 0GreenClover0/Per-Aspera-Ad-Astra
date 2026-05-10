@@ -9,9 +9,13 @@ if (!isMenu)
     battleY = lerp(battleY, battleYTarget, 0.05);
     debateY = lerp(debateY, debateYTarget, 0.05);
     sententionY = lerp(sententionY, 35, 0.05);
-    percentY = lerp(percentY, 10, 0.05);
     titleY = lerp(titleY, -165, 0.05);
     creditsY = lerp(creditsY, 40, 0.05);
+}
+
+if (showPercent)
+{
+    percentY = lerp(percentY, 10, 0.05);
 }
 
 
@@ -58,4 +62,4 @@ draw_text(room_width / 2, sententionY + 25, sentenceCounter);
 
 
 draw_set_halign(fa_right);
-draw_text(room_width - 10, percentY, string("{0}%", o_cardManager.getAstraChancePerCard()));
+draw_text(room_width - 10, percentY, string("Per Aspera Ad Astra {0}%", o_cardManager.getAstraChancePerCard()));

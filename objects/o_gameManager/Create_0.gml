@@ -10,6 +10,8 @@ titleY = h_to_gui(camera_get_view_height(view_camera[0]) * 3 / 15);
 creditsY = 0;
 textFightOrDebate = "";
 
+showPercent = false;
+
 function x_to_gui(xx)
 {
     return ((xx - camera_get_view_x(view_camera[0])) / camera_get_view_width(view_camera[0])) * display_get_gui_width();
