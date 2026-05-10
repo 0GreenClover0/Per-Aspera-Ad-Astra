@@ -675,7 +675,7 @@ kazdyKtoSieWywyzszaBedziePonizony = new Card (
 nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa = new Card (
     "Nullum magnum ingenium sine mixtura dementiae fuit",
     "Nie było wielkiego geniuszu bez domieszki szaleństwa",
-    "Najwyższy INT doda Status: szaleństwa",
+    "Najwyższy INT doda Status: gniewu",
     SelectType.All,
     function() 
     {
@@ -692,7 +692,7 @@ nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa = new Card (
         for (var i = 0; i < numberOfEnemies; i++)
         {
             var enemy = o_gameManager.enemiesCharacters[i];
-            highestValue = max(highestValue, player.int);
+            highestValue = max(highestValue, enemy.int);
         }
         
         for (var i = 0; i < numberOfPlayers; i++)
