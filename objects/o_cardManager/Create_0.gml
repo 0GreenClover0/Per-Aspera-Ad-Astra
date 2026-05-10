@@ -844,6 +844,95 @@ ktoMieczemWojujeOdMieczaGinie = new Card (
     1
 )
 
+odSlowDoRekoczynow = new Card (
+    "A verbis ad verbera",
+    "Od słów do rękoczynów",
+    "Przenieś INT do ATK tej samej postaci",
+    SelectType.Character,
+    function(character) 
+    {
+        character.atk += character.int;
+        character.int = 0;
+    }
+)
+
+miloscDlaWszystkichJednaka = new Card (
+    "Amor omnibus idem",
+    "Miłość dla wszystkich jednaka",
+    "Status wszystkich: zakochany",
+    SelectType.All,
+    function() 
+    {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            o_gameManager.playerCharacters[i].addEffect(StatusEffect.InLove);
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            o_gameManager.enemiesCharacters[i].addEffect(StatusEffect.InLove);
+        }
+    },
+    c_gold,
+    1
+)
+
+zlotySrodek = new Card (
+    "Aurea mediocritas",
+    "Złoty środek (umiar)",
+    "Uśrednia statystyki wybranej postaci",
+    SelectType.Character,
+    function(character) 
+    {
+        var avg = ceil((character.atk + character.def + character.int + character.dex) / 4);
+        
+        character.atk = avg;
+        character.int = avg;
+        character.def = avg;
+        character.dex = avg;
+    }
+)
+
+przybywaLatUbywaSil = new Card (
+    "Crescunt anni, decrescunt vires",
+    "Przybywa lat, ubywa sił",
+    "+1 WIEK, -1 ATK",
+    SelectType.Character,
+    function(character) 
+    {
+        character.aging();
+        character.atk -= 1;
+    }
+)
+
+dzielIRzadz = new Card (
+    "Divide et impera",
+    "Dziel i rządź",
+    "Podziel statystyki postaci na pół",
+    SelectType.Character,
+    function(character) 
+    {
+        character.atk = ceil(character.atk / 2);
+        character.dex = ceil(character.dex / 2);
+        character.int = ceil(character.int / 2);
+        character.def = ceil(character.def / 2);
+    }
+)
+
+niespelnaRozumu = new Card (
+    "Non compos mentis",
+    "Niespełna rozumu",
+    "INT wybranej postaci = 0",
+    SelectType.Character,
+    function(character) 
+    {
+        character.int = 0;
+    }
+)
+
 array_push(cardTypes,
     trzezwoscJestStanemPrzejsciowym,
     poraPic,
@@ -881,5 +970,11 @@ array_push(cardTypes,
     nieJestMadryKtoNieJestCierpliwy,
     pamietajOSmierci,
     ktoMieczemWojujeOdMieczaGinie,
-    bezMilosciNieMaZycia
+    bezMilosciNieMaZycia,
+    odSlowDoRekoczynow,
+    miloscDlaWszystkichJednaka,
+    zlotySrodek,
+    przybywaLatUbywaSil,
+    dzielIRzadz,
+    niespelnaRozumu
 )
