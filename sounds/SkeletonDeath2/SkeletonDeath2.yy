@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"SkeletonDeath2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":1.2086167,
+  "exportDir":"",
+  "name":"SkeletonDeath2",
+  "parent":{
+    "name":"skeleton",
+    "path":"folders/Sounds/skeleton.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"SkeletonDeath2.wav",
+  "volume":1.0,
+}

@@ -206,7 +206,14 @@ function runEvent(event)
                 part_system_depth(particlesNoDMG, -999999);
                 array_push(particleSystems, particlesNoDMG);
                 
-                audio_play_sound(choose(BlockedDamage1, BlockedDamage2, BlockedDamage3, BlockedDamage4, BlockedDamage5), 0, false,,, random_range(0.8, 1.2));
+                if (event.whom.isSkeletor)
+                {
+                    audio_play_sound(choose(SkeletonDamage1, SkeletonDamage2, SkeletonDamage3), 0, false,,, random_range(0.8, 1.2));
+                }
+                else 
+                {
+                	audio_play_sound(choose(BlockedDamage1, BlockedDamage2, BlockedDamage3, BlockedDamage4, BlockedDamage5), 0, false,,, random_range(0.8, 1.2));
+                }
             }
             else 
             {
@@ -215,7 +222,14 @@ function runEvent(event)
                 part_system_depth(particlesDMG, -999999);
                 array_push(particleSystems, particlesDMG);
                 
-                audio_play_sound(choose(Damage1, Damage2, Damage3, Damage4, Damage5, Damage6, Damage7, Damage8, Damage9), 0, false,,, random_range(0.8, 1.2));
+                if (event.whom.isSkeletor)
+                {
+                    audio_play_sound(choose(SkeletonDamage1, SkeletonDamage2, SkeletonDamage3), 0, false,,, random_range(0.8, 1.2));
+                }
+                else 
+                {
+                    audio_play_sound(choose(Damage1, Damage2, Damage3, Damage4, Damage5, Damage6, Damage7, Damage8, Damage9), 0, false,,, random_range(0.8, 1.2));
+                }
             }
             
             if (choose(false, true))
