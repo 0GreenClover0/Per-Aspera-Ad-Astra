@@ -68,6 +68,42 @@ poraPic = new Card (
     3
 )
 
+jesliChceszBycKochanymBadzGodnyMilosci = new Card (
+    "Ut ameris, amabilis esto",
+    "Jeśli chcesz być kochanym, bądź godny miłości",
+    "Status drużyny: zakochany",
+    SelectType.Team,
+    function(team) 
+    {
+        var numberOfWarriorsInTeam = array_length(team);
+        
+        for (var i = 0; i < numberOfWarriorsInTeam; i++)
+        {
+            team[i].addEffect(StatusEffect.InLove);
+        }   
+    },
+    c_tie,
+    3
+)
+
+oCiebieChodziGdyPlonieDomSasiada = new Card (
+    "Tua res agitur, paries cum proximus ardet",
+    "O ciebie chodzi, gdy płonie dom sąsiada",
+    "Status drużyny: wściekły",
+    SelectType.Team,
+    function(team) 
+    {
+        var numberOfWarriorsInTeam = array_length(team);
+        
+        for (var i = 0; i < numberOfWarriorsInTeam; i++)
+        {
+            team[i].addEffect(StatusEffect.Angry);
+        }   
+    },
+    c_tie,
+    3
+)
+
 kazdyUlegaSwoimNamietnosciom = new Card (
     "Trahit sua quemque voluptas",
     "Każdy ulega swoim namiętnościom",
@@ -636,6 +672,48 @@ kazdyKtoSieWywyzszaBedziePonizony = new Card (
     1
 )
 
+nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa = new Card (
+    "Nullum magnum ingenium sine mixtura dementiae fuit",
+    "Nie było wielkiego geniuszu bez domieszki szaleństwa",
+    "Najwyższy INT doda Status: szaleństwa",
+    SelectType.All,
+    function() 
+    {
+        var highestValue = 0;
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+    
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            highestValue = max(highestValue, player.int);
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            highestValue = max(highestValue, player.int);
+        }
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            if (player.int == highestValue) {player.addEffect(StatusEffect.Angry)}
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            if (enemy.int == highestValue) {enemy.addEffect(StatusEffect.Angry)}
+        }
+    },
+    c_gold,
+    1
+)
+
+Nullum magnum ingenium sine mixtura dementiae fuit – nie było wielkiego geniuszu bez domieszki szaleństwa
+status szaleństwa dla największego inta
+
 douczajacSieNieustannieDochodzeDoStarosci = new Card (
     "Assidue addiscens ad senium venio",
     "Douczając się nieustannie dochodzę do starości",
@@ -762,7 +840,7 @@ nieJestMadryKtoNieJestCierpliwy = new Card (
 bezMilosciNieMaZycia = new Card (
     "Sine amore nihil est vita",
     "Bez miłości nie ma życia",
-    "Wszyscy niezakochani -1 HP",
+    "Wszyscy niezakochani -2 HP",
     SelectType.All,
     function() 
     {
@@ -774,6 +852,10 @@ bezMilosciNieMaZycia = new Card (
             if (!o_gameManager.playerCharacters[i].hasEffect(StatusEffect.InLove))
             {
                 o_gameManager.playerCharacters[i].hp -= 2;
+                if (o_gameManager.playerCharacters[i].hp <= 0)
+                {
+                    o_gameManager.kill(o_gameManager.playerCharacters[i]);
+                }
             }
         }
         
@@ -782,6 +864,10 @@ bezMilosciNieMaZycia = new Card (
             if (!o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.InLove))
             {
                 o_gameManager.enemiesCharacters[i].hp -= 2;
+                if (o_gameManager.enemiesCharacters[i].hp <= 0)
+                {
+                    o_gameManager.kill(o_gameManager.enemiesCharacters[i]);
+                }
             }
         }
     },
@@ -982,15 +1068,18 @@ array_push(cardTypes,
     zlotySrodek,
     przybywaLatUbywaSil,
     dzielIRzadz,
-    niespelnaRozumu
+    niespelnaRozumu,
+    jesliChceszBycKochanymBadzGodnyMilosci,
+    oCiebieChodziGdyPlonieDomSasiada,
+    nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa
 )
 
 cardPools = [
     [pijanstwoGubiGorzejOdMiecza, alboZwyciezacAlboUmierac, jedenZaWszystkich,
      zycieBezNaukiSmierciaJest, niechPijeAlboNiechSobieIdzie, pamietajOSmierci, ktoMieczemWojujeOdMieczaGinie,
      poSmierciNieCzasNaPrzyjemnosci],
-    [trzezwoscJestStanemPrzejsciowym, poraPic, kazdyUlegaSwoimNamietnosciom, nienawidzeIKocham, winoRozpalaGniew,
-     zakochaniSaJakSzalency, czystaTablica, miloscDlaWszystkichJednaka],
+    [trzezwoscJestStanemPrzejsciowym, poraPic, jesliChceszBycKochanymBadzGodnyMilosci, oCiebieChodziGdyPlonieDomSasiada, kazdyUlegaSwoimNamietnosciom, nienawidzeIKocham, winoRozpalaGniew,
+     zakochaniSaJakSzalency, czystaTablica, miloscDlaWszystkichJednaka, nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa],
     [zycieJestWalka, zycieSlowoKsztalci, jedyniePismo, powtarzamCoUslyszakem, odwazSieBycMadrym,
      brodaRosnieRozumuNiePrzybywa, slowaISlowaNicPonadto, najlepszymLekarstwemJestSpokoj, toCoSzkodziUczy,
      miloscNajlepszymNauczycielem, okoZaOkoZabZaZab, zdrowieChoregoNajwyzszymPrawem, uPrzyjaciolWszystkoJestWspolne,
