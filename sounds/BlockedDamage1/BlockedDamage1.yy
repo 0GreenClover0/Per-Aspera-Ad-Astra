@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"BlockedDamage1",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.57126987,
+  "exportDir":"",
+  "name":"BlockedDamage1",
+  "parent":{
+    "name":"blockedDamage",
+    "path":"folders/Sounds/blockedDamage.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"BlockedDamage1.wav",
+  "volume":1.0,
+}

@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"Anger2",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.40353742,
+  "exportDir":"",
+  "name":"Anger2",
+  "parent":{
+    "name":"anger",
+    "path":"folders/Sounds/anger.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"Anger2.wav",
+  "volume":1.0,
+}

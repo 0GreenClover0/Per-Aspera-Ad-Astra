@@ -197,6 +197,8 @@ function runEvent(event)
                 part_system_position(particlesNoDMG, event.whom.x, event.whom.y);
                 part_system_depth(particlesNoDMG, -999999);
                 array_push(particleSystems, particlesNoDMG);
+                
+                audio_play_sound(choose(BlockedDamage1, BlockedDamage2, BlockedDamage3, BlockedDamage4, BlockedDamage5), 0, false,,, random_range(0.8, 1.2));
             }
             else 
             {

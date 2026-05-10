@@ -78,6 +78,12 @@ function addEffect(effect)
     }
     
     array_push(statusEffects, effect);
+    
+    if (effect == StatusEffect.Angry)
+    {
+        audio_play_sound(choose(Anger1, Anger2, Anger3), 0, false,,, random_range(0.8, 1.2));
+    }
+    
     return true;
 }
 
