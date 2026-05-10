@@ -56,6 +56,11 @@ isSkeletor = false;
 
 dataSizeToShow = 2.75;
 
+if (choose(true, false, false))
+{
+    addEffect(irandom_range(0, 2));
+}
+
 function hasEffect(effect)
 {
     for (var i = 0; i < array_length(statusEffects); ++i)
