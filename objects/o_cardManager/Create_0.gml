@@ -711,9 +711,6 @@ nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa = new Card (
     1
 )
 
-Nullum magnum ingenium sine mixtura dementiae fuit – nie było wielkiego geniuszu bez domieszki szaleństwa
-status szaleństwa dla największego inta
-
 douczajacSieNieustannieDochodzeDoStarosci = new Card (
     "Assidue addiscens ad senium venio",
     "Douczając się nieustannie dochodzę do starości",
