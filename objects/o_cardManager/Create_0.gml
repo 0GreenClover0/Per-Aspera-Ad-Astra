@@ -841,7 +841,7 @@ ktoMieczemWojujeOdMieczaGinie = new Card (
         for (var i = numberOfEnemies - 1; i >= 0; i--)
         {
             var enemy = o_gameManager.enemiesCharacters[i];
-            if (enemy.atk == highestValue) {o_gameManager.kill(player)}
+            if (enemy.atk == highestValue) {o_gameManager.kill(enemy)}
         }
     },
     c_gold,
