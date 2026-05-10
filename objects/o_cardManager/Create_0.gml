@@ -675,7 +675,7 @@ kazdyKtoSieWywyzszaBedziePonizony = new Card (
 nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa = new Card (
     "Nullum magnum ingenium sine mixtura dementiae fuit",
     "Nie było wielkiego geniuszu bez domieszki szaleństwa",
-    "Najwyższy INT doda Status: gniewu",
+    "Najwyższy INT doda Status: wściekły",
     SelectType.All,
     function() 
     {

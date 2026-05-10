@@ -102,16 +102,22 @@ function addEffect(effect)
     if (effect == StatusEffect.Angry)
     {
         audio_play_sound(choose(Anger1, Anger2, Anger3), 0, false,,, random_range(0.8, 1.2));
+        
+        atk += 2;
     }
     
     if (effect == StatusEffect.InLove)
     {
         audio_play_sound(choose(Love1), 0, false,,, random_range(0.8, 1.2));
+        
+        def -= 1;
     }
     
     if (effect == StatusEffect.Drunk)
     {
         audio_play_sound(choose(Drink), 0, false, 2,, random_range(0.8, 1.2));
+        
+        int -= 1;
     }
     
     return true;
@@ -123,6 +129,21 @@ function removeEffect(effect)
     {
         if (statusEffects[i] == effect)
         {
+            if (effect == StatusEffect.Angry)
+            {
+                atk -= 2;
+            }
+            
+            if (effect == StatusEffect.InLove)
+            {
+                def += 1;
+            }
+            
+            if (effect == StatusEffect.Drunk)
+            {
+                int += 1;
+            }
+            
             array_delete(statusEffects, i, 1);
             return true;
         }
@@ -133,7 +154,11 @@ function removeEffect(effect)
 
 function removeAllEffect()
 {
-    array_delete(statusEffects, 0, array_length(statusEffects));
+    removeEffect(StatusEffect.Angry);
+    removeEffect(StatusEffect.InLove);
+    removeEffect(StatusEffect.Drunk);
+    
+    //array_delete(statusEffects, 0, array_length(statusEffects));
     return true;
 }
 

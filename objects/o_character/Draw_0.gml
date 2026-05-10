@@ -104,15 +104,33 @@ if (closestDist < 16)
 {
     var tooltip = "";
     if (closestDist == distToHP) {tooltip = "Punkty Życia";}
-    if (closestDist == distToATK) {tooltip = "Atak";}
-    if (closestDist == distToINT) {tooltip = "Inteligencja";}
+    if (closestDist == distToATK) {tooltip = string("Atak: {0}\n{1}", atk, hasEffect(StatusEffect.Angry) ? " +2 (wściekły)" : "");}
+    if (closestDist == distToINT) {tooltip = string("Inteligencja: {0}\n{1}", int, hasEffect(StatusEffect.Drunk) ? " -1 (pijany)" : "");}
     
     if (o_gameManager.showFullCharData)
     {
-      if (closestDist == distToDEF) {tooltip = "Obrona";}
-      if (closestDist == distToDEX) {tooltip = "Zręczność";}
-      if (closestDist == distToAGE) {tooltip = "Wiek";}
-      if (closestDist == distToStatus) {tooltip = effectToString(statusEffects[closestStatus]);}
+        if (closestDist == distToDEF) {tooltip = string("Obrona: {0}\n{1}", def, hasEffect(StatusEffect.InLove) ? " -1 (zakochany)" : "");}
+        if (closestDist == distToDEX) {tooltip = "Zręczność";}
+        if (closestDist == distToAGE) {tooltip = "Wiek";}
+        if (closestDist == distToStatus) 
+        {
+            tooltip = string(effectToString(statusEffects[closestStatus]));
+            
+            if (statusEffects[closestStatus] == StatusEffect.Angry)
+            {
+                tooltip += "\n +2 ATK";
+            }
+            
+            if (statusEffects[closestStatus] == StatusEffect.Drunk)
+            {
+                tooltip += "\n -1 INT";
+            }
+            
+            if (statusEffects[closestStatus] == StatusEffect.InLove)
+            {
+                tooltip += "\n -1 OBR";
+            }
+        }
     }
     
     draw_set_halign(fa_center);
