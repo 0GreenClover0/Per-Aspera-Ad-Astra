@@ -132,6 +132,7 @@ jedyniePismo = new Card (
     function() 
     {
         o_gameManager.roundType = FightType.Debate;
+        audio_play_sound(choose(Bong1, Bong2, Bong3, Bong4, Bong5), 0, false,,, random_range(0.8, 1.2));
         o_gameManager.rewriteTextCombatOrDebate();
     }
 )
@@ -212,6 +213,7 @@ slowaISlowaNicPonadto = new Card (
     function() 
     {
         o_gameManager.roundType = FightType.Combat;
+        audio_play_sound(choose(Bong1, Bong2, Bong3, Bong4, Bong5), 0, false,,, random_range(0.8, 1.2));
         o_gameManager.rewriteTextCombatOrDebate();
     }
 )
@@ -850,38 +852,38 @@ array_push(cardTypes,
     trzezwoscJestStanemPrzejsciowym,
     poraPic,
     kazdyUlegaSwoimNamietnosciom,
-    zycieJestWalka,
-    nienawidzeIKocham,
-    zycieSlowoKsztalci,
+    //zycieJestWalka,
+    //nienawidzeIKocham,
+    //zycieSlowoKsztalci,
     jedyniePismo,
-    powtarzamCoUslyszakem,
-    odwazSieBycMadrym,
-    pijanstwoGubiGorzejOdMiecza,
-    brodaRosnieRozumuNiePrzybywa,
+    //powtarzamCoUslyszakem,
+    //odwazSieBycMadrym,
+    //pijanstwoGubiGorzejOdMiecza,
+    //brodaRosnieRozumuNiePrzybywa,
     slowaISlowaNicPonadto,
-    poSmierciNieCzasNaPrzyjemnosci,
-    najlepszymLekarstwemJestSpokoj,
-    toCoSzkodziUczy,
-    alboZwyciezacAlboUmierac,
-    miloscNajlepszymNauczycielem,
-    winoRozpalaGniew,
-    zakochaniSaJakSzalency,
-    okoZaOkoZabZaZab,
-    zdrowieChoregoNajwyzszymPrawem,
-    uPrzyjaciolWszystkoJestWspolne,
-    jedenZaWszystkich,
-    zycieBezNaukiSmierciaJest,
-    ostrzezonyUzbrojony,
-    niechPijeAlboNiechSobieIdzie,
-    czystaTablica,
-    wiemZeNicNieWiem,
-    kazdyKtoSieWywyzszaBedziePonizony,
-    douczajacSieNieustannieDochodzeDoStarosci,
-    miloscJestIstotazycia,
-    zadenWiekNieJestDoNaukiZbytPozny,
-    rozumWyzszyNizSila,
-    nieJestMadryKtoNieJestCierpliwy,
-    pamietajOSmierci,
-    ktoMieczemWojujeOdMieczaGinie,
-    bezMilosciNieMaZycia
+    //poSmierciNieCzasNaPrzyjemnosci,
+    //najlepszymLekarstwemJestSpokoj,
+    //toCoSzkodziUczy,
+    //alboZwyciezacAlboUmierac,
+    //miloscNajlepszymNauczycielem,
+    //winoRozpalaGniew,
+    //zakochaniSaJakSzalency,
+    //okoZaOkoZabZaZab,
+    //zdrowieChoregoNajwyzszymPrawem,
+    //uPrzyjaciolWszystkoJestWspolne,
+    //jedenZaWszystkich,
+    //zycieBezNaukiSmierciaJest,
+    //ostrzezonyUzbrojony,
+    //niechPijeAlboNiechSobieIdzie,
+    //czystaTablica,
+    //wiemZeNicNieWiem,
+    //kazdyKtoSieWywyzszaBedziePonizony,
+    //douczajacSieNieustannieDochodzeDoStarosci,
+    //miloscJestIstotazycia,
+    //zadenWiekNieJestDoNaukiZbytPozny,
+    //rozumWyzszyNizSila,
+    //nieJestMadryKtoNieJestCierpliwy,
+    //pamietajOSmierci,
+    //ktoMieczemWojujeOdMieczaGinie,
+    //bezMilosciNieMaZycia
 )

@@ -89,6 +89,11 @@ function addEffect(effect)
         audio_play_sound(choose(Love1), 0, false,,, random_range(0.8, 1.2));
     }
     
+    if (effect == StatusEffect.Drunk)
+    {
+        audio_play_sound(choose(Drink), 0, false, 2,, random_range(0.8, 1.2));
+    }
+    
     return true;
 }
 

@@ -83,6 +83,8 @@ isMenu = true;
 sententionY = -165;
 percentY = -165;
 
+textCombatOrDebate = "";
+
 spawnPlayerCharacters();
 startNewWave();
 
@@ -146,7 +148,12 @@ function startRound()
 
     usedCards = 0;
     roundState = RoundState.PickingCards;
+    var roundBefore = roundType;
     roundType = irandom_range(0, 1);
+    if (roundType != roundBefore)
+    {
+        audio_play_sound(choose(Bong1, Bong2, Bong3, Bong4, Bong5), 0, false,,, random_range(0.8, 1.2));
+    }
     rewriteTextCombatOrDebate();
 }
 
@@ -207,7 +214,7 @@ function runEvent(event)
                 part_system_depth(particlesDMG, -999999);
                 array_push(particleSystems, particlesDMG);
                 
-                audio_play_sound(choose(Damage1, Damage2, Damage3), 0, false,,, random_range(0.8, 1.2));
+                audio_play_sound(choose(Damage1, Damage2, Damage3, Damage4, Damage5, Damage6, Damage7, Damage8, Damage9), 0, false,,, random_range(0.8, 1.2));
             }
             
             if (choose(false, true))
