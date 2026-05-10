@@ -59,16 +59,36 @@ function pick()
     newY = room_height / 2 - room_height * 0.1;
     
     o_gameManager.showGuide = true;
+    
+    audio_play_sound(Card3, 0, false, 0.6,, random_range(0.95, 1.05));
 }
 
 function use()
 {
     isDissolving = true;
+    
+    alarm[0] = 45;
 }
 
 function hover()
 {
-    isHovered = true;
+    if (!isHovered)
+    {
+       var numberOfCards = array_length(o_inventory.inventory);
+       var myId = 0
+       for(var i = 0; i < numberOfCards; i++)
+       {
+           if (o_inventory.inventory[i].card == card)
+           {
+               myId = i;
+               break;
+           }
+       }
+       
+        audio_play_sound(Card2, 0, false,0.6,, lerp(0.95, 1.05, i / numberOfCards));
+       
+       isHovered = true;
+    }
 }
 
 function unhover()

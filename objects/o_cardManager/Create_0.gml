@@ -167,7 +167,7 @@ odwazSieBycMadrym = new Card (
 pijanstwoGubiGorzejOdMiecza = new Card (
     "Plures crapula quam gladius perdidit",
     "Pijaństwo gubi gorzej od miecza",
-    "Zabij pijanych",
+    "Zabij wszystkich pijanych",
     SelectType.All,
     function() 
     {
