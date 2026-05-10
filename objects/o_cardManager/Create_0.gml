@@ -714,11 +714,12 @@ nieByloWielkiegoGeniuszuBezDomieszkiSzalenstwa = new Card (
 douczajacSieNieustannieDochodzeDoStarosci = new Card (
     "Assidue addiscens ad senium venio",
     "Douczając się nieustannie dochodzę do starości",
-    "+1 INT, +1 WIEK",
+    "+1 INT, +2 WIEK",
     SelectType.Character,
     function(character) 
     {
         character.int++;
+        character.aging();
         character.aging();
     }
 )
