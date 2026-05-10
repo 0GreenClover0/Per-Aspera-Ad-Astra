@@ -159,6 +159,8 @@ function startRound()
         numberOfCards = 2;
     }
     
+    roundType = irandom_range(0, 1);
+    
     while (array_length(o_inventory.inventory) < numberOfCards)
     {
         o_inventory.add_card();
@@ -167,7 +169,7 @@ function startRound()
     usedCards = 0;
     roundState = RoundState.PickingCards;
     var roundBefore = roundType;
-    roundType = irandom_range(0, 1);
+
     if (roundType != roundBefore)
     {
         audio_play_sound(choose(Bong1, Bong2, Bong3, Bong4, Bong5), 0, false,,, random_range(0.8, 1.2));

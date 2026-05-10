@@ -51,7 +51,47 @@ else
                     }
                 }
                 
-                if (noDuplicate)
+                if (card == o_cardManager.slowaISlowaNicPonadto and o_gameManager.roundType == FightType.Combat)
+                {
+                    card = o_cardManager.jedyniePismo;
+                    noDuplicate = true;
+                    
+                    for (var i = 0; i < array_length(o_inventory.inventory); ++i)
+                    {
+                        if (card == o_inventory.inventory[i].card)
+                        {
+                            noDuplicate = false;
+                            break;
+                        }
+                    }
+                    
+                    if (noDuplicate)
+                    {
+                        pool = requiredPools[0];
+                        break;
+                    }
+                }
+                else if (card == o_cardManager.jedyniePismo and o_gameManager.roundType == FightType.Debate)
+                {
+                    card = o_cardManager.slowaISlowaNicPonadto;
+                    noDuplicate = true;
+                    
+                    for (var i = 0; i < array_length(o_inventory.inventory); ++i)
+                    {
+                        if (card == o_inventory.inventory[i].card)
+                        {
+                            noDuplicate = false;
+                            break;
+                        }
+                    }
+                    
+                    if (noDuplicate)
+                    {
+                        pool = requiredPools[0];
+                        break;
+                    }
+                }
+                else if (noDuplicate)
                 {
                     pool = requiredPools[0];
                     break;
