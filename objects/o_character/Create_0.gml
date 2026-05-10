@@ -54,6 +54,8 @@ idInArray = 0;
 isEntering = true;
 isSkeletor = false;
 
+dataSizeToShow = 2.75;
+
 function hasEffect(effect)
 {
     for (var i = 0; i < array_length(statusEffects); ++i)
@@ -174,7 +176,7 @@ function aging()
     }
 }
 
-function randomizeParameters(baseParametersCap)
+function randomizeParameters(baseParametersCap, tutorial)
 {
     // First initialize random cap at equal contribution.
     // Ex. parameter cap = 12, there are 4 base parameters, each parameter gets a max value of 3.
@@ -230,6 +232,24 @@ function randomizeParameters(baseParametersCap)
                 parametersSum += dex;
                 break;
             }
+        }
+    }
+    
+    if (tutorial)
+    {
+        if (team == Team.Player)
+        {
+            atk = 0;
+            int = 0;
+            hp = 3;
+            def = 2;
+        }
+        else 
+        {
+            atk = 0;
+            int = 3;
+            hp = 2;
+            def = 1;
         }
     }
     

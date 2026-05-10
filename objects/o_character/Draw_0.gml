@@ -24,14 +24,14 @@ var segmentVerticalSpace = (32);
 
 draw_set_colour(c_black);
 draw_set_alpha(0.3);
-draw_rectangle(segmentX - 15 * orientation, segmentY - 20, segmentX - segmentHorizontalSpace * 7.5, segmentY + segmentVerticalSpace + 20, false);
+draw_rectangle(segmentX - 15 * orientation, segmentY - 20, segmentX - segmentHorizontalSpace * dataSizeToShow, segmentY + segmentVerticalSpace + 20, false);
 draw_set_colour(c_white);
 draw_set_alpha(1);
 
 var distToHP = room_width;
 for (var i = 0; i < hp; i++)
 {
-    distToHP = min(distToHP, point_distance(mouse_x, mouse_y, heatX - i * heartSpace + (hp * heartSpace / 2), heatY));
+    distToHP = min(distToHP, point_distance(mouse_x, mouse_y, heatX - i * heartSpace + ((hp - 2.5) * heartSpace / 2), heatY));
     
     var hearthColor = c_white;
     
@@ -60,14 +60,17 @@ draw_text(                      segmentX - segmentHorizontalSpace * 1.5, segment
 draw_sprite_ext(s_statIcons, 1, segmentX - segmentHorizontalSpace * 1.85, segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
 draw_text(                      segmentX - segmentHorizontalSpace * 1.5, segmentY + segmentVerticalSpace, int);
     
-draw_sprite_ext(s_statIcons, 2, segmentX - segmentHorizontalSpace * 3.85, segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
-draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY + segmentVerticalSpace, def);
-
-draw_sprite_ext(s_statIcons, 3, segmentX - segmentHorizontalSpace * 3.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
-draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY, dex);
-
-draw_sprite_ext(s_statIcons, 4, segmentX - segmentHorizontalSpace * 6.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
-draw_text(                      segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/3", age));
+if (o_gameManager.showFullCharData)
+{
+   draw_sprite_ext(s_statIcons, 2, segmentX - segmentHorizontalSpace * 3.85, segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
+   draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY + segmentVerticalSpace, def);
+   
+   draw_sprite_ext(s_statIcons, 3, segmentX - segmentHorizontalSpace * 3.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
+   draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY, dex);
+   
+   draw_sprite_ext(s_statIcons, 4, segmentX - segmentHorizontalSpace * 6.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
+   draw_text(                      segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/3", age));
+}
 
 var distToStatus = room_width;
 var closestStatus = 0;
@@ -83,7 +86,10 @@ for (var i = 0; i < numberOfStatusEffects; i++)
         closestStatus = i;
     }
     
-    draw_sprite_ext(s_statusEffects, statusEffects[i], segmentX - segmentHorizontalSpace * (4.85 + i), segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
+    if (o_gameManager.showFullCharData)
+    {
+        draw_sprite_ext(s_statusEffects, statusEffects[i], segmentX - segmentHorizontalSpace * (4.85 + i), segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
+    }
 }
 
 var distToATK = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 1.85, segmentY);
@@ -100,10 +106,14 @@ if (closestDist < 16)
     if (closestDist == distToHP) {tooltip = "Punkty Życia";}
     if (closestDist == distToATK) {tooltip = "Atak";}
     if (closestDist == distToINT) {tooltip = "Inteligencja";}
-    if (closestDist == distToDEF) {tooltip = "Obrona";}
-    if (closestDist == distToDEX) {tooltip = "Zręczność";}
-    if (closestDist == distToAGE) {tooltip = "Wiek";}
-    if (closestDist == distToStatus) {tooltip = effectToString(statusEffects[closestStatus]);}
+    
+    if (o_gameManager.showFullCharData)
+    {
+      if (closestDist == distToDEF) {tooltip = "Obrona";}
+      if (closestDist == distToDEX) {tooltip = "Zręczność";}
+      if (closestDist == distToAGE) {tooltip = "Wiek";}
+      if (closestDist == distToStatus) {tooltip = effectToString(statusEffects[closestStatus]);}
+    }
     
     draw_set_halign(fa_center);
     var tooltipWidth = string_width(tooltip) / 2;

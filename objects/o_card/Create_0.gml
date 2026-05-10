@@ -7,27 +7,36 @@ if (!o_cardManager.astraDrawn and random_range(0, 100) < chancePerAstra)
 }
 else
 {
-    var index = irandom(array_length(o_cardManager.cardTypes) - 1);
-    while (true)
+    if (!o_gameManager.showFullCharData)
     {
-        card = o_cardManager.cardTypes[index];
+        var arr = [o_cardManager.powtarzamCoUslyszakem, o_cardManager.zycieJestWalka];
         
-        var noDuplicate = true;
-        for (var i = 0; i < array_length(o_inventory.inventory); ++i)
-        {
-            if (card == o_inventory.inventory[i].card)
-            {
-                noDuplicate = false;
-                break;
-            }
-        }
-        
-        if (noDuplicate)
-        {
-            break;
-        }
-        
-        index = (index + 1) % array_length(o_cardManager.cardTypes);
+        card = arr[instance_number(o_card) - 1];
+    }
+    else 
+    {
+       var index = irandom(array_length(o_cardManager.cardTypes) - 1);
+       while (true)
+       {
+           card = o_cardManager.cardTypes[index];
+           
+           var noDuplicate = true;
+           for (var i = 0; i < array_length(o_inventory.inventory); ++i)
+           {
+               if (card == o_inventory.inventory[i].card)
+               {
+                   noDuplicate = false;
+                   break;
+               }
+           }
+           
+           if (noDuplicate)
+           {
+               break;
+           }
+           
+           index = (index + 1) % array_length(o_cardManager.cardTypes);
+       }
     }
 }
 
@@ -48,6 +57,8 @@ function pick()
 {
     newX = room_width / 2;
     newY = room_height / 2 - room_height * 0.1;
+    
+    o_gameManager.showGuide = true;
 }
 
 function use()

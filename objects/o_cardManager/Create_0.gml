@@ -93,7 +93,7 @@ kazdyUlegaSwoimNamietnosciom = new Card (
 zycieJestWalka = new Card (
     "Vivere militare est",
     "Życie jest walką",
-    "Ustawia ATK na HP",
+    "Ustawia ATK na wartość HP",
     SelectType.Character,
     function(character) 
     {
@@ -116,7 +116,7 @@ nienawidzeIKocham = new Card (
 zycieSlowoKsztalci = new Card (
     "Viva vox docet",
     "Życie słowo kształci",
-    "Ustawia INT na HP",
+    "Ustawia INT na wartość HP",
     SelectType.Character,
     function(character) 
     {
@@ -140,11 +140,11 @@ jedyniePismo = new Card (
 powtarzamCoUslyszakem = new Card (
     "Relata refero",
     "Powtarzam, co usłyszałem",
-    "Skopiuj INT",
+    "Skopiuj INT (OD - DO)",
     SelectType.Duo,
     function(character1, character2) 
     {
-        character1.int = character2.int;
+        character2.int = character1.int;
     },
     c_sea,
     2
@@ -756,7 +756,7 @@ nieJestMadryKtoNieJestCierpliwy = new Card (
 bezMilosciNieMaZycia = new Card (
     "Sine amore nihil est vita",
     "Bez miłości nie ma życia",
-    "Wszyscy niezakochani umierają",
+    "Wszyscy niezakochani -1 HP",
     SelectType.All,
     function() 
     {
@@ -767,7 +767,7 @@ bezMilosciNieMaZycia = new Card (
         {
             if (!o_gameManager.playerCharacters[i].hasEffect(StatusEffect.InLove))
             {
-                o_gameManager.kill(o_gameManager.playerCharacters[i])
+                o_gameManager.playerCharacters[i].hp -= 2;
             }
         }
         
@@ -775,7 +775,7 @@ bezMilosciNieMaZycia = new Card (
         {
             if (!o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.InLove))
             {
-                o_gameManager.kill(o_gameManager.enemiesCharacters[i])
+                o_gameManager.enemiesCharacters[i].hp -= 2;
             }
         }
     },

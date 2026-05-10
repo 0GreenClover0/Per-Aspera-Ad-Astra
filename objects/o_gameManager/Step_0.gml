@@ -91,7 +91,12 @@ if (roundState == RoundState.Visualization and o_inventory.yHide > 399)
 
 if (array_length(enemiesCharacters) <= 0)
 {
-    showPercent = true;
+    if (!showPercent)
+    {
+        showPercent = true;
+        spawnPlayerCharacters(2);
+    }
+    
     o_cardManager.chancesForAstra += 1;
     
     startNewWave();
@@ -266,4 +271,13 @@ var numberOfEnemies = array_length(enemiesCharacters);
 for (var i = 0; i < numberOfEnemies; i++)
 {
     enemiesCharacters[i].idInArray = i;
+}
+
+if (instance_number(o_card) == 0 and !showFullCharData)
+{
+    showFullCharData = true;
+    showTopBar = true;
+    
+    startRound();
+    usedCards = 2;
 }

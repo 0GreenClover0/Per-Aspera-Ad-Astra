@@ -6,11 +6,26 @@ draw_sprite_ext(s_topBar, 0, room_width / 2, sententionY, 0.9, 1, 0, c_white, 1)
 
 if (!isMenu)
 {
-    battleY = lerp(battleY, battleYTarget, 0.05);
-    debateY = lerp(debateY, debateYTarget, 0.05);
-    sententionY = lerp(sententionY, 35, 0.05);
     titleY = lerp(titleY, -165, 0.05);
     creditsY = lerp(creditsY, 40, 0.05);
+}
+
+if (showTopBar)
+{
+    battleY = lerp(battleY, battleYTarget, 0.05);
+    debateY = lerp(debateY, debateYTarget, 0.05);
+}
+
+if (showGuide)
+{
+    if (!showFullCharData)
+    {
+        sententionY = lerp(sententionY, 60, 0.05);
+    }
+    else 
+    {
+    	sententionY = lerp(sententionY, 35, 0.05);
+    }
 }
 
 if (showPercent)
@@ -56,6 +71,22 @@ if (usedCards == 3)
         sentenceCounter = string_replace(sentenceCounter, "[D]", "      ");
         sentenceCounter = string_replace(sentenceCounter, "[H]", "      ");
     }
+}
+
+if (!showFullCharData)
+{
+    sentenceCounter = "Wybierz \nsentencję!";
+    
+    if (selectType == SelectType.Duo)
+    {
+        sentenceCounter = "Wybierz dwóch \nwojowników!";
+    }
+    
+    if (selectType == SelectType.Character)
+    {
+        sentenceCounter = "Wybierz \nwojownika!";
+    }
+    draw_set_valign(fa_bottom);
 }
 
 draw_text(room_width / 2, sententionY + 25, sentenceCounter);

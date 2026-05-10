@@ -10,7 +10,10 @@ titleY = h_to_gui(camera_get_view_height(view_camera[0]) * 3 / 15);
 creditsY = 0;
 textFightOrDebate = "";
 
+showTopBar = false;
 showPercent = false;
+showFullCharData = false;
+showGuide = false;
 
 function x_to_gui(xx)
 {
@@ -88,17 +91,17 @@ percentY = -165;
 
 textCombatOrDebate = "";
 
-spawnPlayerCharacters();
+spawnPlayerCharacters(1);
 startNewWave();
 
-function spawnPlayerCharacters()
+function spawnPlayerCharacters(howMany = 3)
 {
     var rowMultiply = 0;
-    for (var i = 0; i < 3; ++i)
+    for (var i = 0; i < howMany; ++i)
     {
         var characterInstance = instance_create_depth(playerColumn - rowMultiply * 1500, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Player;
-        characterInstance.randomizeParameters(10);
+        characterInstance.randomizeParameters(10, true);
         characterInstance.startY = startRow + rowIncrement * rowMultiply;
         characterInstance.vizualizationY = startRow + rowIncrement * rowMultiply + 100;
         characterInstance.idInArray = i;
@@ -111,6 +114,11 @@ function spawnPlayerCharacters()
 function startNewWave()
 {
     var enemiesCount = irandom_range(minEnemies, maxEnemies);
+    
+    if (!showFullCharData)
+    {
+        enemiesCount = 1;
+    }
     
     var maxHp = 0;
     var maxAtk = 0;
@@ -132,7 +140,7 @@ function startNewWave()
         var characterInstance = instance_create_depth(enemyColumn + rowMultiply * 1500, startRow + rowIncrement * rowMultiply, 1, o_character);
         characterInstance.team = Team.Enemy;
         characterInstance.orientation = -1;
-        characterInstance.randomizeParameters(maxHp + maxAtk + maxDef + maxInt + maxDex);
+        characterInstance.randomizeParameters(maxHp + maxAtk + maxDef + maxInt + maxDex, !showFullCharData);
         characterInstance.startY = startRow + rowIncrement * rowMultiply;
         characterInstance.vizualizationY = startRow + rowIncrement * rowMultiply + 100;
         characterInstance.idInArray = i;
@@ -144,7 +152,14 @@ function startNewWave()
 
 function startRound()
 {
-    while (array_length(o_inventory.inventory) < 5)
+    var numberOfCards = 5;
+    
+    if (!showFullCharData)
+    {
+        numberOfCards = 2;
+    }
+    
+    while (array_length(o_inventory.inventory) < numberOfCards)
     {
         o_inventory.add_card();
     }
