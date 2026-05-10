@@ -1,9 +1,11 @@
 var chancePerAstra = o_cardManager.getAstraChancePerCard();
 
+pool = -1
+
 if (!o_cardManager.astraDrawn and random_range(0, 100) < chancePerAstra)
 {
     card = o_cardManager.przezTrudyDoGwiazd;
-    astraDrawn = true;
+    o_cardManager.astraDrawn = true;
 }
 else
 {
@@ -15,28 +17,74 @@ else
     }
     else 
     {
-       var index = irandom(array_length(o_cardManager.cardTypes) - 1);
-       while (true)
-       {
-           card = o_cardManager.cardTypes[index];
-           
-           var noDuplicate = true;
-           for (var i = 0; i < array_length(o_inventory.inventory); ++i)
-           {
-               if (card == o_inventory.inventory[i].card)
-               {
-                   noDuplicate = false;
-                   break;
-               }
-           }
-           
-           if (noDuplicate)
-           {
-               break;
-           }
-           
-           index = (index + 1) % array_length(o_cardManager.cardTypes);
-       }
+        // Search which pools are not satisifed currently.
+        var requiredPools = variable_clone(o_cardManager.requiredPools);
+        for (var i = 0; i < array_length(o_inventory.inventory); i++)
+        {
+            if (o_inventory.inventory[i].pool != -1)
+            {
+                for (var k = 0; k < array_length(requiredPools); k++)
+                {
+                    if (o_inventory.inventory[i].pool == requiredPools[k])
+                    {
+                        array_delete(requiredPools, k, 1);
+                    }
+                }
+            }
+        }
+        
+        // Pick the first unsitisfied pool if it exists, otherwise pick a wildcard.
+        if (array_length(requiredPools) > 0)
+        {
+            var index = irandom(array_length(o_cardManager.cardPools[requiredPools[0]]) - 1);
+            while (true)
+            {
+                card = o_cardManager.cardPools[requiredPools[0]][index];
+                
+                var noDuplicate = true;
+                for (var i = 0; i < array_length(o_inventory.inventory); ++i)
+                {
+                    if (card == o_inventory.inventory[i].card)
+                    {
+                        noDuplicate = false;
+                        break;
+                    }
+                }
+                
+                if (noDuplicate)
+                {
+                    pool = requiredPools[0];
+                    break;
+                }
+                
+                index = (index + 1) % array_length(o_cardManager.cardPools[requiredPools[0]]);
+            }
+        }
+        else
+        {
+            var index = irandom(array_length(o_cardManager.cardTypes) - 1);
+            while (true)
+            {
+                card = o_cardManager.cardTypes[index];
+                
+                var noDuplicate = true;
+                for (var i = 0; i < array_length(o_inventory.inventory); ++i)
+                {
+                    if (card == o_inventory.inventory[i].card)
+                    {
+                        noDuplicate = false;
+                        break;
+                    }
+                }
+                
+                if (noDuplicate)
+                {
+                    break;
+                }
+                
+                index = (index + 1) % array_length(o_cardManager.cardTypes);
+            }
+        }
     }
 }
 

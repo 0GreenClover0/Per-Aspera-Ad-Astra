@@ -9,6 +9,8 @@ c_gold = make_colour_rgb(224, 205, 94);
 c_sea = make_colour_rgb(96, 219, 137);
 c_tie = make_colour_rgb(215, 123, 186);
 
+requiredPools = [0, 1, 2, 2];
+
 function getAstraChancePerCard()
 {
     return chancesForAstra * perRoundIncrease;
@@ -982,3 +984,17 @@ array_push(cardTypes,
     dzielIRzadz,
     niespelnaRozumu
 )
+
+cardPools = [
+    [pijanstwoGubiGorzejOdMiecza, alboZwyciezacAlboUmierac, jedenZaWszystkich,
+     zycieBezNaukiSmierciaJest, niechPijeAlboNiechSobieIdzie, pamietajOSmierci, ktoMieczemWojujeOdMieczaGinie,
+     poSmierciNieCzasNaPrzyjemnosci],
+    [trzezwoscJestStanemPrzejsciowym, poraPic, kazdyUlegaSwoimNamietnosciom, nienawidzeIKocham, winoRozpalaGniew,
+     zakochaniSaJakSzalency, czystaTablica, miloscDlaWszystkichJednaka],
+    [zycieJestWalka, zycieSlowoKsztalci, jedyniePismo, powtarzamCoUslyszakem, odwazSieBycMadrym,
+     brodaRosnieRozumuNiePrzybywa, slowaISlowaNicPonadto, najlepszymLekarstwemJestSpokoj, toCoSzkodziUczy,
+     miloscNajlepszymNauczycielem, okoZaOkoZabZaZab, zdrowieChoregoNajwyzszymPrawem, uPrzyjaciolWszystkoJestWspolne,
+     ostrzezonyUzbrojony, wiemZeNicNieWiem, kazdyKtoSieWywyzszaBedziePonizony, douczajacSieNieustannieDochodzeDoStarosci,
+     miloscJestIstotazycia, zadenWiekNieJestDoNaukiZbytPozny, rozumWyzszyNizSila, nieJestMadryKtoNieJestCierpliwy,
+     bezMilosciNieMaZycia, odSlowDoRekoczynow, zlotySrodek, przybywaLatUbywaSil, dzielIRzadz, niespelnaRozumu],
+];
