@@ -55,21 +55,21 @@ if (orientation == -1)
 draw_set_valign(fa_middle);
 
 draw_sprite_ext(s_statIcons, 0, segmentX - segmentHorizontalSpace * 1.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
-draw_text(                      segmentX - segmentHorizontalSpace * 1.5, segmentY, atk);
+draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 1.5, segmentY, atk, atkScale, atkScale, 0, atkColor, atkColor, atkColor, atkColor, 1);
 
 draw_sprite_ext(s_statIcons, 1, segmentX - segmentHorizontalSpace * 1.85, segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
-draw_text(                      segmentX - segmentHorizontalSpace * 1.5, segmentY + segmentVerticalSpace, int);
+draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 1.5, segmentY + segmentVerticalSpace, int, intScale, intScale, 0, intColor, intColor, intColor, intColor, 1);
     
 if (o_gameManager.showFullCharData)
 {
    draw_sprite_ext(s_statIcons, 2, segmentX - segmentHorizontalSpace * 3.85, segmentY + segmentVerticalSpace, orientation / 2, 0.5, 0, c_white, 1);
-   draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY + segmentVerticalSpace, def);
+   draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 3.5, segmentY + segmentVerticalSpace, def, defScale, defScale, 0, defColor, defColor, defColor, defColor, 1);
    
    draw_sprite_ext(s_statIcons, 3, segmentX - segmentHorizontalSpace * 3.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
-   draw_text(                      segmentX - segmentHorizontalSpace * 3.5, segmentY, dex);
+   draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 3.5, segmentY, dex, dexScale, dexScale, 0, dexColor, dexColor, dexColor, dexColor, 1);
    
    draw_sprite_ext(s_statIcons, 4, segmentX - segmentHorizontalSpace * 6.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
-   draw_text(                      segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/3", age));
+   draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/3", age), ageScale, ageScale, 0, ageColor, ageColor, ageColor, ageColor, 1);
 }
 
 var distToStatus = room_width;

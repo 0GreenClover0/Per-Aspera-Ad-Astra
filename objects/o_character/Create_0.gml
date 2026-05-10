@@ -56,10 +56,23 @@ isSkeletor = false;
 
 dataSizeToShow = 2.75;
 
-if (choose(true, false, false))
-{
-    addEffect(irandom_range(0, 2));
-}
+intColor = c_white;
+atkColor = c_white;
+defColor = c_white;
+dexColor = c_white;
+ageColor = c_white;
+
+intScale = 1;
+atkScale = 1;
+defScale = 1;
+dexScale = 1;
+ageScale = 1;
+
+intBefore = 0;
+atkBefore = 0;
+defBefore = 0;
+dexBefore = 0;
+ageBefore = 0;
 
 function hasEffect(effect)
 {
