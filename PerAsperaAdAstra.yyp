@@ -36,6 +36,7 @@
   },
   "name":"PerAsperaAdAstra",
   "resources":[
+    {"id":{"name":"f_credits","path":"fonts/f_credits/f_credits.yy",},},
     {"id":{"name":"f_latin","path":"fonts/f_latin/f_latin.yy",},},
     {"id":{"name":"f_latinMenu","path":"fonts/f_latinMenu/f_latinMenu.yy",},},
     {"id":{"name":"o_card","path":"objects/o_card/o_card.yy",},},

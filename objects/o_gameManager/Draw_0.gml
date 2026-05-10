@@ -11,6 +11,7 @@ if (!isMenu)
     sententionY = lerp(sententionY, 35, 0.05);
     percentY = lerp(percentY, 10, 0.05);
     titleY = lerp(titleY, -165, 0.05);
+    creditsY = lerp(creditsY, 40, 0.05);
 }
 
 

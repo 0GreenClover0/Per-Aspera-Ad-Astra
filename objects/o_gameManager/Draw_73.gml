@@ -25,6 +25,14 @@ for (var i = 1; i <= string_length(title); i++) {
     draw_set_color(c_black)
     draw_text(startX + offsetX + 10, baseY + waveOffset + 10, letter);
     draw_set_color(c_white)
+    draw_set_font(f_credits)
+    draw_set_halign(fa_center);
+    draw_set_valign(fa_middle);
+    draw_text(room_width / 2, room_height - 20 + creditsY, "Game by: Miłosz Kawczyński & Mikołaj Przybylski");
+    draw_set_font(f_latinMenu);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_top);
+    draw_set_color(c_white)
     draw_text(startX + offsetX, baseY + waveOffset, letter);
     draw_set_color(c_white)
     offsetX += letterWidht;

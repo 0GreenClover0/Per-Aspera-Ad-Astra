@@ -7,6 +7,7 @@ enemiesCharacters = [];
 
 particleSystems = [];
 titleY = h_to_gui(camera_get_view_height(view_camera[0]) * 3 / 15);
+creditsY = 0;
 textFightOrDebate = "";
 
 function x_to_gui(xx)
