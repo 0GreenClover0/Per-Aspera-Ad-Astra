@@ -22,8 +22,8 @@
     {"$GMFolder":"","%Name":"damage","folderPath":"folders/Sounds/damage.yy","name":"damage","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"death","folderPath":"folders/Sounds/death.yy","name":"death","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"drink","folderPath":"folders/Sounds/drink.yy","name":"drink","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"skeleton","folderPath":"folders/Sounds/skeleton.yy","name":"skeleton","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"kiss","folderPath":"folders/Sounds/kiss.yy","name":"kiss","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"skeleton","folderPath":"folders/Sounds/skeleton.yy","name":"skeleton","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Sprites","folderPath":"folders/Sprites.yy","name":"Sprites","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
@@ -80,6 +80,7 @@
     {"id":{"name":"Death3","path":"sounds/Death3/Death3.yy",},},
     {"id":{"name":"Drink","path":"sounds/Drink/Drink.yy",},},
     {"id":{"name":"Love1","path":"sounds/Love1/Love1.yy",},},
+    {"id":{"name":"music","path":"sounds/music/music.yy",},},
     {"id":{"name":"SkeletonDamage1","path":"sounds/SkeletonDamage1/SkeletonDamage1.yy",},},
     {"id":{"name":"SkeletonDamage2","path":"sounds/SkeletonDamage2/SkeletonDamage2.yy",},},
     {"id":{"name":"SkeletonDamage3","path":"sounds/SkeletonDamage3/SkeletonDamage3.yy",},},
