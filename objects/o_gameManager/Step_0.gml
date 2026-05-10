@@ -81,15 +81,18 @@ if (usedCards >= 3 and roundState == RoundState.PickingCards)
 
 if (roundState == RoundState.Visualization and o_inventory.yHide > 399)
 {
-    runEvent(fightEvents[0]);
-    
-    if (array_length(fightEvents) <= 0)
+    if (array_length(fightEvents) > 0)
     {
-        startRound();
+        runEvent(fightEvents[0]);
+        
+        if (array_length(fightEvents) <= 0)
+        {
+            startRound();
+        }
     }
 }
 
-if (array_length(enemiesCharacters) <= 0)
+if (array_length(enemiesCharacters) <= 0 and array_length(playerCharacters) > 0)
 {
     if (!showPercent)
     {
