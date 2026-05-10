@@ -71,25 +71,43 @@ if (usedCards == 3)
         sentenceCounter = string_replace(sentenceCounter, "[D]", "      ");
         sentenceCounter = string_replace(sentenceCounter, "[H]", "      ");
     }
-}
-
-if (!showFullCharData)
-{
-    sentenceCounter = "Wybierz \nsentencję!";
     
+    draw_text_transformed(room_width / 2, sententionY + 25, sentenceCounter, 1, 1, 0);
+}
+else 
+{
+    if (!showFullCharData)
+    {
+        sentenceCounter = "Wybierz sentencję!";
+    }
+        
     if (selectType == SelectType.Duo)
     {
-        sentenceCounter = "Wybierz dwóch \nwojowników!";
+        sentenceCounter = "Wybierz 2 wojowników!";
     }
     
     if (selectType == SelectType.Character)
     {
-        sentenceCounter = "Wybierz \nwojownika!";
+        sentenceCounter = "Wybierz wojownika!";
     }
-    draw_set_valign(fa_bottom);
+    
+    if (selectType == SelectType.Team)
+    {
+        sentenceCounter = "Wybierz drużynę!";
+    }
+    
+    if (selectType == SelectType.Player)
+    {
+        sentenceCounter = "Wybierz bohatera!";
+    }
+    
+    if (selectType == SelectType.Opponent)
+    {
+        sentenceCounter = "Wybierz wroga!";
+    }
+    
+    draw_text_transformed(room_width / 2, sententionY + 25, sentenceCounter, 0.83, 0.83, 0);
 }
-
-draw_text(room_width / 2, sententionY + 25, sentenceCounter);
 
 
 draw_set_halign(fa_right);

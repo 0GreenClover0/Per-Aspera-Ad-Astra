@@ -134,7 +134,9 @@ jedyniePismo = new Card (
         o_gameManager.roundType = FightType.Debate;
         audio_play_sound(choose(Bong1, Bong2, Bong3, Bong4, Bong5), 0, false,,, random_range(0.8, 1.2));
         o_gameManager.rewriteTextCombatOrDebate();
-    }
+    },
+    c_gold,
+    1
 )
 
 powtarzamCoUslyszakem = new Card (
@@ -215,7 +217,9 @@ slowaISlowaNicPonadto = new Card (
         o_gameManager.roundType = FightType.Combat;
         audio_play_sound(choose(Bong1, Bong2, Bong3, Bong4, Bong5), 0, false,,, random_range(0.8, 1.2));
         o_gameManager.rewriteTextCombatOrDebate();
-    }
+    },
+    c_gold,
+    1 
 )
 
 poSmierciNieCzasNaPrzyjemnosci = new Card (
