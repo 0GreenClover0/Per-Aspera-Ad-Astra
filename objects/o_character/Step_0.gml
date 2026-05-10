@@ -38,7 +38,7 @@ if (!o_gameManager.isMenu)
     vizualizationY = o_gameManager.startRow + o_gameManager.rowIncrement * idInArray + 100;
 }
 
-if (age > 3)
+if (age > 2)
 {
     o_gameManager.kill(self);
 }

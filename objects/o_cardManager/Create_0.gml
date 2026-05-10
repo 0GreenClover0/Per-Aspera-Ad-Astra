@@ -757,7 +757,7 @@ miloscJestIstotazycia = new Card (
 zadenWiekNieJestDoNaukiZbytPozny = new Card (
     "Nulla aetas ad discendum sera",
     "Żaden wiek nie jest do nauki zbyt późny",
-    "+1 INT jeśli WIEK > 1",
+    "+1 INT jeśli WIEK > 0",
     SelectType.All,
     function() 
     {
@@ -766,7 +766,7 @@ zadenWiekNieJestDoNaukiZbytPozny = new Card (
         
         for (var i = 0; i < numberOfPlayers; i++)
         {
-            if (o_gameManager.playerCharacters[i].age > 1)
+            if (o_gameManager.playerCharacters[i].age > 0)
             {
                 o_gameManager.playerCharacters[i].int++;
             }
@@ -774,7 +774,7 @@ zadenWiekNieJestDoNaukiZbytPozny = new Card (
         
         for (var i = 0; i < numberOfEnemies; i++)
         {
-            if (o_gameManager.enemiesCharacters[i].age > 1)
+            if (o_gameManager.enemiesCharacters[i].age > 0)
             {
                 o_gameManager.enemiesCharacters[i].int++;
             }

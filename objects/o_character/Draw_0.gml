@@ -69,7 +69,7 @@ if (o_gameManager.showFullCharData)
    draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 3.5, segmentY, dex, dexScale, dexScale, 0, dexColor, dexColor, dexColor, dexColor, 1);
    
    draw_sprite_ext(s_statIcons, 4, segmentX - segmentHorizontalSpace * 6.85, segmentY, orientation / 2, 0.5, 0, c_white, 1);
-   draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/3", age), ageScale, ageScale, 0, ageColor, ageColor, ageColor, ageColor, 1);
+   draw_text_transformed_colour(   segmentX - segmentHorizontalSpace * 6.5, segmentY, string("{0}/2", age), ageScale, ageScale, 0, ageColor, ageColor, ageColor, ageColor, 1);
 }
 
 var distToStatus = room_width;

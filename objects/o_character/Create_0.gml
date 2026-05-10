@@ -213,7 +213,7 @@ function aging()
 {
     age++;
     
-    if (age > 3)
+    if (age > 2)
     {
         o_gameManager.kill(self);
     }
