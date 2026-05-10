@@ -211,7 +211,7 @@ if (roundState != RoundState.Visualization and selectType != undefined and cardE
     }
 }
 
-if (keyboard_check_pressed(vk_anykey))
+if (isMenu and (keyboard_check_pressed(vk_anykey) or mouse_check_button_pressed(mb_any)))
 {
     isMenu = false;
     o_inventory.arrange();
