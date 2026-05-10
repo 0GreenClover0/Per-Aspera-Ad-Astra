@@ -643,6 +643,147 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
     }
 )
 
+miloscJestIstotazycia = new Card (
+    "Amor est vitae essentia",
+    "Miłość jest istotą życia",
+    "+1 HP jeśli ma status zakochany",
+    SelectType.All,
+    function() 
+    {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.playerCharacters[i].hp++;
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.enemiesCharacters[i].hp++;
+            }
+        }
+    },
+    c_gold,
+    1
+)
+
+zadenWiekNieJestDoNaukiZbytPozny = new Card (
+    "Nulla aetas ad discendum sera",
+    "Żaden wiek nie jest do nauki zbyt późny",
+    "+1 INT jeśli WIEK równy 3",
+    SelectType.All,
+    function() 
+    {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            if (o_gameManager.playerCharacters[i].age == 3)
+            {
+                o_gameManager.playerCharacters[i].int++;
+            }
+        }
+        
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            if (o_gameManager.enemiesCharacters[i].age == 3)
+            {
+                o_gameManager.enemiesCharacters[i].int++;
+            }
+        }
+    },
+    c_gold,
+    1
+)
+
+rozumWyzszyNizSila = new Card (
+    "Plus ratio quam vis",
+    "Rozum wyższy niż siła",
+    "+1 INT, -1 ATK",
+    SelectType.Character,
+    function(character) 
+    {
+        character.int++;
+        character.atk--;
+    }
+)
+
+nieJestMadryKtoNieJestCierpliwy = new Card (
+    "Nemo sapiens nisi patiens",
+    "Nie jest mądry, kto nie jest cierpliwy",
+    "-1 INT dla wojowników z najwyższą ZR",
+    SelectType.All,
+    function() 
+    {
+        var highestValue = 0;
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+    
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            highestValue = max(highestValue, player.dex);
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            highestValue = max(highestValue, enemy.dex);
+        }
+        
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            if (player.dex == highestValue) {player.int--;}
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            if (enemy.dex == highestValue) {enemy.int--;}
+        }
+    },
+    c_gold,
+    1
+)
+
+bezMilosciNieMaZycia = new Card (
+    "Sine amore nihil est vita",
+    "Bez miłości nie ma życia",
+    "Wszyscy niezakochani umierają",
+    SelectType.All,
+    function() 
+    {
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+        
+        for (var i = numberOfPlayers - 1; i >= 0; i--)
+        {
+            if (!o_gameManager.playerCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.kill(o_gameManager.playerCharacters[i])
+            }
+        }
+        
+        for (var i = numberOfEnemies - 1; i >= 0; i--)
+        {
+            if (!o_gameManager.enemiesCharacters[i].hasEffect(StatusEffect.InLove))
+            {
+                o_gameManager.kill(o_gameManager.enemiesCharacters[i])
+            }
+        }
+    },
+    c_gold,
+    1
+)
+
 //TODO: Wygrana or smth;
 przezTrudyDoGwiazd = new Card (
     "Per Aspera Ad Astra",
@@ -653,6 +794,56 @@ przezTrudyDoGwiazd = new Card (
     {
         game_end();
     }
+)
+
+pamietajOSmierci = new Card (
+    "Memento mori",
+    "Pamiętaj o śmierci",
+    "Natychmiast zabij cel",
+    SelectType.Character,
+    function(character) 
+    {
+        o_gameManager.kill(character);
+    }
+)
+
+ktoMieczemWojujeOdMieczaGinie = new Card (
+    "Qui gladio ferit, gladio perit",
+    "Kto mieczem wojuje, od miecza ginie",
+    "Giną wojownicy z największym ATK",
+    SelectType.All,
+    function() 
+    {
+        var highestValue = 0;
+        var numberOfPlayers = array_length(o_gameManager.playerCharacters);
+        var numberOfEnemies = array_length(o_gameManager.enemiesCharacters);
+    
+        for (var i = 0; i < numberOfPlayers; i++)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            highestValue = max(highestValue, player.atk);
+        }
+    
+        for (var i = 0; i < numberOfEnemies; i++)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            highestValue = max(highestValue, enemy.atk);
+        }
+        
+        for (var i = numberOfPlayers - 1; i >= 0; i--)
+        {
+            var player = o_gameManager.playerCharacters[i];
+            if (player.atk == highestValue) {o_gameManager.kill(player)}
+        }
+    
+        for (var i = numberOfEnemies - 1; i >= 0; i--)
+        {
+            var enemy = o_gameManager.enemiesCharacters[i];
+            if (enemy.atk == highestValue) {o_gameManager.kill(player)}
+        }
+    },
+    c_gold,
+    1
 )
 
 array_push(cardTypes,
@@ -686,4 +877,11 @@ array_push(cardTypes,
     wiemZeNicNieWiem,
     kazdyKtoSieWywyzszaBedziePonizony,
     douczajacSieNieustannieDochodzeDoStarosci,
+    miloscJestIstotazycia,
+    zadenWiekNieJestDoNaukiZbytPozny,
+    rozumWyzszyNizSila,
+    nieJestMadryKtoNieJestCierpliwy,
+    pamietajOSmierci,
+    ktoMieczemWojujeOdMieczaGinie,
+    bezMilosciNieMaZycia
 )

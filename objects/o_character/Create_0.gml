@@ -84,6 +84,11 @@ function addEffect(effect)
         audio_play_sound(choose(Anger1, Anger2, Anger3), 0, false,,, random_range(0.8, 1.2));
     }
     
+    if (effect == StatusEffect.InLove)
+    {
+        audio_play_sound(choose(Love1), 0, false,,, random_range(0.8, 1.2));
+    }
+    
     return true;
 }
 

@@ -206,6 +206,8 @@ function runEvent(event)
                 part_system_position(particlesDMG, event.whom.x, event.whom.y);
                 part_system_depth(particlesDMG, -999999);
                 array_push(particleSystems, particlesDMG);
+                
+                audio_play_sound(choose(Damage1, Damage2, Damage3), 0, false,,, random_range(0.8, 1.2));
             }
             
             if (choose(false, true))
