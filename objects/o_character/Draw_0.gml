@@ -99,10 +99,10 @@ var distToDEX = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpa
 var distToAGE = point_distance(mouse_x, mouse_y, segmentX - segmentHorizontalSpace * 6.85, segmentY);
 
 var closestDist = min(distToHP, distToATK, distToINT, distToDEF, distToDEX, distToAGE, distToStatus);
+tooltip = "";
 
 if (closestDist < 16)
 {
-    var tooltip = "";
     if (closestDist == distToHP) {tooltip = "Punkty Życia";}
     if (closestDist == distToATK) {tooltip = string("Atak: {0}\n{1}", atk, hasEffect(StatusEffect.Angry) ? " +2 (wściekły)" : "");}
     if (closestDist == distToINT) {tooltip = string("Inteligencja: {0}\n{1}", int, hasEffect(StatusEffect.Drunk) ? " -1 (pijany)" : "");}
@@ -132,30 +132,4 @@ if (closestDist < 16)
             }
         }
     }
-    
-    draw_set_halign(fa_center);
-    var tooltipWidth = string_width(tooltip) / 2;
-    var tooltipHeigh = string_height(tooltip) / 2;
-    draw_set_colour(c_black);
-    draw_set_alpha(0.5);
-    
-    var tooltipMinX = mouse_x - tooltipWidth * 1.1;
-    var tooltipMaxX = mouse_x + tooltipWidth * 1.1;
-    
-    var shiftX = 0;
-    while(tooltipMinX + shiftX < 0)
-    {
-        shiftX++;
-    }
-    
-    while(tooltipMaxX + shiftX > room_width)
-    {
-        shiftX--;
-    }
-    
-    
-    draw_rectangle(tooltipMinX + shiftX, mouse_y + 30 - tooltipHeigh * 1.1, tooltipMaxX + shiftX, mouse_y + 30 + tooltipHeigh * 1.1, false);
-    draw_set_colour(c_white);
-    draw_set_alpha(1);
-    draw_text(mouse_x + shiftX, mouse_y + 30, tooltip);
 }
