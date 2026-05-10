@@ -453,19 +453,16 @@ uPrzyjaciolWszystkoJestWspolne = new Card (
     SelectType.Duo,
     function(character1, character2) 
     {
-        var avgHP = ceil((character1.hp + character2.hp) / 2);
         var avgATK = ceil((character1.atk + character2.atk) / 2);
         var avgINT = ceil((character1.int + character2.int) / 2);
         var avgDEF = ceil((character1.def + character2.def) / 2);
         var avgDEX = ceil((character1.dex + character2.dex) / 2);
         
-        character1.hp = avgHP;
         character1.atk = avgATK;
         character1.int = avgINT;
         character1.def = avgDEF;
         character1.dex = avgDEX;
         
-        character2.hp = avgHP;
         character2.atk = avgATK;
         character2.int = avgINT;
         character2.def = avgDEF;
