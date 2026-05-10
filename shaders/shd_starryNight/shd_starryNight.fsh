@@ -3,11 +3,12 @@ varying vec2 v_vTexcoord;
 uniform highp float u_time;
 uniform       vec2  u_screen_size; // pass display_get_width/height from GML
 uniform float u_alpha;
+uniform float u_frequency_start;
 
 // ── Hardcoded values (from original uniforms) ────────────────────────────────
 const float HORIZONTAL_MOVEMENT = 0.1;
 const float VERTICAL_MOVEMENT   = 0.1;
-const float FREQUENCY_STAR      = 0.02;   // prob = 1.0 - 0.1 = 0.9
+//const float FREQUENCY_STAR      = 0.02;   // prob = 1.0 - 0.1 = 0.9
 const float SIZE_STAR           = 50.0;
 const float BRIGHTNESS_STAR     = 3.0;
 const float SHINE_FREQ_STAR     = 8.0;
@@ -40,7 +41,7 @@ void main() {
     vec2 fragcoord = v_vTexcoord * u_screen_size;
     vec2 screen_uv = v_vTexcoord;
 
-    float prob    = 1.0 - FREQUENCY_STAR;
+    float prob    = 1.0 - u_frequency_start;
     float travelx = u_time * HORIZONTAL_MOVEMENT;
     float travely = u_time * VERTICAL_MOVEMENT;
     float color   = 0.0;

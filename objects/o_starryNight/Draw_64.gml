@@ -10,6 +10,16 @@ shader_set(shd);
 shader_set_uniform_f(u_time, current_time / 1000.0);
 shader_set_uniform_f(u_screen_size, display_get_gui_width(), display_get_gui_height());
 shader_set_uniform_f(u_alpha, alpha);
+
+if (o_cardManager.astraDrawn)
+{
+    shader_set_uniform_f(u_frequency_start, 0.02);
+}
+else
+{
+    shader_set_uniform_f(u_frequency_start, 0.0);
+}
+
 draw_rectangle_color(x, y, display_get_gui_width() + x, display_get_gui_height() + y, c_white, c_white, c_white, c_white, false);
 shader_reset();
 surface_reset_target();
@@ -48,11 +58,24 @@ for (var i = 1; i <= string_length(title); i++) {
     draw_set_valign(fa_middle);
     draw_set_font(f_latin);
     draw_set_color(c_black)
-    draw_text(room_width / 2 + 5, baseY + 205, "T h a n k s   f o r   p l a y i n g");
-    draw_text(room_width / 2 + 5, baseY + 265, "R   t o   R e s t a r t");
-    draw_set_color(c_white)
-    draw_text(room_width / 2, baseY + 200, "T h a n k s   f o r   p l a y i n g");
-    draw_text(room_width / 2, baseY + 260, "R   t o   R e s t a r t");
+    
+    if (o_cardManager.astraDrawn)
+    {
+        draw_text(room_width / 2 + 5, baseY + 205, "T h a n k s   f o r   p l a y i n g");
+        draw_text(room_width / 2 + 5, baseY + 265, "R   t o   R e s t a r t");
+        draw_set_color(c_white)
+        draw_text(room_width / 2, baseY + 200, "T h a n k s   f o r   p l a y i n g");
+        draw_text(room_width / 2, baseY + 260, "R   t o   R e s t a r t");
+    }
+    else
+    {
+        draw_text(room_width / 2 + 5, baseY + 205, "Y o u ' v e   l o s t !");
+        draw_text(room_width / 2 + 5, baseY + 265, "R   t o   R e s t a r t");
+        draw_set_color(c_white)
+        draw_text(room_width / 2, baseY + 200, "Y o u ' v e   l o s t !");
+        draw_text(room_width / 2, baseY + 260, "R   t o   R e s t a r t");
+    }
+
     draw_set_font(f_latinMenu);
     draw_set_halign(fa_left);
     draw_set_valign(fa_top);

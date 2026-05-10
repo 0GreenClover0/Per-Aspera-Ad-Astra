@@ -102,6 +102,11 @@ if (array_length(enemiesCharacters) <= 0)
     startNewWave();
 }
 
+if (array_length(playerCharacters) <= 0)
+{
+    o_starryNight.newAlpha = 1;
+}
+
 if (selectType != SelectType.Duo)
 {
     if (array_length(selectedDuo) == 1)

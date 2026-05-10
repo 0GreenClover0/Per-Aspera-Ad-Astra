@@ -2,6 +2,7 @@ shd = shd_starryNight;
 u_time = shader_get_uniform(shd, "u_time");
 u_screen_size = shader_get_uniform(shd, "u_screen_size");
 u_alpha = shader_get_uniform(shd, "u_alpha");
+u_frequency_start = shader_get_uniform(shd, "u_frequency_start");
 surf = undefined;
 
 x = 0;
