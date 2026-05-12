@@ -216,7 +216,7 @@ function aging()
     
     if (age > 2)
     {
-        o_gameManager.kill(self);
+        o_gameManager.kill(id);
     }
 }
 
