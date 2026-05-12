@@ -210,9 +210,9 @@ function unhover()
     }
 }
 
-function aging()
+function aging(years = 1)
 {
-    age++;
+    age += years;
     
     if (age > 2)
     {

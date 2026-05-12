@@ -719,8 +719,7 @@ douczajacSieNieustannieDochodzeDoStarosci = new Card (
     function(character) 
     {
         character.int++;
-        character.aging();
-        character.aging();
+        character.aging(2);
     }
 )
 
